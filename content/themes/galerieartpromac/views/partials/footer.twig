@@ -1,0 +1,82 @@
+{% block footer %}
+    
+    <footer>
+	  <div class="container">
+	    <div class="row">
+	      <div class="col-sm-4 col-md-2">
+	      	<h3>Get in touch</h3>
+	       	<p><strong>VnH Paris</strong></p>
+	       	<img class="vignette" src="{{options.image_exterieur}}" alt="VHN Gallery">
+	       	{% if options.google_map %}
+	       		<a class="mapit" href="{{ options.google_map }}">VIEW MAP</a>
+	       	{% endif %}
+	      </div>
+	      <div class="col-sm-8 col-md-4 no-title">
+	      <p>
+	       	{{ options.adresse }}<br>
+	       	{{ options.telephone }}<br>
+	       	<a href="mailto:{{ options.email }}">{{ options.email }}</a>
+	       </p>
+	    	<h6>{{ options.horaires }}</h6>
+	      </div>
+	      <div class="col-sm-6 col-md-3 no-title">
+	        <ul>
+	            {% for item in footer.get_items %}
+	                <li>
+	                    <a href="{{item.get_path}}">{{item.title}}</a>
+	                </li>
+	            {% endfor %}
+	         </ul><!--/.navbar-nav-->
+	      </div>
+	      <div class="col-sm-6 col-md-3">
+	      		<h3 class="social">Be Social</h3>
+	            <ul class="socials">
+	            {% if options.facebook %}
+	              <li>
+	              	<a href="{{ options.facebook }}">
+	              		<i class="facebook"></i>
+	              	</a>
+	              </li>
+	            {% endif %}
+	            {% if options.twitter %}
+	              <li>
+	              	<a href="{{ options.twitter }}">
+	              		<i class="twitter"></i>
+	              	</a>
+	              </li>
+	              {% endif %}
+	              {% if options.instagram %}
+	              <li>
+	              	<a href="{{ options.instagram }}">
+	              		<i class="instagram"></i>
+	              	</a>
+	              </li>
+	              {% endif %}
+	              {% if options.google %}
+	          	  <li>
+	              	<a href="{{ options.google }}">
+	              		<i class="google"></i>
+	              	</a>
+	              </li>
+	              {% endif %}
+	              {% if options.tumblr %}
+	          		<li>
+	              	<a href="{{ options.tumblr }}">
+	              		<i class="tumblr"></i>
+	              	</a>
+	              </li>
+	              {% endif %}
+	              {% if options.pinterest %}
+	              <li>
+	              	<a href="{{ options.pinterest }}">
+	              		<i class="pinterest"></i>
+	              	</a>
+	              </li>
+	              {% endif %}
+	            </ul>
+	      </div>
+	    </div>
+	  </div>
+	</footer>
+	
+{% endblock %}

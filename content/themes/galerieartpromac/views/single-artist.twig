@@ -1,0 +1,247 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	
+	<nav id="Nav-artist">
+		<ul class="sidemenu dots">
+	      <li><a href="#quote" rel="tooltip" class="smoothy" title="Quotes"></a></li>
+	      <li><a href="#bio" rel="tooltip" class="smoothy" title="Bio"></a></li>
+	      <li><a href="#artwork" rel="tooltip" class="smoothy" title="Artwork"></a></li>
+	      <li><a href="#video" rel="tooltip" class="smoothy" title="Video"></a></li>
+	      <li><a href="#related" rel="tooltip" class="smoothy" title="Exhibitions"></a></li>
+	      <li><a href="#press" rel="tooltip" class="smoothy" title="Press"></a></li>
+	    </ul>
+
+	</nav>
+    
+    <div class="header-artist">
+		<div class="container">
+			<h2>{{post.title}}</h2>
+		</div>
+	</div>
+
+    <section id="quote" class="doubleheader ct-height" style="background: url('{{post.thumbnail.src}}')no-repeat center center; background-size:cover">
+		<div class="container full">
+			<div id="quote-grid" style="color:{{post.get_field("quote_color")}}">
+			  	<div class="row full">
+			  		{% if post.get_field("position_quote") == 'hg' %}
+		  				<div class="col-sm-6 quote">
+		  					<span class="text-right">{{post.get_field("quote_1")}}</span>
+		  				</div>
+		  			{% elseif post.get_field("position_quote") == 'hd' %}
+			  			<div class="col-sm-6 col-md-offset-6 quote">
+			  				<span class="text-left">{{post.get_field("quote_1")}}</span>
+			  			</div>
+		  			{% elseif post.get_field("position_quote") == 'bg' %}
+				  		<div class="col-sm-6 bas quote">
+				  			<span class="text-right">{{post.get_field("quote_1")}}</span>
+				  		</div>
+			  		{% elseif post.get_field("position_quote") == 'bd' %}
+				  		<div class="col-sm-6 col-md-offset-6 bas quote">
+			  				<span class="text-left">{{post.get_field("quote_1")}}</span>
+			  			</div>
+		  			{% else %}{% endif %}	
+			  	</div>
+			</div>
+		</div>
+      
+      	<div class="footer-artist">
+			<div class="container">
+				<a href="{{post.prev.link}}">Next Artist</a>
+				<a href="{{post.next.link}}">Previous Artist</a>
+				<a href="{{site.url}}/{{post.post_type}}">Artist List</a>
+			</div>
+		</div>
+    </section><!-- /landing -->
+
+    <section id="bio" class="ct-heightPt">
+
+        <div class="container">      
+        	<div class="row">
+        		<div class="col-md-6 police-5">
+           			<h2 class="police-9">Statement</h2>
+           			{{ post.get_field('statement')}}
+           		</div>
+           		<div class="col-md-6">
+           			{% if post.get_field('solo_shows') %}
+           				<h2 class="police-9">Solo Shows</h2>
+           				{{ post.get_field('solo_shows')}}
+           			{% endif %}
+        	 		{% if post.get_field('group_shows') %}
+						<h2 class="police-9">Group Shows</h2>
+						{{ post.get_field('group_shows')}}
+					{% endif %}
+					{% if post.get_field('download_cv') %}
+						<span class="links">
+	        	 			<a href="{{post.get_field('download_cv')}}" target="_blank">Download CV</a>
+	        	 		</span>
+        	 		{% endif %}
+        	 		{% if post.get_field('artist_website') %}
+	        	 		<span class="links">
+	        	 			<a href="http://{{post.get_field('artist_website')}}" target="_blank">{{post.get_field('artist_website')}}</a>
+	        	 		</span>
+        	 		{% endif %}
+            	</div>
+            </div> 
+        </div>
+        
+    </section><!-- /bio -->
+
+    <section id="artwork" class="ct-heightPt">
+    	{% set images = TimberPost(post.get_field('images_artist')) %}
+		<div class="container">
+           	<div class="row">
+           		<div class="col-md-12">
+           			<h2 class="police-9">Selected Artworks</h2>
+           		</div>
+	            {% for image in images %}
+	                <div class="col-md-3"> 
+	                	<div class="row-thumb">   
+		                	{% if image.thumbnail %}
+				                <a class="fancybox" data-fancybox-group="gallery" rel="gallery" title="{{image.title}}<br>{{image.caption}}" href="{{TimberImage(image.thumbnail).get_src}}">  
+				                  <img src="{{TimberImage(image.thumbnail).get_src|resize(300)}}" />
+				                </a>
+			                {% else %}
+				                <a class="fancybox" data-fancybox-group="gallery" rel="gallery" title="{{image.title}}<br>{{image.caption}}" href="{{TimberImage(image.artwork_images[0]).get_src}}">  
+				                  <img src="{{TimberImage(image.artwork_images[0]).get_src|resize(300)}}" />
+				                </a>
+			                {% endif %}
+			                <div class="row-info">
+			                	<a class="fancybox" data-fancybox-group="gallery" rel="gallery" title="{{image.title}}<br>{{image.caption}}" href="{{TimberImage(image.thumbnail).get_src}}">  
+				                	<p>{{image.title}}<br>
+				                	{{image.caption}}</p>
+				                </a>
+			                </div>
+		              	</div>
+	     			</div>
+	            {% endfor %}
+	        </div>
+	        <div class="row">
+	        	<div class="col-md-12">
+		            <a href="/vnhgallery/artwork/?fwp_artwork_artistes={{post.slug}}">
+					    <div id="linkMore">Show more</div>
+		           	</a>
+		        </div>
+			</div>
+	    </div>
+    </section><!-- artwork-->
+
+	{% if post.get_field('videos_related') %}
+		{% set videos = TimberPost(post.get_field('videos_related')) %}
+		<section id="video" class="ct-heightPt">
+		
+	 			{% for video in videos %}
+			 		<span class="x-play-button"></span>
+			 		<img id="PosterVideo" src="{{video.thumbnail.src}}" id="myPosterImage"/>
+			 		<div class="ct-heightPt embed-container">
+			 		{{ video.get_field('artwork_video')}}
+			 		</div>
+		 		{% endfor %}
+	 	 		
+		</section><!-- video-->
+ 	{% endif %}
+
+	{% if post.get_field('artists_related') %}
+	{% set gallery = TimberPost(post.get_field('artists_related')) %} 
+  		<section id="related" class="ct-heightPt">
+      		<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+              			<h2 class="police-9">Gallery Exhibitions</h2>
+              		</div>
+					{% for rel in gallery %}
+		                <div class="col-md-3">
+		                	<div class="row-thumb">       
+				                <a href="{{ rel.permalink }}">  
+				                  <img src="{{rel.get_thumbnail.get_src|resize(300, 200, 'center')}}" />
+				                </a>
+				                <div class="row-info">
+				                	<a href="{{ rel.permalink }}">  
+					                	<p class="police-5">
+						    				{{rel.post_title}}<br>
+				                			{{ rel.get_field('date_exhibition') }}<br>
+				                			{{ rel.get_field('exhibition_place') }}
+				                		</p>
+				                	</a>
+				                </div>
+				            </div>
+		     			</div>
+		     		{% endfor %}
+		     	</div>
+     			{% if post.get_field('musee_show') %}
+		     	{% set museum = TimberPost(post.get_field('musee_show')) %} 
+			     	<div class="row">
+			     		<div class="col-md-12">
+		              		<h2 class="police-9">Museum Exhibitions & Projects</h2>
+		              	</div>
+						{% for rel in museum %}
+			                <div class="col-md-3">  
+			                	<div class="row-thumb">      
+					                <a href="{{ rel.permalink }}">  
+					                 <img src="{{rel.get_thumbnail.get_src|resize(300, 200, 'center')}}" />
+					                </a>
+					                <div class="row-info">
+					                	<a href="{{ rel.permalink }}">  
+					                		<p class="police-5">
+					    						{{rel.post_title}}<br>
+			                					{{ rel.get_field('date_exhibition') }}<br>
+			                					{{ rel.get_field('exhibition_place') }}
+			                				</p>
+			                			</a>
+					                </div>
+					            </div>
+			     			</div>
+			     		{% endfor %}			     	
+		     		</div>
+	    		{% endif %}
+	    		<div class="row">
+	    			<div class="col-md-12">
+		    			<a href="/vnhgallery/exhibition/?fwp_expo_artistes={{post.slug}}">
+				    		<div id="linkMore">Show more</div>
+				    	</a>
+				    </div>
+				</div>
+	     </section><!-- Related-->
+	{% endif %}
+	
+	{% if post.get_field('press_related') %}
+	{% set press = TimberPost(post.get_field('press_related')) %} 
+  	<section id="press" class="ct-heightPt">
+  		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+          			<h2>Press</h2>
+				</div>	
+				{% for rel in press %}
+	                <div class="col-md-3">    
+	                	<div class="row-thumb">      
+			               	<a class="fancybox" href="{{ rel.get_field('press_pdf') }}">  
+				                <img src="{{rel.get_thumbnail.get_src|resize(300, 200, 'top')}}" />
+				           	</a>
+			                <div class="row-info">
+			                	<a class="fancybox" href="{{ rel.get_field('press_pdf') }}">  
+				                	<p class="police-5">
+				                		{{ rel.get_field('press_editeur') }}<br>
+				                		{{ rel.get_field('press_date') }}
+				                	</p>
+				                </a>
+		     				</div>
+	     				</div>
+	     			</div>
+	     		{% endfor %}
+ 			</div>
+     	</div>
+	</section><!-- press-->
+	{% endif %}
+	
+	{% if post.get_field('socialartist') %}
+	<section id="social">
+	      <div class="container">
+	        {% filter shortcodes %}
+	          {{post.get_field('socialartist')}}
+	        {% endfilter %}
+	      </div>
+	</section><!-- /social-->
+	{% endif %}
+
+{% endblock %}

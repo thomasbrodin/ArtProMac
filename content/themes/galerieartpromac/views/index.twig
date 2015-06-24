@@ -1,0 +1,18 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<h2>{{foo}}</h2>
+	<p>{{qux}}</p>
+	
+	{% for post in posts %}
+		<article class="tease" id="tease-{{post.ID}}">
+			<h2 class="h2"><a href="{{post.link}}">{{post.title}}</a></h2>
+			<p>{{post.get_preview}}</p>
+
+			{% if post.get_thumbnail %}
+				<img src="{{post.thumbnail.src}}" />
+			{% endif %}
+		</article>
+	{% endfor %}
+
+{% endblock %}

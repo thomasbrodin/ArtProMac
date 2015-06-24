@@ -1,0 +1,34 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<section id="gallery" class="oneheader ct-height">
+   
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-4 police-5">
+					<h2 class="police-9">Vnh Gallery</h2>
+					<div class="border">
+						{% if post.thumbnail %}
+							<img src="{{post.get_thumbnail.get_src|resize(400,300, 'top')}}" />
+						{% endif %}
+						{{ post.content }}
+					</div>				
+				</div>
+				<div class="col-md-4 police-5">
+       				<h2 class="police-9">Where?</h2>
+       				<div class="border">
+       					{{ post.get_field('where')}}	
+       				</div>
+				</div>
+				<div class="col-md-4 police-5">
+					<h2 class="police-9">Staff</h2>
+					{{ post.get_field('who')}}
+				</div>
+			</div>
+
+		</div> 
+	</section><!-- /quote -->
+
+{% endblock %}

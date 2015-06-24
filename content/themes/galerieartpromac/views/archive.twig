@@ -1,0 +1,27 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	
+	<section class="oneheader">
+		<div class="container">
+			{% for post in posts %}
+				<div class="row">
+					{% if post.get_thumbnail %}
+						<div class="col-md-4">
+							<img src="{{post.thumbnail.get_src|resize(500)}}" />
+						</div>
+					{% endif %}
+					<div class="{% if post.get_thumbnail %}col-md-8{% else %}col-md-12{% endif %}">
+						<article>
+							<h2>{{post.title}}</a></h2>
+							<p class="date">{{ post.post_date|date}}</p>
+							<p>{{post.content}}</p>
+							<span class="hr"></span>
+						</article>
+					</div>
+				</div>
+			{% endfor %}
+	</section>
+
+{% endblock %}
+

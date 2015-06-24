@@ -1,0 +1,49 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	
+	<section class="oneheader" id="news">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="police-9">News</h2>
+				</div>
+				
+				<div id="navside" class="col-md-3">
+					{{ news_sidebar }}
+				</div>
+				
+				<div class="col-md-9" role="main">
+					{% for post in posts %}
+						{% if loop.index == 13 %}
+		            		</div>
+		            		<div class="row">
+		     					<div id="loadMore">Show more</div>
+		     					<div id="ShowMore">	     				
+			     		{% endif %}
+						<div class="row">
+							{% if post.get_thumbnail %}
+								<div class="col-md-4">
+									<img src="{{post.thumbnail.get_src|resize(500)}}" />
+								</div>
+							{% endif %}
+							<div class="{% if post.get_thumbnail %}col-md-8{% else %}col-md-12{% endif %}">
+								<article>
+									<h2 class="police-8">{{post.title}}</h2>
+									<p>{{ post.post_date|date}}</p>
+									<p>{{post.content}}</p>
+									<span class="hr"></span>
+								</article>
+							</div>
+						</div>
+						{% if loop.lenght > 12 and loop.last %}
+			     					</div>
+			     				</div>
+			     		{% endif %}
+					{% endfor %}
+				</div>
+	</section>
+
+{% endblock %}
+
+
