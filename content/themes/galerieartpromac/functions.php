@@ -1,6 +1,5 @@
 <?php
 	include_once('inc/vnh_acf.php');
-
 	include_once ('inc/hexplugins.php');
 
 	if (!class_exists('Timber')){

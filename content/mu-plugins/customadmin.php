@@ -50,13 +50,13 @@ function remove_dashboard_widgets()
  */
 function photo_admin_bar_render() {
     hex_add_admin_bar('Artists'); // Parent item
-    hex_add_admin_bar('All Artists', '/wp-admin/edit.php?post_type=artist', 'Artists');
-    hex_add_admin_bar('Add New Artist', '/wp-admin/post-new.php?post_type=artist', 'Artists');
+    hex_add_admin_bar('All Artists', '/wp/wp-admin/edit.php?post_type=artist', 'Artists');
+    hex_add_admin_bar('Add New Artist', '/wp/wp-admin/post-new.php?post_type=artist', 'Artists');
 }
 function project_admin_bar_render() {
     hex_add_admin_bar('Exhibitions'); // Parent item
-    hex_add_admin_bar('All Exhibitions', '/wp-admin/edit.php?post_type=exhibition', 'Exhibitions');
-    hex_add_admin_bar('Add New Exhibition', '/wp-admin/post-new.php?post_type=exhibition', 'Exhibitions');
+    hex_add_admin_bar('All Exhibitions', '/wp/wp-admin/edit.php?post_type=exhibition', 'Exhibitions');
+    hex_add_admin_bar('Add New Exhibition', '/wp/wp-admin/post-new.php?post_type=exhibition', 'Exhibitions');
 }
 
 function hex_add_admin_bar($name, $href = '', $parent = '', $custom_meta = array()) {
