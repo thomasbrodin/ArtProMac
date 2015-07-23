@@ -14,24 +14,24 @@ add_action( 'init','maybe_rewrite_rules' );
 function hex_cpt() {
   /** Artists post type */
   $labels  = array(
-            'name' => 'Artists',
-            'singular_name' => 'Artist',
-            'add_new' => 'Add Artist',
-            'add_new_item' => 'Add a new Artist',
-            'edit_item' => 'Edit Artist',
-            'new_item' => 'New Artist',
-            'all_items' => 'All Artist',
-            'view_item' => 'Voir Artist',
-            'update_item'  => 'Update Artist',
-            'search_items' => 'Search Artist',
-            'not_found' =>  'No Artist found',
-            'not_found_in_trash' => 'No Artist in the trash',
+            'name' => 'Artistes',
+            'singular_name' => 'Artiste',
+            'add_new' => 'Ajouter',
+            'add_new_item' => 'Ajouter un nouvel Artiste',
+            'edit_item' => 'Modifier Artiste',
+            'new_item' => 'Nouvel Artiste',
+            'all_items' => 'Tous les Artistes',
+            'view_item' => 'Voir artiste',
+            'update_item'  => 'Mettre a jour l\'artiste',
+            'search_items' => 'Rechercher un artiste',
+            'not_found' =>  'Aucun artiste trouvé',
+            'not_found_in_trash' => 'Aucun artiste dans la corbeille',
             'parent_item_colon' => '',
-            'menu_name' => 'Artists'
+            'menu_name' => 'Artistes'
             );
   $args = array(
         'labels' => $labels,
-        'description' => 'Artists',
+        'description' => 'Artistes',
         'menu_icon'=> 'dashicons-admin-users',
         'public' => true,
         'publicly_queryable' => true,
@@ -49,24 +49,24 @@ function hex_cpt() {
   register_post_type( 'artist', $args);
   /** Exhibitions post type */
   $labels  = array(
-            'name' => 'Exhibitions',
-            'singular_name' => 'Exhibition',
-            'add_new' => 'Add Exhibition',
-            'add_new_item' => 'Add New',
-            'edit_item' => 'Edit Exhibition',
-            'new_item' => 'New Exhibition',
-            'all_items' => 'All Exhibitions',
-            'view_item' => 'View Exhibition',
-            'update_item'  => 'Update Exhibition',
-            'search_items' => 'Search Exhibitions',
-            'not_found' =>  'No Exhibitions Found',
-            'not_found_in_trash' => 'No Exhibition in the trash',
+            'name' => 'Expositions',
+            'singular_name' => 'Exposition',
+            'add_new' => 'Ajouter',
+            'add_new_item' => 'Ajouter une nouvelle exposition',
+            'edit_item' => 'Mettre a jour l\'exposition',
+            'new_item' => 'Nouvelle exposition',
+            'all_items' => 'Toutes les expositions',
+            'view_item' => 'Voir exposition',
+            'update_item'  => 'Mettre a jour l\'exposition',
+            'search_items' => 'Rechercher une exposition',
+            'not_found' =>  'Aucune exposition trouvée',
+            'not_found_in_trash' => 'Aucune exposition dans la corbeille',
             'parent_item_colon' => '',
-            'menu_name' => 'Exhibitions'
+            'menu_name' => 'Expositions'
             );
   $args = array(
         'labels' => $labels,
-        'description' => 'Exhibitions',
+        'description' => 'Expositions',
         'menu_icon'=> 'dashicons-format-gallery',
         'public' => true,
         'publicly_queryable' => true,
@@ -84,22 +84,22 @@ function hex_cpt() {
   register_post_type( 'exhibition', $args);
   /** Oeuvres post type */
   $labels = array(
-    'name'                => 'Artwork',
-    'singular_name'       => 'Artwork',
-    'menu_name'           => 'Artworks',
-    'all_items'           => 'All Artworks',
-    'view_item'           => 'View Artwork',
-    'add_new_item'        => 'Add Artwork',
-    'add_new'             => 'Add New',
-    'edit_item'           => 'Edit Artwork',
-    'update_item'         => 'Update Artwork',
-    'search_items'        => 'Search Artworks',
-    'not_found'           => 'No Artwork Found',
-    'not_found_in_trash'  => 'No Artwork in the trash',
+    'name'                => 'Oeuvres',
+    'singular_name'       => 'Oeuvre',
+    'menu_name'           => 'Oeuvres',
+    'all_items'           => 'Toutes les Oeuvres',
+    'view_item'           => 'Voir Oeuvre',
+    'add_new_item'        => 'Ajouter une nouvel Oeuvre',
+    'add_new'             => 'Ajouter',
+    'edit_item'           => 'Modifier Oeuvre',
+    'update_item'         => 'Mettre a jour l\'oeuvre',
+    'search_items'        => 'Rechercher une Oeuvres',
+    'not_found'           => 'Aucune Oeuvre trouvée',
+    'not_found_in_trash'  => 'Aucune Oeuvres dans la corbeille',
   );
   $args = array(
-    'label'               => 'Artwork',
-    'description'         => 'Artwork List',
+    'label'               => 'Oeuvre',
+    'description'         => 'liste des oeuvres',
     'labels'              => $labels,
     'menu_icon'           => 'dashicons-format-image',
     'public' => true,
@@ -121,15 +121,15 @@ function hex_cpt() {
     'name'                => 'Publications',
     'singular_name'       => 'Publication',
     'menu_name'           => 'Publications',
-    'all_items'           => 'All Publications',
-    'view_item'           => 'View Publication',
-    'add_new_item'        => 'Add Publication',
-    'add_new'             => 'Add New',
-    'edit_item'           => 'Edit Publication',
-    'update_item'         => 'Update Publication',
-    'search_items'        => 'Search Publications',
-    'not_found'           => 'No Publications Found',
-    'not_found_in_trash'  => 'No Publications in the trash',
+    'all_items'           => 'Toutes les publications',
+    'view_item'           => 'Voir publication',
+    'add_new_item'        => 'Ajouter une publication',
+    'add_new'             => 'Ajouter',
+    'edit_item'           => 'Edit publication',
+    'update_item'         => 'Mettre a jour la publication',
+    'search_items'        => 'Rechercher une publications',
+    'not_found'           => 'Aucune publication trouvée',
+    'not_found_in_trash'  => 'Aucune publication dans la corbeille',
   );
   $args = array(
     'label'               => 'Publications',
@@ -153,22 +153,22 @@ function hex_cpt() {
   register_post_type( 'publication', $args );
   /** Press post type */
   $labels = array(
-    'name'                => 'Press',
-    'singular_name'       => 'Press',
-    'menu_name'           => 'Press',
-    'all_items'           => 'All Press',
-    'view_item'           => 'View Press',
-    'add_new_item'        => 'Add Press',
-    'add_new'             => 'Add New',
-    'edit_item'           => 'Edit Press',
-    'update_item'         => 'Update Press',
-    'search_items'        => 'Search Press',
-    'not_found'           => 'No Press Found',
-    'not_found_in_trash'  => 'No Press in the trash',
+    'name'                => 'Presse',
+    'singular_name'       => 'Presse',
+    'menu_name'           => 'Presse',
+    'all_items'           => 'Toute la presse',
+    'view_item'           => 'Voir la presse',
+    'add_new_item'        => 'Ajouter de la presse',
+    'add_new'             => 'Ajouter',
+    'edit_item'           => 'modifier la presse',
+    'update_item'         => 'Mettre a jour la presse',
+    'search_items'        => 'Rechercher dans la presse',
+    'not_found'           => 'Aucune Presse trouvée',
+    'not_found_in_trash'  => 'Aucune Presse dans la corbeille',
   );
   $args = array(
-    'label'               => 'Press',
-    'description'         => 'Press',
+    'label'               => 'Presse',
+    'description'         => 'Presse',
     'labels'              => $labels,
     'menu_icon'           => 'dashicons-media-document',
     'public' => true,
@@ -193,7 +193,7 @@ function vnh_taxonomies() {
     'artist',
       array( 
           'hierarchical' => true,  
-          'label' => 'Artist Category', 
+          'label' => 'Artiste Categories', 
           'show_admin_column' => true, 
           'query_var' => true,  
           'rewrite' => array('slug' => 'artist-category')  
@@ -204,7 +204,7 @@ function vnh_taxonomies() {
     'artist',
       array( 
           'hierarchical' => false,  
-          'label' => 'Artist tag', 
+          'label' => 'Artiste Etiquettes', 
           'show_admin_column' => true, 
           'query_var' => true,  
           'rewrite' => array('slug' => 'artist-tag')  
@@ -215,21 +215,21 @@ function vnh_taxonomies() {
     'exhibition',
       array( 
           'hierarchical' => true,  
-          'label' => 'Exhibition Category', 
+          'label' => 'Exposition Categories', 
           'show_admin_column' => true, 
           'query_var' => true,  
           'rewrite' => array('slug' => 'exhibition-category')  
       )  
     ); 
     register_taxonomy(  
-    'exhibition_artist',  
+    'exhibition_date',  
     'exhibition',
       array( 
           'hierarchical' => true,  
-          'label' => 'Exhibition tag', 
+          'label' => 'Année', 
           'show_admin_column' => true, 
           'query_var' => true,  
-          'rewrite' => array('slug' => 'exhibition-artist')  
+          'rewrite' => array('slug' => 'expo-year')  
       )  
     );  
     register_taxonomy(  
@@ -243,23 +243,12 @@ function vnh_taxonomies() {
           'rewrite' => array('slug' => 'artwork-technique')  
       )  
     ); 
-     register_taxonomy(  
-    'artwork_artist',  
-    'artwork',
-      array( 
-          'hierarchical' => true,  
-          'label' => 'Artist', 
-          'show_admin_column' => true, 
-          'query_var' => true,  
-          'rewrite' => array('slug' => 'artwork-artist')  
-      )  
-    ); 
     register_taxonomy(  
     'publication_year',  
     'publication',
       array( 
           'hierarchical' => true,  
-          'label' => 'Year', 
+          'label' => 'Année', 
           'show_admin_column' => true, 
           'query_var' => true,  
           'rewrite' => array('slug' => 'publication-year')  
