@@ -1,0 +1,47 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	
+	<section id="artfairs" class="main">
+		<div class="container">
+			
+			<div class="row border">
+		        <div class="col-md-6">
+		          <h2>{{ function( 'pll_e','Foires et Salons')}}</h2>
+		        </div>
+		        <div class="col-md-6">
+		          <ul class="filter">
+		             {% for date in artfair_date %}
+		                <li><a href="#" data-year="{{date.name}}">{{date.name}}</a></li>
+		             {% endfor %} 
+		          </ul>
+		        </div>
+		    </div>
+			
+			{% for post in posts %}
+				<div class="row result-filter">
+					{% if post.get_thumbnail %}
+						<div class="col-md-4">
+							<figure>
+								<img src="{{post.thumbnail.get_src|resize(500)}}" />
+							</figure>
+						</div>
+					{% endif %}
+					<div class="{% if post.get_thumbnail %}col-md-8{% else %}col-md-12{% endif %}">
+						<article>
+							<h2>{{post.title}}</a></h2>
+							<p class="date">{{ post.post_date|date}}</p>
+							<p>{{post.content}}</p>
+							{% if post.get_field('Fair_press_release') %}
+								<p class="link"><a href="{{post.get_field('Fair_press_release').url}}" target="_blank">
+								{{ function( 'pll_e','Telecharger PDF')}}</a></p>
+							{% endif %}
+						</article>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+
+{% endblock %}
+

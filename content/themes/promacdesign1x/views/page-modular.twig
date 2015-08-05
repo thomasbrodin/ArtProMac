@@ -1,0 +1,58 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<section id="modules" class="main">
+   		
+   		<div class="container">
+	   		<div class="row border">
+		        <div class="col-md-12">
+		          <h2>{{post.title}}</h2>
+		        </div>
+		    </div>
+		</div>
+
+   		{% if post.get_field('module') %}
+			{% for module in post.get_field('module') %}
+
+				{% if module.acf_fc_layout == 'contact' %}
+					<section class="contact">
+						<div class="container">
+
+							<div class="row">
+								<div class="inner-form">
+									{% filter shortcodes %}
+										{{module.wpcf_shortcode}}
+									{% endfilter %}
+								</div>
+							</div>
+
+						</div>
+					</section>
+				{% endif %}
+
+				{% if module.acf_fc_layout == '2_cols' %}
+					<section class="two-cols">
+						<div class="container">
+							
+							<div class="row">
+								<div class="col-md-6">{{module.col_left}}</div>
+								<div class="col-md-6">{{module.col_right}}</div>
+							</div>
+
+						</div>
+					</section>
+				{% endif %}
+
+				{% if module.acf_fc_layout == 'full_width' %}
+					<section class="full-width">
+						{{module.fw_content}}
+					</section>
+				{% endif %}
+
+			{% endfor %}
+   		{% endif %}
+
+	</section><!-- /modules -->
+
+{% endblock %}

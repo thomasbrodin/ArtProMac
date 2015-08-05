@@ -1,0 +1,179 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    <section id="single-artist" class="main">
+    	<div class="container">
+			<div class="row border">
+				<div class="col-md-4">
+					<h2>{{post.title}}</h2>
+				</div>
+				<div class="col-md-8">
+					<ul id="filter-section" class="filter">
+						<li><a href="#artist-artworks" class="active">{{ function( 'pll_e',"Selection d'oeuvres")}}</a></li>
+						<li><a href="#artist-bio">{{ function( 'pll_e','Biographie')}}</a></li>
+						{% if exhibitions %}
+							<li><a href="#artist-expo">{{ function( 'pll_e','Expositions')}}</a></li>
+						{% endif %}
+						{% if press %}
+							<li><a href="#artist-press">{{ function( 'pll_e','Press')}}</a></li>
+						{% endif %}
+						{% if publications %}
+							<li><a href="#artist-publications">{{ function( 'pll_e','Publications')}}</a></li>
+						{% endif %}
+						{% if post.get_field('videos_rep') %}
+							<li><a href="#artist-videos">Videos</a></li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+
+		    <section class="filtering" id="artist-artworks">
+		           	<div class="row">
+		           		
+		           		<div class="col-md-12">
+				         	<ul class="filter">
+								<li id="slideshow"><a href="#">{{ function( 'pll_e','Diaporama')}}</a></li>
+								<li id="grid"><a href="#">{{ function( 'pll_e','Vignettes')}}</a></li>
+							</ul>
+				        </div>
+
+		           		{% set artworks = post.get_field('images_artist') %}
+				        <div id="thumbs" class="thumbnails">
+				            {% for image in artworks %}
+				   				
+				                <article class="col-sm-6 col-md-4">   
+						            <figure class="c3" data-slide="{{loop.index0}}">
+						            	<img src="{{TimberImage(image.id).get_src|resize(480)}}" />
+						        	</figure>	              
+					                <div class="meta">
+					                	<p><em><strong>{{image.title}}</strong></em><br>
+						                		{{image.caption}}<br>
+						                		{{image.description}}</p>   
+					                </div>  	
+				     			</article>
+
+				            {% endfor %}
+			            </div>
+			            <!-- Thumbnails --> 
+
+				        <div id="artwork-slider" class="flexslider">
+				        	<ul class="slides">
+				            	{% for image in artworks %}
+								    <li>
+								    	<a class="fancybox" data-fancybox-group="gallery" rel="gallery" href="{{TimberImage(image.id).get_src}}">  
+								    		<img src="{{TimberImage(image.id).get_src|resize(850)}}" />
+								    	</a>
+						            </li>
+				            	{% endfor %}
+			            </div><!-- slideshow -->
+
+			        </div>
+		    </section><!-- artwork-->
+			
+		    <section class="filtering" id="artist-bio">
+	        	<div class="row">
+	        		{% set pic = post.get_field('artist_img') %}
+	        		{% if pic %}
+	        			<div class="col-md-4"> 
+	           				<img src="{{TimberImage(pic.id).get_src|resize(480)}}" />
+	           			</div>
+	           			<div class="col-md-8"> 
+	           				{{ post.get_field('statement')}}
+	           			</div>
+					{% else %}
+	        			<div class="col-md-12 centered"> 
+	           			{{ post.get_field('statement')}}
+	           			</div>
+	           		{% endif %}
+	            </div> 		           
+		    </section><!-- /bio -->
+
+			{% if exhibitions %}
+		  		<section  class="thumbnails filtering" id="artist-expo">
+					<div class="row">
+						{% for rel in exhibitions %}
+			                <article class="col-md-4 col-sm-6">
+								<figure class="c3">
+					                <a href="{{ rel.permalink }}">  
+					                  <img src="{{rel.get_thumbnail.get_src|resize(300, 200, 'center')}}" />
+					                </a>
+					                <div class="meta">
+					                	<a href="{{ rel.permalink }}">  
+						                	<p><em><strong>{{rel.post_title}}</em></strong><br>
+					                			{{ rel.get_field('date_exhibition') }}<br>
+					                			{{ rel.get_field('exhibition_place') }}
+					                		</p>
+					                	</a>
+					                </div>
+					            </figure>
+			     			</article>
+			     		{% endfor %}
+			     	</div>
+			     </section><!--Artist-expo -->
+			{% endif %}
+			
+			{% if press %}
+				<section class="filtering" id="artist-press">
+					{% for rel in press %}
+							<div class="row">
+								<figure class="col-md-4 col-sm-3">
+									{% if post.thumbnail %}
+										<img src="{{rel.get_thumbnail.get_src|resize(480)}}" />
+										{% else %}
+											<img src="http://placehold.it/300&text=Image+Needed">
+										{% endif %}
+								</figure>
+								<article class="col-md-8 col-sm-9">
+									<h3>{{rel.title}}</h3>
+									<p class="date">{{rel.press_date}}</p>
+									<p>{{rel.content}}</p>
+									{% if rel.press_pdf %}
+										<p class="link"><a href="{{rel.get_field('press_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger PDF')}}</a></p>
+									{% endif %}
+								</article>
+			 	 		</div>
+			 	 	{% endfor %}
+				</section><!-- press -->
+		 	{% endif %}
+
+		 	{% if publications %}
+				<section class="filtering" id="artist-publications">
+					<div class="thumbnails">
+						<div class="row">
+							{% for rel in publications %}
+				                 <article class="col-md-3 col-sm-6">
+				                	<figure class="c4">      
+						                <a href="{{ rel.permalink }}">  
+						                  <img src="{{rel.get_thumbnail.get_src|resize(300, 200, 'center')}}" />
+						                </a>
+						                <div class="meta">
+						                	<a href="{{ rel.permalink }}">  
+							                	<p><em><strong>{{rel.title}}</em></strong></p>
+						                	</a>
+						                </div>
+						            </figure>
+				     			</article>
+				     		{% endfor %}
+				     	</div>
+				    </div>
+				</section><!-- publications -->
+		 	{% endif %}
+
+		 	{% if post.get_field('videos_rep') %}
+				<section class="filtering" id="artist-videos">	
+						<div class="row">
+							{% for video in post.get_field('videos_rep') %}
+					 			<div class="col-md-6">
+							 		<div class="embed-container">
+							 			{{ video.artist_video }}
+							 		</div>
+						 		</div>
+				 	 		{% endfor %}
+			 	 		</div>	 
+				</section><!-- video -->
+		 	{% endif %}
+
+		</div><!-- /container -->
+	</section><!-- /main -->
+{% endblock %}

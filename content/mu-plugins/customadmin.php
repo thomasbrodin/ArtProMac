@@ -7,8 +7,9 @@ Author URI: http://www.hexcreativenetwork.com
 */
 
 add_action( 'wp_before_admin_bar_render', 'remove_admin_bar_links' );
-add_action( 'wp_before_admin_bar_render', 'photo_admin_bar_render', 100);
-add_action( 'wp_before_admin_bar_render', 'project_admin_bar_render', 100);
+add_action( 'wp_before_admin_bar_render', 'artist_admin_bar_render', 100);
+add_action( 'wp_before_admin_bar_render', 'expo_admin_bar_render', 100);
+add_action( 'wp_before_admin_bar_render', 'art_admin_bar_render', 100);
 add_action( 'admin_menu', 'remove_menus', 999 );
 add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets');
 
@@ -48,15 +49,20 @@ function remove_dashboard_widgets()
 /**
  * Adds admin bar items for easy access to the theme creator and editor
  */
-function photo_admin_bar_render() {
-    hex_add_admin_bar('Artists'); // Parent item
-    hex_add_admin_bar('All Artists', '/wp/wp-admin/edit.php?post_type=artist', 'Artists');
-    hex_add_admin_bar('Add New Artist', '/wp/wp-admin/post-new.php?post_type=artist', 'Artists');
+function artist_admin_bar_render() {
+    hex_add_admin_bar('Artistes'); // Parent item
+    hex_add_admin_bar('Tous les artistes', '/wp/wp-admin/edit.php?post_type=artist', 'Artistes');
+    hex_add_admin_bar('Ajouter un artiste', '/wp/wp-admin/post-new.php?post_type=artist', 'Artistes');
 }
-function project_admin_bar_render() {
-    hex_add_admin_bar('Exhibitions'); // Parent item
-    hex_add_admin_bar('All Exhibitions', '/wp/wp-admin/edit.php?post_type=exhibition', 'Exhibitions');
-    hex_add_admin_bar('Add New Exhibition', '/wp/wp-admin/post-new.php?post_type=exhibition', 'Exhibitions');
+function expo_admin_bar_render() {
+    hex_add_admin_bar('Expositions'); // Parent item
+    hex_add_admin_bar('Toutes les Expositions', '/wp/wp-admin/edit.php?post_type=exhibition', 'Expositions');
+    hex_add_admin_bar('Ajouter un exposition', '/wp/wp-admin/post-new.php?post_type=exhibition', 'Expositions');
+}
+function art_admin_bar_render() {
+    hex_add_admin_bar('Oeuvres'); // Parent item
+    hex_add_admin_bar('Toutes les oeuvres', '/wp/wp-admin/edit.php?post_type=artwork', 'Oeuvres');
+    hex_add_admin_bar('Ajouter une oeuvre', '/wp/wp-admin/post-new.php?post_type=artwork', 'Oeuvres');
 }
 
 function hex_add_admin_bar($name, $href = '', $parent = '', $custom_meta = array()) {

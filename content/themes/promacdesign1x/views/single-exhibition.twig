@@ -1,0 +1,165 @@
+{% extends "base.twig" %}
+
+{% block content %}      	
+  
+  {% set artist = TimberPost(post.get_field('artistes_expo')) %}
+  <section class="main" id="single-exhibition">
+
+      <div class="container">
+        <div class="row border">
+          <div class="col-md-4">
+            <h2>{{post.title}}</h2>
+          </div>
+
+          <div class="col-md-8">
+            <ul id="filter-section" class="filter">
+              <li><a href="#exhibitions-artworks" class="active">{{ function( 'pll_e',"Selection d'oeuvres")}}</a></li>
+              <li><a href="#exhibitions-press">{{ function( 'pll_e','Dossier de presse')}}</a></li>
+              {% if artist %}
+                <li><a href="#exhibitions-artists">{{ function( 'pll_e','Artistes')}}</a></li>        
+              {% endif %} 
+              {% if publications %}
+                <li><a href="#exhibitions-publications">{{ function( 'pll_e','Publications')}}</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+        
+        <section class="filtering" id="exhibitions-artworks">
+                <div class="row">
+                  
+                  <div class="col-md-12">
+                  <ul class="filter">
+                    <li id="slideshow"><a href="#">{{ function( 'pll_e','Diaporama')}}</a></li>
+                    <li id="grid"><a href="#">{{ function( 'pll_e','Vignettes')}}</a></li>
+                  </ul>
+                </div>
+
+                {% set artworks = post.get_field('images_show') %}
+                <div id="thumbs" class="thumbnails">
+                    {% for image in artworks %}
+                  
+                      <article class="col-sm-6 col-md-4">   
+                        <figure class="c3" data-slide="{{loop.index0}}">
+                          <img src="{{TimberImage(image.id).get_src|resize(480)}}" />
+                        </figure>               
+                        <div class="meta">
+                          <p><em><strong>{{image.title}}</strong></em><br>
+                            {% if artist|length == 1 %}
+                              {{artist[0].post_title}}<br>
+                            {% endif %}
+                              {{post.get_field('date_exhibition')}}</p>   
+                        </div>    
+                      </article>
+
+                    {% endfor %}
+                  </div>
+                  <!-- Thumbnails --> 
+
+                <div id="artwork-slider" class="flexslider">
+                  <ul class="slides">
+                      {% for image in artworks %}
+                    <li>
+                      <a class="fancybox" data-fancybox-group="gallery" rel="gallery" href="{{TimberImage(image.id).get_src}}">  
+                        <img src="{{TimberImage(image.id).get_src|resize(850)}}" />
+                      </a>
+                        </li>
+                      {% endfor %}
+                  </div><!-- slideshow -->
+
+              </div>
+        </section><!-- artwork-->
+        
+        <section class="filtering" id="exhibitions-press">
+          
+          <div class="row">  
+            {% if post.thumbnail.src %}
+              <div class="col-md-4"> 
+                <img src="{{post.thumbnail.src}}" />
+              </div>
+              <div class="col-md-8"> 
+                {{ post.content }}
+              </div>
+            {% else %}
+              <div class="col-md-12 centered"> 
+               {{ post.content }}
+              </div>
+            {% endif %}
+          </div>
+
+          {% if press %}
+            {% for rel in press %}
+                <div class="row">
+                  <figure class="col-md-4 col-sm-3">
+                    {% if post.thumbnail %}
+                      <img src="{{rel.get_thumbnail.get_src|resize(480)}}" />
+                      {% else %}
+                        <img src="http://placehold.it/300&text=Image+Needed">
+                      {% endif %}
+                  </figure>
+                  <article class="col-md-8 col-sm-9">
+                    <h3>{{rel.title}}</h3>
+                    <p class="date">{{rel.press_date}}</p>
+                    <p>{{rel.content}}</p>
+                    {% if rel.press_pdf %}
+                      <p class="link"><a href="{{rel.get_field('press_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger PDF')}}</a></p>
+                    {% endif %}
+                  </article>
+              </div>
+            {% endfor %}
+          {% endif %}
+
+        </section><!-- Press -->
+        
+        {% if artist %}
+          <section class="filtering thumbnails" id="exhibitions-artists">
+            <div class="row"> 
+
+              {% for post in artist %}     
+                <article class="col-md-3 col-sm-6">
+                    <figure class="c4">
+                      <a href="{{post.link}}">
+                        {% if post.thumbnail %}
+                          <img src="{{post.get_thumbnail.get_src|resize(480,320, center)}}" />
+                        {% else %}
+                          <img src="http://placehold.it/300&text=Image+Needed">
+                        {% endif %}
+                      </a>
+                    </figure> 
+                    <div class="meta">
+                      <h4><a href="{{post.link}}">
+                        {{post.title}}
+                        </a>
+                      </h4>
+                    </div>
+                  </article>      
+                {% endfor %}
+
+              </div>
+          </section><!-- Artists -->
+        {% endif %}
+
+        {% if publications %}
+          <section class="filtering thumbnails" id="exhibitions-publications">\
+              <div class="row">
+                {% for rel in publications %}
+                           <article class="col-md-3 col-sm-6">
+                            <figure class="c4">      
+                              <a href="{{ rel.permalink }}">  
+                                <img src="{{rel.get_thumbnail.get_src|resize(300, 200, 'center')}}" />
+                              </a>
+                              <div class="meta">
+                                <a href="{{ rel.permalink }}">  
+                                  <p><em><strong>{{rel.title}}</em></strong></p>
+                                </a>
+                              </div>
+                          </figure>
+                    </article>
+                  {% endfor %}
+                </div>
+            </section><!-- publications -->
+          {% endif %}
+
+  </section><!-- exhibition-->
+
+{% endblock %}
