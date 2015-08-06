@@ -15,7 +15,7 @@
 	if( function_exists('acf_add_options_page') ) {
 		acf_add_options_page();
 	}
-	
+
 	class StarterSite extends TimberSite {
 
 		function __construct(){
@@ -28,22 +28,21 @@
 			add_filter('get_twig', array($this,'add_to_twig'));
 			add_filter('acf/options_page/settings', array($this, 'options_page_settings'));
 
-			// add_filter('acf/settings/default_language', array($this,'apm_acf_settings_default_language'));
-			// add_filter('acf/settings/current_language', array($this,'apm_acf_settings_current_language'));
+			add_filter('acf/settings/show_admin', array($this,'__return_false'));
 
 			add_action( 'widgets_init', array($this, 'lang_bar') );
 
-			add_action('wp_enqueue_scripts', array($this, 'load_scripts'));	
+			add_action('wp_enqueue_scripts', array($this, 'load_scripts'));
 			add_action('wp_enqueue_scripts', array($this, 'load_styles'));
 
 			add_action('init', array($this,'removeHeadLinks'));
 
-			add_action( 'widgets_init', array($this,'hex_widgets_init')); 
+			add_action( 'widgets_init', array($this,'hex_widgets_init'));
 
 			register_nav_menus( array(
 				'primary' => 'Menu',
 			) );
-			
+
 			parent::__construct();
 		}
 
@@ -51,6 +50,8 @@
 			$context['options'] = get_fields('options');
 
 			$context['langues'] = pll_the_languages(array('raw'=>1));
+
+			$context['footer_sidebar'] = Timber::get_widgets('footer_sidebar');
 
 			$context['menu'] = new TimberMenu('primary');
 			$context['site'] = $this;
@@ -64,15 +65,15 @@
 			return $twig;
 		}
 		function hex_widgets_init() {
-			register_sidebar( 
+			register_sidebar(
 				array(
-					'name' => 'News',
-					'id' => 'news_sidebar',
+					'name' => 'Footer',
+					'id' => 'footer_sidebar',
 					'before_widget' => '<div class="widget">',
 					'after_widget' => '</div>',
-					'before_title' => '<h2 class="police-6">',
-					'after_title' => '</h2>',
-				) 
+					'before_title' => '<h3">',
+					'after_title' => '</h3>',
+				)
 			);
 		}
 		function load_scripts(){
@@ -82,28 +83,21 @@
 		}
 
 		function load_styles() {
-			wp_enqueue_style( 'custom', THEME_URL . '/css/main.css'); 
+			wp_enqueue_style( 'custom', THEME_URL . '/css/main.css');
 		}
 
 
 		function removeHeadLinks() {
-	    	remove_action('wp_head', 'rsd_link');
-	    	remove_action('wp_head', 'wlwmanifest_link');
-	    	remove_action('wp_head', 'wp_generator');
-	    	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+						remove_action('wp_head', 'rsd_link');
+						remove_action('wp_head', 'wlwmanifest_link');
+						remove_action('wp_head', 'wp_generator');
+						remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 			remove_action( 'wp_print_styles', 'print_emoji_styles' );
-	    }
-
-	    function apm_acf_settings_default_language( $language ) {
-			return 'en';
-		}
-		function apm_acf_settings_current_language( $language ) {
-   			return 'fr';
-		}
+					}
 	}
 	new StarterSite();
 
 	function myfoo($text){
-    	$text .= ' bar!';
-    	return $text;
+					$text .= ' bar!';
+					return $text;
 	}

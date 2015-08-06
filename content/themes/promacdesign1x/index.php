@@ -23,9 +23,6 @@
 	$context['foo'] = 'bar';
 	$templates = array('index.twig');
 	if (is_home()){
-		$context['news_sidebar'] = Timber::get_widgets('news_sidebar');
 		array_unshift($templates, 'home.twig');
 	}
 	Timber::render($templates, $context);
-
-
