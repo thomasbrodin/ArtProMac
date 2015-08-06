@@ -28,7 +28,7 @@
 			add_filter('get_twig', array($this,'add_to_twig'));
 			add_filter('acf/options_page/settings', array($this, 'options_page_settings'));
 
-			add_filter('acf/settings/show_admin', array($this,'__return_false'));
+			//add_filter('acf/settings/show_admin', array($this,'__return_false'));
 
 			add_action( 'widgets_init', array($this, 'lang_bar') );
 
@@ -51,7 +51,7 @@
 
 			$context['langues'] = pll_the_languages(array('raw'=>1));
 			$context['current_lang'] =pll_current_language('slug');
-			
+
 			$context['footer_sidebar'] = Timber::get_widgets('footer_sidebar');
 
 			$context['menu'] = new TimberMenu('primary');

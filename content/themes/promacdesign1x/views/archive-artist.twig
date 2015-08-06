@@ -1,7 +1,7 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	
+
 	<section id="artists" class="main">
 		<div class="container">
 
@@ -18,37 +18,37 @@
 			</div>
 
 			<section id="vignettes" class="filtering thumbnails">
-				{% for post in posts %}			
 
-					{% for term in post.terms('artist_category') %}	
-				    	<div class="row">		
+					{% for term in artist_category %}
+									<div class="row">
 
-					    	<h3>{{term.name}}</h3>
-					    	
-					    	{% for post in term.get_posts %}
-							    <article class="col-md-3 col-sm-6">
-									<figure class="c4">
-										<a href="{{post.link}}">
-											{% if post.thumbnail %}
-												<img src="{{post.get_thumbnail.get_src|resize(480,320, center)}}" />
-											{% else %}
-												<img src="http://placehold.it/300&text=Image+Needed">
+										{% if term.get_posts is not empty %}
+											<h3>{{term.name}}</h3>
 											{% endif %}
-										</a>
-									</figure>	
-									<div class="meta">
-										<h4><a href="{{post.link}}">
-											{{post.title}}
-											</a>
-										</h4>
-									</div>
-								</article>				
-							{% endfor %}
+
+										{% for post in term.get_posts %}
+											<article class="col-md-3 col-sm-6">
+												<figure class="c4">
+													<a href="{{post.link}}">
+														{% if post.thumbnail %}
+															<img src="{{post.get_thumbnail.get_src|resize(480,320, center)}}" />
+														{% else %}
+															<img src="http://placehold.it/300&text=Image+Needed">
+														{% endif %}
+													</a>
+												</figure>
+												<div class="meta">
+													<h4><a href="{{post.link}}">
+															{{post.title}}
+															</a>
+														</h4>
+													</div>
+												</article>
+											{% endfor %}
 
 						</div>
-					{% endfor %}		
-				
-				{% endfor %}
+					{% endfor %}
+
 			</section>
 
 			<section class="filtering" id="liste">
@@ -58,19 +58,18 @@
 							{% for post in posts %}
 								<li>
 									<a data-thumb="{{post.get_thumbnail.get_src|resize(600)}}" href="{{post.link}}">
-			                		{{post.title}}
-			            			</a>
-			            		</li>
-		            		{% endfor %}
-		            	</ul>
-	            	</div>
-	            	<div class="artists-thumb">
-	            		<img src="{{posts[0].get_thumbnail.get_src|resize(600)}}">
-	            	</div>
-	            </div>
+																					{{post.title}}
+																		</a>
+																	</li>
+																{% endfor %}
+															</ul>
+														</div>
+														<div class="artists-thumb">
+															<img src="{{posts[0].get_thumbnail.get_src|resize(600)}}">
+														</div>
+													</div>
 			</section>
 		</div>
 	</section>
 
 {% endblock %}
-

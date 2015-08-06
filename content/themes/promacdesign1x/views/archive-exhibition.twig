@@ -1,119 +1,121 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  
-  <section id="exhibitions" class="main">
-    <div class="container">
-         
-      {% for term in exhibition_category %} 
-        
-        {% if (term.slug == 'actuellement') or  (term.slug == 'current') %}
-         
-          <div class="row border">
-              <div class="col-md-12">
-                <h2>{{ term.name }}</h2>
-              </div>
-          </div>
 
-          <div class="row featured">  
-            {% for post in term.get_posts %} 
-              {% set artist = TimberPost(post.get_field('artistes_expo')) %}
-              <article>
-                <figure>
-                  <a href="{{post.link}}">
-                    {% if post.thumbnail %}
-                      <img src="{{post.get_thumbnail.get_src}}" />
-                    {% else %}
-                      <img src="http://placehold.it/300&text=Image+Needed">
-                    {% endif %}
-                   </a>
-                </figure>
-                <div class="meta">
-                   <h4>{{post.title}}</h4>
-                    <p>{% if artist|length == 1 %}
-                        {{artist[0].post_title}}<br>
-                      {% endif %}
-                      {{post.get_field('date_exhibition')}}</p>   
-                </div>
-              </article>
-            {% endfor %}
-          </div>
+		<section id="exhibitions" class="main">
+				<div class="container">
 
-        {% elseif (term.slug == 'past') or  (term.slug == 'passe') %}  
-          
-          <div class="row border">
-            <div class="col-md-6">
-              <h2>{{ term.name }}</h2>
-            </div>
+						{% for term in exhibition_category %}
 
-            <div class="col-md-6">
-              <ul class="filter">
-                 {% for date in exhibition_date %}
-                    <li><a href="#" data-year="{{date.name}}">{{date.name}}</a></li>
-                 {% endfor %} 
-              </ul>
-            </div>
-          </div>
-          <div class="row result-filter thumbnails">         
-            {% for post in term.get_posts %}    
-             {% set artist = TimberPost(post.get_field('artistes_expo')) %}
-              <article class="col-md-3 col-sm-6" data-year="{{post.terms('exhibition_date')|join(' ')}}">    
-                <figure class="c4">
-                  <a href="{{post.link}}">
-                    {% if post.thumbnail %}
-                      <img src="{{post.get_thumbnail.get_src|resize(480,320, center)}}" />
-                    {% else %}
-                      <img src="http://placehold.it/300&text=Image+Needed">
-                    {% endif %}
-                  </a>
-                </figure> 
-                <div class="meta">
-                  <p><em><strong>{{post.title}}</strong></em><br>
-                      {% if artist|length == 1 %}
-                        {{artist[0].post_title}}<br>
-                      {% endif %}
-                        {{post.get_field('date_exhibition')}}</p>   
-                </div>
-              </article>          
-            {% endfor %}
-          </div>
+								{% if term.get_posts is not empty %}
 
-          {% else %}
+									{% if (term.slug == 'actuellement') or  (term.slug == 'current') %}
+																	
+											<div class="row border">
+															<div class="col-md-12">
+																	<h2>{{ term.name }}</h2>
+															</div>
+											</div>
 
-            <div class="row border">
-              <div class="col-md-12">
-                <h2>{{ term.name }}</h2>
-              </div>
-            </div>
+											<div class="row featured">
+													{% for post in term.get_posts %}
+															{% set artist = TimberPost(post.get_field('artistes_expo')) %}
+															<article>
+																	<figure>
+																			<a href="{{post.link}}">
+																					{% if post.thumbnail %}
+																							<img src="{{post.get_thumbnail.get_src}}" />
+																					{% else %}
+																							<img src="http://placehold.it/300&text=Image+Needed">
+																					{% endif %}
+																				</a>
+																	</figure>
+																	<div class="meta">
+																				<h4>{{post.title}}</h4>
+																					<p>{% if artist|length == 1 %}
+																									{{artist[0].post_title}}<br>
+																							{% endif %}
+																							{{post.get_field('date_exhibition')}}</p>
+																	</div>
+															</article>
+													{% endfor %}
+											</div>
 
-            <div class="row thumbnails">         
-              {% for post in term.get_posts %}    
-              {% set artist = TimberPost(post.get_field('artistes_expo')) %}
-                <article class="col-md-3 col-sm-6">    
-                  <figure class="c4">
-                    <a href="{{post.link}}">
-                      {% if post.thumbnail %}
-                        <img src="{{post.get_thumbnail.get_src|resize(480,320, center)}}" />
-                      {% else %}
-                        <img src="http://placehold.it/300&text=Image+Needed">
-                      {% endif %}
-                    </a>
-                  </figure> 
-                  <div class="meta">
-                     <p><em><strong>{{post.title}}</strong></em><br>
-                      {% if artist|length == 1 %}
-                        {{artist[0].post_title}}<br>
-                      {% endif %}
-                        {{post.get_field('date_exhibition')}}</p>   
-                  </div>
-                </article>          
-              {% endfor %}
-            </div>
+									{% elseif (term.slug == 'past') or  (term.slug == 'passe') %}
 
-          {% endif %}
-        {% endfor %}
-    </div>
-  </section>
+											<div class="row border">
+													<div class="col-md-6">
+															<h2>{{ term.name }}</h2>
+													</div>
+
+													<div class="col-md-6">
+															<ul class="filter">
+																		{% for date in exhibition_date %}
+																					<li><a href="#" data-year="{{date.name}}">{{date.name}}</a></li>
+																		{% endfor %}
+															</ul>
+													</div>
+											</div>
+											<div class="row result-filter thumbnails">
+													{% for post in term.get_posts %}
+														{% set artist = TimberPost(post.get_field('artistes_expo')) %}
+															<article class="col-md-3 col-sm-6" data-year="{{post.terms('exhibition_date')|join(' ')}}">
+																	<figure class="c4">
+																			<a href="{{post.link}}">
+																					{% if post.thumbnail %}
+																							<img src="{{post.get_thumbnail.get_src|resize(480,320, center)}}" />
+																					{% else %}
+																							<img src="http://placehold.it/300&text=Image+Needed">
+																					{% endif %}
+																			</a>
+																	</figure>
+																	<div class="meta">
+																			<p><em><strong>{{post.title}}</strong></em><br>
+																							{% if artist|length == 1 %}
+																									{{artist[0].post_title}}<br>
+																							{% endif %}
+																									{{post.get_field('date_exhibition')}}</p>
+																	</div>
+															</article>
+													{% endfor %}
+											</div>
+
+											{% else %}
+
+													<div class="row border">
+															<div class="col-md-12">
+																	<h2>{{ term.name }}</h2>
+															</div>
+													</div>
+
+													<div class="row thumbnails">
+															{% for post in term.get_posts %}
+															{% set artist = TimberPost(post.get_field('artistes_expo')) %}
+																	<article class="col-md-3 col-sm-6">
+																			<figure class="c4">
+																					<a href="{{post.link}}">
+																							{% if post.thumbnail %}
+																									<img src="{{post.get_thumbnail.get_src|resize(480,320, center)}}" />
+																							{% else %}
+																									<img src="http://placehold.it/300&text=Image+Needed">
+																							{% endif %}
+																					</a>
+																			</figure>
+																			<div class="meta">
+																						<p><em><strong>{{post.title}}</strong></em><br>
+																							{% if artist|length == 1 %}
+																									{{artist[0].post_title}}<br>
+																							{% endif %}
+																									{{post.get_field('date_exhibition')}}</p>
+																			</div>
+																	</article>
+															{% endfor %}
+													</div>
+
+											{% endif %}
+										{% endif %}
+								{% endfor %}
+				</div>
+		</section>
 
 {% endblock %}
-

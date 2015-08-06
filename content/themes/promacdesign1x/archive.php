@@ -1,18 +1,18 @@
 <?php
 /**
- * The template for displaying Archive pages.
- *
- * Used to display archive-type pages if nothing more specific matches a query.
- * For example, puts together date-based pages if no date.php file exists.
- *
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
- *
- * Methods for TimberHelper can be found in the /functions sub-directory
- *
- * @package 	WordPress
- * @subpackage 	Timber
- * @since 		Timber 0.2
- */
+	* The template for displaying Archive pages.
+	*
+	* Used to display archive-type pages if nothing more specific matches a query.
+	* For example, puts together date-based pages if no date.php file exists.
+	*
+	* Learn more: http://codex.wordpress.org/Template_Hierarchy
+	*
+	* Methods for TimberHelper can be found in the /functions sub-directory
+	*
+	* @package 	WordPress
+	* @subpackage 	Timber
+	* @since 		Timber 0.2
+	*/
 
 		$templates = array('archive.twig', 'index.twig');
 
@@ -35,9 +35,10 @@
 			$data['exhibition_date'] = Timber::get_terms('exhibition_date', array('orderby' => 'term_order', 'hide_empty' => false ));
 			$data['exhibition_category'] = Timber::get_terms('exhibition_category', array('orderby' => 'term_order', 'hide_empty' => false ));
 			$data['artfair_date'] = Timber::get_terms('artfair_date', array('orderby' => 'term_order', 'hide_empty' => false ));
+			$data['artist_category'] = Timber::get_terms('artist_category', array('orderby' => 'term_order', 'hide_empty' => false ));
 			$post_type = get_post_type();
 			$args = array(
-				'post_type' => $post_type, 
+				'post_type' => $post_type,
 				'orderby' => 'menu_order',
 				'order'         => 'ASC',
 				'suppress_filters' => false,
