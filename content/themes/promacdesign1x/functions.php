@@ -50,7 +50,8 @@
 			$context['options'] = get_fields('options');
 
 			$context['langues'] = pll_the_languages(array('raw'=>1));
-
+			$context['current_lang'] =pll_current_language('slug');
+			
 			$context['footer_sidebar'] = Timber::get_widgets('footer_sidebar');
 
 			$context['menu'] = new TimberMenu('primary');
@@ -61,7 +62,6 @@
 		function add_to_twig($twig){
 			/* this is where you can add your own fuctions to twig */
 			$twig->addExtension(new Twig_Extension_StringLoader());
-			$twig->addFilter('myfoo', new Twig_Filter_Function('myfoo'));
 			return $twig;
 		}
 		function hex_widgets_init() {
@@ -96,8 +96,3 @@
 					}
 	}
 	new StarterSite();
-
-	function myfoo($text){
-					$text .= ' bar!';
-					return $text;
-	}

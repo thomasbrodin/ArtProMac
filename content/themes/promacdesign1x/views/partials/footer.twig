@@ -1,69 +1,73 @@
 {% block footer %}
 
-    <footer>
-	  <div class="container">
-	    <div class="row">
-	      <div class="col-md-6">
-	      	<h3>{{site.name}}</h3>
-	      	<p>
-	       	<a href="{{ options.google_map }}">{{ options.adresse }}</a><br>
-	       	<a href="mailto:{{ options.email }}">{{ options.email }}</a><br>
-	       	{{ options.telephone }}<br>
-	       </p>
-	       <p class="hours">{{ function( 'pll_e', 'Heures d\'ouvertures')}}:</p>
-	    	<p>{{ options.horaires }}</p>
-	      </div>
+				<footer>
+			<div class="container">
+					<div class="row">
+							<div class="col-md-6">
+								<h3>{{site.name}}</h3>
+								<p>
+									<a href="{{ options.google_map }}">{{ options.adresse }}</a><br>
+									<a href="mailto:{{ options.email }}">{{ options.email }}</a><br>
+									{{ options.telephone }}<br>
+								</p>
+								<p class="hours">{{ function( 'pll_e', 'Heures d\'ouvertures')}}:</p>
+								{% if current_lang == 'fr' %}
+									<p>{{ options.horaires }}</p>
+								{% else %}
+										<p>{{ options.horaires_en }}</p>
+								{% endif %}
+							</div>
 
-	      <div class="col-md-6">
-	      		<h3>Newsletter</h3>
-	           	{{ footer_sidebar }}
-	            <ul class="socials">
-	            {% if options.facebook %}
-	              <li>
-	              	<a href="{{ options.facebook }}">
-	              		<i class="facebook"></i>
-	              	</a>
-	              </li>
-	            {% endif %}
-	            {% if options.twitter %}
-	              <li>
-	              	<a href="{{ options.twitter }}">
-	              		<i class="twitter"></i>
-	              	</a>
-	              </li>
-	              {% endif %}
-	              {% if options.instagram %}
-	              <li>
-	              	<a href="{{ options.instagram }}">
-	              		<i class="instagram"></i>
-	              	</a>
-	              </li>
-	              {% endif %}
-	              {% if options.google %}
-	          	  <li>
-	              	<a href="{{ options.google }}">
-	              		<i class="google"></i>
-	              	</a>
-	              </li>
-	              {% endif %}
-	              {% if options.tumblr %}
-	          		<li>
-	              	<a href="{{ options.tumblr }}">
-	              		<i class="tumblr"></i>
-	              	</a>
-	              </li>
-	              {% endif %}
-	              {% if options.pinterest %}
-	              <li>
-	              	<a href="{{ options.pinterest }}">
-	              		<i class="pinterest"></i>
-	              	</a>
-	              </li>
-	              {% endif %}
-	            </ul>
-	      </div>
-	    </div>
-	  </div>
+							<div class="col-md-6">
+									<h3>Newsletter</h3>
+													{{ footer_sidebar }}
+													<ul class="socials">
+													{% if options.facebook %}
+															<li>
+																<a href="{{ options.facebook }}">
+																	<i class="facebook"></i>
+																</a>
+															</li>
+													{% endif %}
+													{% if options.twitter %}
+															<li>
+																<a href="{{ options.twitter }}">
+																	<i class="twitter"></i>
+																</a>
+															</li>
+															{% endif %}
+															{% if options.instagram %}
+															<li>
+																<a href="{{ options.instagram }}">
+																	<i class="instagram"></i>
+																</a>
+															</li>
+															{% endif %}
+															{% if options.google %}
+														<li>
+																<a href="{{ options.google }}">
+																	<i class="google"></i>
+																</a>
+															</li>
+															{% endif %}
+															{% if options.tumblr %}
+													<li>
+																<a href="{{ options.tumblr }}">
+																	<i class="tumblr"></i>
+																</a>
+															</li>
+															{% endif %}
+															{% if options.pinterest %}
+															<li>
+																<a href="{{ options.pinterest }}">
+																	<i class="pinterest"></i>
+																</a>
+															</li>
+															{% endif %}
+													</ul>
+							</div>
+					</div>
+			</div>
 	</footer>
 
 {% endblock %}
