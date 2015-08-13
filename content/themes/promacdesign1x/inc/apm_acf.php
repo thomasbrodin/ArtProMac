@@ -972,7 +972,7 @@ acf_add_local_field_group(array (
 		array (
 			'key' => 'field_55ba56d169e06',
 			'label' => 'PDF',
-			'name' => 'Download PDF',
+			'name' => 'pub_pdf',
 			'type' => 'file',
 			'instructions' => '',
 			'required' => 0,

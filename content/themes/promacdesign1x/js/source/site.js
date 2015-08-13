@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
 	$(window).on('resize',resize);
 	resize();
 	$(window).scroll(function() {
-        if ( !$(window).scrollTop() ) {
+								if ( !$(window).scrollTop() ) {
 			$('.view-more').fadeIn();
 		} else {
 			$('.view-more').fadeOut();
@@ -18,7 +18,7 @@ jQuery(document).ready(function($) {
 	} else {
 		$('.view-more').fadeOut();
 	}
-    $('.landing.carousel-fade').carousel({
+	$('.landing.carousel-fade').carousel({
 		interval: 3000,
 		pause: 'none'
 	});
@@ -41,7 +41,7 @@ jQuery(document).ready(function($) {
 		$(showclicked).fadeIn();
 		return false;
 	});
-    // ARTISTS LIST / THUMBS
+				// ARTISTS LIST / THUMBS
 	if ( $(".artists-list").length > 0 ) {
 		$('.artists-list li a').hover(function () {
 			var thumb = $(this).data("thumb");
@@ -71,8 +71,8 @@ jQuery(document).ready(function($) {
 			});
 		});
 	}
-    // PRESENTATION FILTER
-    if ( $(".filtering").length > 0 ) {
+	// PRESENTATION FILTER
+	if ( $(".filtering").length > 0 ) {
 		$(window).load(function() {
 			$('#artwork-slider').flexslider({
 				controlNav : false,
@@ -87,19 +87,26 @@ jQuery(document).ready(function($) {
 				slider.flexAnimate(slides);
 			});
 		});
-		// SLIDE / THUMBS FILTER
+		// SLIDE / THUMBS / DETAILS FILTER
 		$('#grid a').click(function(e) {
 			e.preventDefault();
-			e.stopPropagation();
 			$('#artwork-slider').hide();
+			$('#details').hide();
 			$('#thumbs').fadeIn();
 			return false;
 		});
 		$('#slideshow a').click(function(e) {
 			e.preventDefault();
-			e.stopPropagation();
 			$('#thumbs').hide();
+			$('#details').hide();
 			$('#artwork-slider').fadeIn();
+			return false;
+		});
+		$('#two-col a').click(function(e) {
+			e.preventDefault();
+			$('#thumbs').hide();
+			$('#artwork-slider').hide();
+			$('#details').fadeIn();
 			return false;
 		});
 	}
