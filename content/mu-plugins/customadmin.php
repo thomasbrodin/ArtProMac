@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: HEX Custom admin UI 
+Plugin Name: HEX Custom admin UI
 Description: Customisation of WP admin UI
 Author: HEX creative
 Author URI: http://www.hexcreativenetwork.com
@@ -9,20 +9,19 @@ Author URI: http://www.hexcreativenetwork.com
 add_action( 'wp_before_admin_bar_render', 'remove_admin_bar_links' );
 add_action( 'wp_before_admin_bar_render', 'artist_admin_bar_render', 100);
 add_action( 'wp_before_admin_bar_render', 'expo_admin_bar_render', 100);
-add_action( 'wp_before_admin_bar_render', 'art_admin_bar_render', 100);
 add_action( 'admin_menu', 'remove_menus', 999 );
 add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets');
 
 function remove_admin_bar_links() {
     global $wp_admin_bar;
-    $wp_admin_bar->remove_menu('wp-logo');          
-    $wp_admin_bar->remove_menu('about');           
-    $wp_admin_bar->remove_menu('wporg');           
-    $wp_admin_bar->remove_menu('documentation');    
-    $wp_admin_bar->remove_menu('support-forums');   
-    $wp_admin_bar->remove_menu('feedback');             
-    $wp_admin_bar->remove_menu('updates');         
-    $wp_admin_bar->remove_menu('comments');         
+    $wp_admin_bar->remove_menu('wp-logo');
+    $wp_admin_bar->remove_menu('about');
+    $wp_admin_bar->remove_menu('wporg');
+    $wp_admin_bar->remove_menu('documentation');
+    $wp_admin_bar->remove_menu('support-forums');
+    $wp_admin_bar->remove_menu('feedback');
+    $wp_admin_bar->remove_menu('updates');
+    $wp_admin_bar->remove_menu('comments');
     $wp_admin_bar->remove_node( 'new-link','new-content' );
     $wp_admin_bar->remove_node( 'new-media','new-content' );
     $wp_admin_bar->remove_node( 'new-produits','new-content');
@@ -32,10 +31,10 @@ function remove_admin_bar_links() {
 function remove_menus() {
     global $wp_admin_bar, $current_user;
     remove_menu_page('index.php'); //Dashboard
-    remove_menu_page('edit-comments.php');     
+    remove_menu_page('edit-comments.php');
     remove_submenu_page( 'themes.php', 'timber-getting-started');
     remove_submenu_page( 'themes.php', 'theme-editor.php');
-     
+
 }
 
 function remove_dashboard_widgets()
@@ -45,7 +44,7 @@ function remove_dashboard_widgets()
     remove_meta_box('dashboard_activity', 'dashboard', 'normal');
 
   }
-    
+
 /**
  * Adds admin bar items for easy access to the theme creator and editor
  */
@@ -58,11 +57,6 @@ function expo_admin_bar_render() {
     hex_add_admin_bar('Expositions'); // Parent item
     hex_add_admin_bar('Toutes les Expositions', '/wp/wp-admin/edit.php?post_type=exhibition', 'Expositions');
     hex_add_admin_bar('Ajouter un exposition', '/wp/wp-admin/post-new.php?post_type=exhibition', 'Expositions');
-}
-function art_admin_bar_render() {
-    hex_add_admin_bar('Oeuvres'); // Parent item
-    hex_add_admin_bar('Toutes les oeuvres', '/wp/wp-admin/edit.php?post_type=artwork', 'Oeuvres');
-    hex_add_admin_bar('Ajouter une oeuvre', '/wp/wp-admin/post-new.php?post_type=artwork', 'Oeuvres');
 }
 
 function hex_add_admin_bar($name, $href = '', $parent = '', $custom_meta = array()) {
