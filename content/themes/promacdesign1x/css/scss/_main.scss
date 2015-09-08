@@ -341,7 +341,7 @@ section {
 				}
 			}
 		}
-		&:not(#modules) {
+		&:not(.full-width) {
 			padding-bottom:50px;
 		}
 	}
