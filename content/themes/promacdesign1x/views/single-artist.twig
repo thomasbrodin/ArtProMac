@@ -17,10 +17,10 @@
 										<li><a href="#artist-expo">{{ function( 'pll_e','Expositions')}}</a></li>
 									{% endif %}
 									{% if press %}
-										<li><a href="#artist-press">{{ function( 'pll_e','Press')}}</a></li>
+										<li><a href="#artist-press">{{ function( 'pll_e','Presse')}}</a></li>
 									{% endif %}
-									{% if publications %}
-										<li><a href="#artist-publications">{{ function( 'pll_e','Publications')}}</a></li>
+									{% if bibliographies %}
+										<li><a href="#artist-publications">{{ function( 'pll_e','Bibliographie')}}</a></li>
 									{% endif %}
 									{% if post.get_field('videos_rep') %}
 										<li><a href="#artist-videos">Videos</a></li>
@@ -34,9 +34,9 @@
 
 													<div class="col-md-12">
 															<ul class="filter">
-																<li id="slideshow"><a href="#">{{ function( 'pll_e','Diaporama')}}</a></li>
 																<li id="grid"><a href="#">{{ function( 'pll_e','Vignettes')}}</a></li>
-																<li id="two-col"><a href="#">{{ function( 'pll_e','Details')}}</a></li>
+																<li id="two-col"><a href="#">{{ function( 'pll_e','Liste')}}</a></li>
+																<li id="slideshow"><a href="#">{{ function( 'pll_e','Diaporama')}}</a></li>
 															</ul>
 														</div>
 
@@ -48,8 +48,7 @@
 																		<img src="{{TimberImage(image.id).get_src|resize(480)}}" />
 																</figure>
 																			<div class="meta">
-																				<p><em><strong>{{image.title}}</strong></em><br>
-																						{{image.caption}}</p>
+																				<p><em><strong>{{image.title}}</strong></em></p>
 																			</div>
 																</article>
 														{% endfor %}
@@ -155,9 +154,9 @@
 					</section><!-- press -->
 				{% endif %}
 
-				{% if publications %}
+				{% if bibliographies %}
 				<section class="filtering one-two-col" id="artist-publications">
-							{% for rel in publications %}
+							{% for rel in bibliographies %}
 										<div class="row">
 													<figure class="col-md-4 col-sm-3">
 														{% if rel.thumbnail %}

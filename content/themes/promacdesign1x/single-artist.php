@@ -16,8 +16,8 @@ $context['post'] = $post;
 if (post_password_required($post->ID)){
 	Timber::render('single-password.twig', $context);
 } else {
-  	$context['wp_title'] .= ' - ' . $post->title();
-  	$context['exhibitions'] = Timber::get_posts(array(
+		$context['wp_title'] .= ' - ' . $post->title();
+		$context['exhibitions'] = Timber::get_posts(array(
 		'post_type' => 'exhibition',
 		'meta_query' => array(
 			array(
@@ -37,8 +37,8 @@ if (post_password_required($post->ID)){
 			)
 		)
 	));
-	$context['publications'] = Timber::get_posts(array(
-		'post_type' => 'publication',
+	$context['bibliographies'] = Timber::get_posts(array(
+		'post_type' => 'bibliography',
 		'meta_query' => array(
 			array(
 				'key' => 'pub_artist', // name of custom field
@@ -47,5 +47,5 @@ if (post_password_required($post->ID)){
 			)
 		)
 	));
-    Timber::render(array('single-artist.twig'), $context); 
+		Timber::render(array('single-artist.twig'), $context);
 }

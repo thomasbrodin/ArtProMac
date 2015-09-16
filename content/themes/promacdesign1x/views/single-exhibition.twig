@@ -18,8 +18,8 @@
 														{% if artist %}
 																<li><a href="#exhibitions-artists">{{ function( 'pll_e','Artistes')}}</a></li>
 														{% endif %}
-														{% if publications %}
-																<li><a href="#exhibitions-publications">{{ function( 'pll_e','Publications')}}</a></li>
+														{% if bibliographies %}
+																<li><a href="#exhibitions-publications">{{ function( 'pll_e','Catalogue')}}</a></li>
 														{% endif %}
 												</ul>
 										</div>
@@ -30,9 +30,9 @@
 
 																<div class="col-md-12">
 																			<ul class="filter">
-																					<li id="slideshow"><a href="#">{{ function( 'pll_e','Diaporama')}}</a></li>
 																					<li id="grid"><a href="#">{{ function( 'pll_e','Vignettes')}}</a></li>
-																					<li id="two-col"><a href="#">{{ function( 'pll_e','Details')}}</a></li>
+																					<li id="two-col"><a href="#">{{ function( 'pll_e','Liste')}}</a></li>
+																					<li id="slideshow"><a href="#">{{ function( 'pll_e','Diaporama')}}</a></li>
 																			</ul>
 																	</div>
 
@@ -141,9 +141,9 @@
 										</section><!-- Artists -->
 								{% endif %}
 
-								{% if publications %}
+								{% if bibliographies %}
 										<section class="filtering one-two-col" id="exhibitions-publications">
-													{% for rel in publications %}
+													{% for rel in bibliographies %}
 																	<div class="row">
 																				<figure class="col-md-4 col-sm-3">
 																					{% if rel.thumbnail %}
