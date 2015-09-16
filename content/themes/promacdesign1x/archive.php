@@ -35,13 +35,11 @@
 			$data['exhibition_date'] = Timber::get_terms('exhibition_date', array('orderby' => 'term_order', 'hide_empty' => false ));
 			$data['exhibition_category'] = Timber::get_terms('exhibition_category', array('orderby' => 'term_order', 'hide_empty' => false ));
 			$data['artfair_date'] = Timber::get_terms('artfair_date', array('orderby' => 'term_order', 'hide_empty' => false ));
+			$data['artfair_category'] = Timber::get_terms('artfair_category', array('orderby' => 'term_order', 'hide_empty' => false ));
 			$data['artist_category'] = Timber::get_terms('artist_category', array('orderby' => 'term_order', 'hide_empty' => false ));
 			$post_type = get_post_type();
 			$args = array(
 				'post_type' => $post_type,
-				'orderby' => 'menu_order',
-				'order'         => 'ASC',
-				'suppress_filters' => false,
 			);
 			array_unshift($templates, 'archive-'.get_post_type().'.twig');
 		}

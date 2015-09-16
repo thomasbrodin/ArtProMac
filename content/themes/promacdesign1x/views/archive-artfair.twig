@@ -1,47 +1,109 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	
+
 	<section id="artfairs" class="main">
 		<div class="container">
-			
-			<div class="row border">
-		        <div class="col-md-6">
-		          <h2>{{ function( 'pll_e','Foires et Salons')}}</h2>
-		        </div>
-		        <div class="col-md-6">
-		          <ul class="filter">
-		             {% for date in artfair_date %}
-		                <li><a href="#" data-year="{{date.name}}">{{date.name}}</a></li>
-		             {% endfor %} 
-		          </ul>
-		        </div>
-		    </div>
-			
-			{% for post in posts %}
-				<div class="row result-filter">
-					{% if post.get_thumbnail %}
-						<div class="col-md-4">
-							<figure>
-								<img src="{{post.thumbnail.get_src|resize(500)}}" />
-							</figure>
-						</div>
-					{% endif %}
-					<div class="{% if post.get_thumbnail %}col-md-8{% else %}col-md-12{% endif %}">
-						<article>
-							<h2>{{post.title}}</a></h2>
-							<p class="date">{{ post.post_date|date}}</p>
-							<p>{{post.content}}</p>
-							{% if post.get_field('Fair_press_release') %}
-								<p class="link"><a href="{{post.get_field('Fair_press_release').url}}" target="_blank">
-								{{ function( 'pll_e','Telecharger PDF')}}</a></p>
+
+			{% for term in artfair_category %}
+
+					{% if term.get_posts is not empty %}
+
+						{% if (term.slug == 'actuellement') or  (term.slug == 'current') %}
+
+								<div class="row border">
+												<div class="col-md-12">
+														<h2>{{ term.name }}</h2>
+												</div>
+								</div>
+
+								<div class="row featured">
+										{% for post in term.get_posts %}
+											<article>
+													<figure>
+															<a href="{{post.link}}">
+																	{% if post.thumbnail %}
+																			<img src="{{post.get_thumbnail.get_src}}" />
+																	{% else %}
+																			<img src="http://placehold.it/300&text=Image+Needed">
+																	{% endif %}
+																</a>
+													</figure>
+													<div class="meta">
+																<h4>{{post.title}}</h4>
+																<p>{{post.get_field('date_artfair')}}</p>
+													</div>
+											</article>
+									{% endfor %}
+								</div>
+
+						{% elseif (term.slug == 'past') or  (term.slug == 'passe') %}
+
+								<div class="row border">
+										<div class="col-md-6">
+												<h2>{{ term.name }}</h2>
+										</div>
+
+										<div class="col-md-6">
+												<ul class="filter">
+															{% for date in artfair_date %}
+																		<li><a href="#" data-year="{{date.name}}">{{date.name}}</a></li>
+															{% endfor %}
+												</ul>
+										</div>
+								</div>
+								<div class="row result-filter thumbnails">
+										{% for post in term.get_posts %}
+												<article class="col-md-3 col-sm-6" data-year="{{post.terms('artfair_date')|join(' ')}}">
+														<figure class="c4">
+																<a href="{{post.link}}">
+																		{% if post.thumbnail %}
+																				<img src="{{post.get_thumbnail.get_src|resize(480,320, center)}}" />
+																		{% else %}
+																				<img src="http://placehold.it/300&text=Image+Needed">
+																		{% endif %}
+																</a>
+														</figure>
+														<div class="meta">
+																<p><em><strong>{{post.title}}</strong></em><br>
+																	{{post.get_field('date_artfair')}}</p>
+														</div>
+												</article>
+										{% endfor %}
+								</div>
+
+								{% else %}
+
+										<div class="row border">
+												<div class="col-md-12">
+														<h2>{{ term.name }}</h2>
+												</div>
+										</div>
+
+										<div class="row thumbnails">
+												{% for post in term.get_posts %}
+														<article class="col-md-3 col-sm-6">
+																<figure class="c4">
+																		<a href="{{post.link}}">
+																				{% if post.thumbnail %}
+																						<img src="{{post.get_thumbnail.get_src|resize(480,320, center)}}" />
+																				{% else %}
+																						<img src="http://placehold.it/300&text=Image+Needed">
+																				{% endif %}
+																		</a>
+																</figure>
+																<div class="meta">
+																			<p><em><strong>{{post.title}}</strong></em><br>
+																			{{post.get_field('date_artfair')}}</p>
+																</div>
+														</article>
+												{% endfor %}
+										</div>
+
+								{% endif %}
 							{% endif %}
-						</article>
-					</div>
-				</div>
-			{% endfor %}
-		</div>
-	</section>
+					{% endfor %}
+			</div>
+		</section>
 
 {% endblock %}
-

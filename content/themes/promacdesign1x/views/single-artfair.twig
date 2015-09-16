@@ -1,0 +1,77 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+		<section class="main" id="single-artfair">
+
+						<div class="container">
+								<div class="row border">
+										<div class="col-md-4">
+												<h2>{{post.title}}</h2>
+										</div>
+
+										<div class="col-md-8">
+												<ul id="filter-section" class="filter">
+														<li><a href="#artfairs-artworks" class="active">{{ function( 'pll_e',"Selection d'oeuvres")}}</a></li>
+														<li><a href="#artfairs-press">{{ function( 'pll_e','Dossier de Presse')}}</a></li>
+												</ul>
+										</div>
+								</div>
+
+								<section class="filtering" id="artfairs-artworks">
+												<div class="row">
+
+																<div class="col-md-12">
+																			<ul class="filter">
+																					<li id="grid"><a href="#">{{ function( 'pll_e','Vignettes')}}</a></li>
+																					<li id="slideshow"><a href="#">{{ function( 'pll_e','Diaporama')}}</a></li>
+																			</ul>
+																	</div>
+
+																{% set artworks = post.get_field('fair_img') %}
+																		<div id="thumbs" class="thumbnails">
+																				{% for image in artworks %}
+																						<article class="col-sm-6 col-md-4">
+																								<figure class="c3" data-slide="{{loop.index0}}">
+																										<img src="{{TimberImage(image.id).get_src|resize(480)}}" />
+																								</figure>
+																								<div class="meta">
+																										<p><em><strong>{{image.title}}</strong></em><br>
+																											{{post.get_field('date_artfair')}}</p>
+																								</div>
+																						</article>
+																				{% endfor %}
+																		</div><!-- Thumbnails -->
+
+																<div id="artwork-slider" class="flexslider">
+																		<ul class="slides">
+																				{% for image in artworks %}
+																						<li>
+																								<a class="fancybox" data-fancybox-group="gallery" rel="gallery" href="{{TimberImage(image.id).get_src}}">
+																										<img src="{{TimberImage(image.id).get_src|resize(850)}}" />
+																								</a>
+																						</li>
+																				{% endfor %}
+																			</ul>
+																</div><!-- slideshow -->
+
+													</div>
+								</section><!-- artworks-->
+
+								<section class="filtering" id="artfairs-press">
+										<div class="row">
+												<div class="col-md-12 centered">
+													<article>
+														<p>{{post.content}}</p>
+														{% if post.get_field('Fair_press_release') %}
+															<p class="link"><a href="{{post.get_field('Fair_press_release').url}}" target="_blank">
+																{{ function( 'pll_e','Telecharger PDF')}}</a></p>
+														{% endif %}
+													</article>
+												</div>
+										</div>
+								</section><!-- /press -->
+								
+		</section><!-- exhibition-->
+
+{% endblock %}
