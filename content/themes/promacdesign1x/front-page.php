@@ -20,9 +20,6 @@
 		'post_type' => 'artist',
 		'numberposts' => -1,
 		'post_status' => 'publish',
-		'orderby' => 'menu_order',
-		'order'         => 'DESC',
-		'suppress_filters' => false,
 	);
 	$context['artists'] = Timber::get_posts($artist);
 

@@ -1,50 +1,50 @@
 {% extends "base.twig" %}
-  
-  {% block content %}
 
-        <section class="landing carousel-fade" id="current">
-          
-          <div class="carousel-inner">
-            {% set featured = post.get_field('slideshow') %}
-            {% for image in featured %}    
-              <div class="item{% if loop.first %} active{% endif %}">
-                
-                <div class="fill" style="background-image: url('{{TimberImage(image.id).get_src}}')"></div>
-                
-                <div class="container caption">
-                  <div class="cs-infos fade-in">
-                    <h1>{{image.title}}</h1>
-                    <p class="nom">{{image.caption}}</p>
-                    {% if (image.description) %}
-                      <p class="desc">{{image.description}}</p>
-                    {% endif %}
-                  </div>
-                </div><!-- /container -->
+	{% block content %}
 
-              </div>
-            {% endfor %}
-          </div>
-          
-        </section><!-- /landing -->  
+				<section class="landing carousel-fade" id="current">
 
-        <div class="view-more">
-          <a href="#artists">View more</a>
-        </div>
-        
-        <section class="gallery-desc container">
-          <div class="row">
-            <div class="inner">
-              {{post.get_field('text_presentation')}}
-            </div>
-          </div>
-        </section>
+					<div class="carousel-inner">
+						{% set featured = post.get_field('slideshow') %}
+						{% for image in featured %}
+							<div class="item{% if loop.first %} active{% endif %}">
 
-        <section class="artists-wrapper container">
-          {% for artist in artists %}    
-            <div class="homepage-artist">
-              <a href="{{artist.link}}">{{artist.name}}</a>
-            </div>
-          {% endfor %}
-        </section>
+								<div class="fill" style="background-image: url('{{TimberImage(image.id).get_src}}')"></div>
+
+								<div class="container{% if post.get_field('caption_col') %} {{post.get_field('caption_col')}}{% endif %}">
+									<div class="cs-infos fade-in">
+										<h1>{{image.title}}</h1>
+										<p class="nom">{{image.caption}}</p>
+										{% if (image.description) %}
+											<p class="desc">{{image.description}}</p>
+										{% endif %}
+									</div>
+								</div><!-- /container -->
+
+							</div>
+						{% endfor %}
+					</div>
+
+				</section><!-- /landing -->
+
+				<div class="view-more">
+					<a href="#artists">View more</a>
+				</div>
+
+				<section class="gallery-desc container">
+					<div class="row">
+						<div class="inner">
+							{{post.get_field('text_presentation')}}
+						</div>
+					</div>
+				</section>
+
+				<section class="artists-wrapper container">
+					{% for artist in artists %}
+						<div class="homepage-artist">
+							<a href="{{artist.link}}">{{artist.name}}</a>
+						</div>
+					{% endfor %}
+				</section>
 
 {% endblock %}
