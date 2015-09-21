@@ -10,7 +10,7 @@
 								{% if term.get_posts is not empty %}
 
 									{% if (term.slug == 'actuellement') or  (term.slug == 'current') %}
-																	
+
 											<div class="row border">
 															<div class="col-md-12">
 																	<h2>{{ term.name }}</h2>
@@ -60,10 +60,10 @@
 													{% for post in term.get_posts %}
 														{% set artist = TimberPost(post.get_field('artistes_expo')) %}
 															<article class="col-md-3 col-sm-6" data-year="{{post.terms('exhibition_date')|join(' ')}}">
-																	<figure class="c4">
+																	<figure class="c5">
 																			<a href="{{post.link}}">
 																					{% if post.thumbnail %}
-																							<img src="{{post.get_thumbnail.get_src|resize(480,320, center)}}" />
+																							<img src="{{post.get_thumbnail.get_src|resize(480)}}" />
 																					{% else %}
 																							<img src="http://placehold.it/300&text=Image+Needed">
 																					{% endif %}
@@ -92,10 +92,10 @@
 															{% for post in term.get_posts %}
 															{% set artist = TimberPost(post.get_field('artistes_expo')) %}
 																	<article class="col-md-3 col-sm-6">
-																			<figure class="c4">
+																			<figure class="c5">
 																					<a href="{{post.link}}">
 																							{% if post.thumbnail %}
-																									<img src="{{post.get_thumbnail.get_src|resize(480,320, center)}}" />
+																									<img src="{{post.get_thumbnail.get_src|resize(480)}}" />
 																							{% else %}
 																									<img src="http://placehold.it/300&text=Image+Needed">
 																							{% endif %}

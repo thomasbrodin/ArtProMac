@@ -74,9 +74,6 @@ header.navbar {
 	z-index: 99;
 	width: 100%;
 	background-color: white;
-	-webkit-box-shadow: 0px 2px 30px 0px rgba(125,125,125,0.55);
-	-moz-box-shadow: 0px 2px 30px 0px rgba(125,125,125,0.55);
-	box-shadow: 0px 2px 30px 0px rgba(125,125,125,0.55);
 	.nav {
 		margin-top: 13px;
 		@extend .col-md-7;
@@ -443,28 +440,47 @@ section#modules {
 
 	}
 	article {
-		padding: 30px 15px;
-		border: 1px solid #fff;
-		-webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
-		box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
+		margin-bottom:30px;
 		figure {
 			cursor: pointer;
+			&.c5 {
+				height: 310px;
+				img {
+					max-height:100%;
+					margin:0 auto;
+				}
+			}
 			&.c4 {
 				height: 155px;
+				img {
+					max-height:100%;
+					margin:0 auto;
+				}
 			}
 			&.c3 {
-				height:240px;
-			}
-			img {
-				max-height:100%;
-				margin:0 auto;
-				&:hover {
-					opacity: 0.9
+				height:340px;
+				padding: 20px;
+				.img-area {
+					line-height:270px;
+					height:270px;
+					text-align: center;
+					img {
+						display: inline-block;
+						vertical-align: middle;
+						max-height:100%;
+						&:hover {
+							opacity: 0.9
+						}
+					}
 				}
+			}
+			&.boxed {
+				-webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
+				box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
 			}
 		}
 		.meta {
-			padding-top:10px;
+			padding-top:15px;
 			text-align: center;
 			p {
 				font-size:em(12);
@@ -525,14 +541,17 @@ section#modules {
 		li {
 			.row {
 				figure {
-					height:530px;
+					height:500px;
+					line-height:500px;
 					img {
+						width:auto;
+						display: inline-block;
+						vertical-align: bottom;
 						max-height:100%;
-						width:auto
 					}
 				}
 				article {
-					height: 530px;
+					height: 500px;
 					.slide-text{
 						display: table;
 						width:100%;
@@ -558,15 +577,23 @@ section#modules {
 				.description {
 					@extend .col-md-12;
 					p {
-						margin:1em 0
+						margin:1em 0;
+						text-align: justify;
 					}
 					b {
 						text-transform: uppercase;
 						letter-spacing: 0.04em;
+						font-weight:400;
+						color: #000;
+						line-height: 3;
 					}
 				}
 			}
 		}
+	}
+	.flex-direction-nav a{
+		top:460px;
+		margin:0
 	}
 }
 
@@ -575,6 +602,9 @@ section#modules {
 	display: none;
 	h4 {
 		text-transform: uppercase;
+	}
+	img {
+		max-height: 550px
 	}
 }
 

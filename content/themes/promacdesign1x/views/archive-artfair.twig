@@ -55,10 +55,10 @@
 								<div class="row result-filter thumbnails">
 										{% for post in term.get_posts %}
 												<article class="col-md-3 col-sm-6" data-year="{{post.terms('artfair_date')|join(' ')}}">
-														<figure class="c4">
+														<figure class="c5">
 																<a href="{{post.link}}">
 																		{% if post.thumbnail %}
-																				<img src="{{post.get_thumbnail.get_src|resize(480,320, center)}}" />
+																				<img src="{{post.get_thumbnail.get_src|resize(480)}}" />
 																		{% else %}
 																				<img src="http://placehold.it/300&text=Image+Needed">
 																		{% endif %}
@@ -83,10 +83,10 @@
 										<div class="row thumbnails">
 												{% for post in term.get_posts %}
 														<article class="col-md-3 col-sm-6">
-																<figure class="c4">
+																<figure class="c5">
 																		<a href="{{post.link}}">
 																				{% if post.thumbnail %}
-																						<img src="{{post.get_thumbnail.get_src|resize(480,320, center)}}" />
+																						<img src="{{post.get_thumbnail.get_src|resize(480)}}" />
 																				{% else %}
 																						<img src="http://placehold.it/300&text=Image+Needed">
 																				{% endif %}

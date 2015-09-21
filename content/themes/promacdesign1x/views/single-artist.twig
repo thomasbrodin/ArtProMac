@@ -7,7 +7,7 @@
 
 						<div class="row border">
 							<div class="col-md-5">
-								<h2>{{post.title}}</h2>
+								<h2>{{post.title}} {% if post.get_field('artist_date') %}{{post.get_field('artist_date')}}{% endif %}</h2>
 							</div>
 							<div class="col-md-7">
 								<ul id="filter-section" class="filter">
@@ -44,13 +44,15 @@
 													<div id="thumbs" class="thumbnails">
 														{% for image in artworks %}
 															<article class="col-sm-6 col-md-4">
-																<figure class="c3" data-slide="{{loop.index0}}">
+																<figure class="c3 boxed" data-slide="{{loop.index0}}">
+																	<div class="img-area">
 																		<img src="{{TimberImage(image.id).get_src|resize(480)}}" />
+																	</div>
+																	<div class="meta">
+																		<p><em><strong>{{image.title}}</strong></em></p>
+																	</div>
 																</figure>
-																			<div class="meta">
-																				<p><em><strong>{{image.title}}</strong></em></p>
-																			</div>
-																</article>
+															</article>
 														{% endfor %}
 													</div><!-- Thumbnails -->
 
@@ -69,7 +71,7 @@
 																						<div class="row-bottom">
 																							<h4>{{image.title}}</h4>
 																							<p>{{image.caption}}</p>
-																							<a href="mailto:{{ options.email }}">{{ function( 'pll_e','Contactez nous')}}</a>
+																							<a href="mailto:{{ options.email }}?subject={{post.title}} - {{image.title}}">{{ function( 'pll_e','Contactez nous')}}</a>
 																							<a href="#related">{{ function( 'pll_e','Vous aimerez aussi')}}</a>
 																						</div>
 																					</div>

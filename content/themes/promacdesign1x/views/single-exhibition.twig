@@ -40,8 +40,10 @@
 																		<div id="thumbs" class="thumbnails">
 																				{% for image in artworks %}
 																						<article class="col-sm-6 col-md-4">
-																								<figure class="c3" data-slide="{{loop.index0}}">
+																								<figure class="c3 boxed" data-slide="{{loop.index0}}">
+																									<div class="img-area">
 																										<img src="{{TimberImage(image.id).get_src|resize(480)}}" />
+																									</div>
 																								</figure>
 																								<div class="meta">
 																										<p><em><strong>{{image.title}}</strong></em><br>
@@ -58,28 +60,42 @@
 																			<ul class="slides">
 																						{% for image in artworks %}
 																								<li>
-																										<a class="fancybox" data-fancybox-group="gallery" rel="gallery" href="{{TimberImage(image.id).get_src}}">
+																									<div class="row">
+																										<figure class="col-md-8">
+																											<a class="fancybox" data-fancybox-group="gallery" rel="gallery" href="{{TimberImage(image.id).get_src}}">
 																												<img src="{{TimberImage(image.id).get_src|resize(850)}}" />
-																										</a>
+																											</a>
+																										</figure>
+																										<article class="col-md-4">
+																											<div class="slide-text">
+																												<div class="row-bottom">
+																													<h4>{{image.title}}</h4>
+																													<p>{{image.caption}}</p>
+																													<a href="mailto:{{ options.email }}?subject={{post.title}} - {{image.title}}">{{ function( 'pll_e','Contactez nous')}}</a>
+																													<a href="#related">{{ function( 'pll_e','Vous aimerez aussi')}}</a>
+																												</div>
+																											</div>
+																										</article>
+																									</div>
+																									<div class="row">
+																										<div class="description">
+																											<p>{{image.description}}</p>
+																										</div>
+																									</div>
 																								</li>
 																						{% endfor %}
 																				</ul>
 																</div><!-- slideshow -->
 
-																<div id="details" class="one-two-col">
+																<div id="list" class="one-two-col">
 																		{% for image in artworks %}
 																			<div class="row">
-																				<figure class="col-md-4 col-sm-3">
+																				<figure class="col-md-6">
 																						<img src="{{TimberImage(image.id).get_src|resize(480)}}" />
 																				</figure>
-																				<article class="col-md-8 col-sm-9">
-																					<div class="col-md-4">
+																				<article class="col-md-6">
 																						<h4>{{image.title}}</h4>
 																						<p>{{image.caption}}</p>
-																					</div>
-																					<div class="col-md-8">
-																						<p class="bi-col">{{image.description}}</p>
-																					</div>
 																				</article>
 																			</div>
 																		{% endfor %}

@@ -28,6 +28,12 @@ jQuery(document).ready(function($) {
 		$("html, body").animate({ scrollTop: $(document).height() }, "slow");
 		return false;
 	});
+	$("#search-bar input").focus(function() {
+		// Input open
+	}).blur(function() {
+			$("#search-bar").collapse('hide')
+	});
+
 	// SECTION FILTER
 	$('#filter-section li a').click(function(e){
 		e.preventDefault();
@@ -61,7 +67,7 @@ jQuery(document).ready(function($) {
 		});
 	}
 	// DATE FILTER
-	if ( $("#exhibitions").length > 0 ) {
+	if ( ( $("#exhibitions").length > 0 ) || ( $("#artfairs").length > 0 ) ){
 		$(".filter li a").click( function(e) {
 			e.preventDefault();
 			$year = $(this).data('year');
