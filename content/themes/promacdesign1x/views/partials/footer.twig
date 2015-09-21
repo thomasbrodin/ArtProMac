@@ -3,13 +3,15 @@
 				<footer>
 			<div class="container">
 					<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-4">
 								<h3>{{site.name}}</h3>
 								<p>
 									<a href="{{ options.google_map }}">{{ options.adresse }}</a><br>
 									<a href="mailto:{{ options.email }}">{{ options.email }}</a><br>
 									{{ options.telephone }}<br>
 								</p>
+							</div>
+							<div class="col-md-4">
 								{% if current_lang == 'fr' %}
 									<p>{{ options.horaires }}</p>
 								{% else %}
@@ -17,53 +19,14 @@
 								{% endif %}
 							</div>
 
-							<div class="col-md-6">
+							<div class="col-md-4">
 									<h3>Newsletter</h3>
-													{{ footer_sidebar }}
-													<ul class="socials">
-													{% if options.facebook %}
-															<li>
-																<a href="{{ options.facebook }}">
-																	<i class="facebook"></i>
-																</a>
-															</li>
-													{% endif %}
-													{% if options.twitter %}
-															<li>
-																<a href="{{ options.twitter }}">
-																	<i class="twitter"></i>
-																</a>
-															</li>
-															{% endif %}
-															{% if options.instagram %}
-															<li>
-																<a href="{{ options.instagram }}">
-																	<i class="instagram"></i>
-																</a>
-															</li>
-															{% endif %}
-															{% if options.google %}
-														<li>
-																<a href="{{ options.google }}">
-																	<i class="google"></i>
-																</a>
-															</li>
-															{% endif %}
-															{% if options.tumblr %}
-													<li>
-																<a href="{{ options.tumblr }}">
-																	<i class="tumblr"></i>
-																</a>
-															</li>
-															{% endif %}
-															{% if options.pinterest %}
-															<li>
-																<a href="{{ options.pinterest }}">
-																	<i class="pinterest"></i>
-																</a>
-															</li>
-															{% endif %}
-													</ul>
+									{{ footer_sidebar }}
+							</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<p class="small">Copyright {{"now"|date('Y')}} - {{site.name}} - <a href="{{options.footer_link}}">{{ function( 'pll_e','Mentions légales')}}</a></p>
 							</div>
 					</div>
 			</div>

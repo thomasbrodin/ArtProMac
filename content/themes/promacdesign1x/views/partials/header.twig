@@ -1,55 +1,58 @@
 {% block header %}
-    
-    <!-- header -->
-    <header class="navbar">     
-      <div class="container">
 
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          
-          <a class="navbar-brand" href="{{site.url}}">
-              <img class="logo" src="{{options.logo}}" alt="Gallery Logo">
-          </a>
-        </div><!--/.navbar-header -->
-        
-        <nav class="navbar-collapse collapse">
-          
-          <ul class="nav navbar-nav">
-            
-            {% for item in menu.get_items %}
-                <li class="nav-main-item{{item.current ? ' active'}}">
-                    <a href="{{item.get_path}}">{{item.title}}</a>
-                </li>
-             {% endfor %}
+		<!-- header -->
+		<header class="navbar">
+			<div class="container">
 
-                <li>
-                  <div class="block-lang-search">     
-                    <ul class="lang-switch">
-                      {% for lang in langues %} 
-                        <li {% if lang.current_lang %}class="active"{% endif %}>
-                          <a href="{{lang.url}}">{{lang.slug}}</a>
-                          {% if loop.last %}{% else %} <span>|</span> {% endif %}
-                        </li>
-                      {% endfor %}
-                    </ul> 
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
 
-                     <i data-toggle="collapse" data-target="#search-bar" class="fa search"></i>
-                  </div><!--lang-search -->
-                </li>
-                
-          </ul><!--/.navbar-nav-->
-          
-          <form id="search-bar" class="collapse" action="{{site.url}}" method="get" role="search">
-            <input type="text" class="form-control sidebar-top" value="Rechercher" name="s" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
-          </form>
+					<a class="navbar-brand" href="{{site.url}}">
+							<img class="logo" src="{{options.logo}}" alt="Gallery Logo">
+					</a>
+				</div><!--/.navbar-header -->
 
-        </nav><!--/.nav-collapse -->
+				<nav class="navbar-collapse collapse">
 
-      </div><!--container -->
-    </header><!--/header -->
+					<ul class="nav navbar-nav">
+
+						{% for item in menu.get_items %}
+								<li class="nav-main-item{{item.current ? ' active'}}">
+										<a href="{{item.get_path}}">{{item.title}}</a>
+								</li>
+						 {% endfor %}
+					</ul><!--/.navbar-nav-->
+
+					<div class="block-lang-search">
+						<ul class="lang-switch">
+							{% for lang in langues %}
+								<li {% if lang.current_lang %}class="active"{% endif %}>
+									<a href="{{lang.url}}">{{lang.slug}}</a>
+									{% if loop.last %}{% else %} <span>|</span> {% endif %}
+								</li>
+							{% endfor %}
+							{% if options.facebook %}
+									<li class="social">
+										<a href="{{ options.facebook }}" target="_blank">
+											<i class="facebook"></i>
+										</a>
+									</li>
+							{% endif %}
+							 <i data-toggle="collapse" data-target="#search-bar" class="fa search"></i>
+						</ul>
+					</div><!--lang-search -->
+
+					<form id="search-bar" class="collapse" action="{{site.url}}" method="get" role="search">
+						<input type="text" class="form-control sidebar-top" value="Rechercher" name="s" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
+					</form>
+
+				</nav><!--/.nav-collapse -->
+
+			</div><!--container -->
+		</header><!--/header -->
 
 {% endblock %}
