@@ -16,3 +16,6 @@ pll_register_string('Exposition Upcoming', 'A venir', 'Expositions');
 pll_register_string('Foires Title', 'Foires et Salons', 'Foires');
 pll_register_string('PDF', 'Telecharger PDF','Global');
 pll_register_string('Link', 'Cliquer ici pour voir la brochure en ligne','Global');
+pll_register_string('Search', 'Resultats de recherche pour ','Global');
+pll_register_string('Search', 'Désolé, nous n’avons rien trouvé','Global');
+pll_register_string('Footer', 'Mentions légales','Global');

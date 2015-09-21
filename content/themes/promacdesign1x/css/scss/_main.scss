@@ -69,22 +69,30 @@ footer, #wrap:after {
 /* NAV */
 header.navbar {
 	@include transition(all 0.5s ease);
-	padding:10px 0;
-	position: absolute;
+	padding:8px 0;
+	position: fixed;
 	z-index: 99;
 	width: 100%;
 	background-color: white;
+	-webkit-box-shadow: 0px 2px 30px 0px rgba(125,125,125,0.55);
+	-moz-box-shadow: 0px 2px 30px 0px rgba(125,125,125,0.55);
+	box-shadow: 0px 2px 30px 0px rgba(125,125,125,0.55);
 	.nav {
-		margin-top: 20px;
-		float:right;
-		@extend .col-sm-8;
-		@include media($smallscreen) {
-			margin-top: 38px;
-		}
+		margin-top: 13px;
+		@extend .col-md-7;
+		text-align: center;
 		@include media($mobile) {
-			float:none;
+			float:left;
 		}
 		li {
+			display: inline-block;
+			float:none;
+			@include media($mobile) {
+				float:left;
+				display: block;
+				width:100%;
+				text-align: left;
+			}
 			a {
 				font-family: 'gotham-light-webfont';
 				color:#000;
@@ -92,21 +100,19 @@ header.navbar {
 				letter-spacing: 0.02em;
 				font-size:em(14);
 				text-transform: uppercase;
+				padding:9px 7px;
 				&:hover, &:focus {
 					background:transparent;
 					color:#666;
 				}
-				@include media($smallscreen) {
-					padding:5px 15px 5px 15px
+				@include media($largescreen) {
+					padding: 10px 15px;
 				}
-			}
-			&:last-child {
-				float:right;
 			}
 		}
 	}
 	.navbar-header {
-		@extend .col-sm-4;
+		@extend .col-md-3;
 		.navbar-brand {
 			padding: 10px 0;
 			height: auto;
@@ -132,13 +138,21 @@ header img.name {
 
 /* lang switch and search  */
 .block-lang-search {
-			padding: 15px 0;
-			ul.lang-switch {
+		padding: 15px 0;
+		@extend .col-md-2;
+		margin-top: 12px;
+		float:right;
+		padding:8px 5px;
+		margin-right:-15px;
+		@include media($largescreen) {
+			padding: 10px 0 10px 15px;
+		}
+		ul.lang-switch {
 		color: #333;
 		border: none;
 		outline: 0;
 		cursor: pointer;
-		display: inline-block;
+		text-align: right;
 		margin: 0;
 		padding: 0;
 		list-style: none;
@@ -152,6 +166,22 @@ header img.name {
 				text-transform: uppercase;
 				padding:0 4px;
 				text-align: left
+			}
+			&.social {
+				i {
+						float: right;
+						display: block;
+						font: normal normal normal 14px/1 FontAwesome;
+						font-size: inherit;
+						text-rendering: auto;
+						-webkit-font-smoothing: antialiased;
+						-moz-osx-font-smoothing: grayscale;
+						font-size: 1.3em;
+						margin-top:2px;
+						&.facebook:before {
+								content: "\f09a";
+						}
+					}
 			}
 		}
 	}
@@ -183,18 +213,18 @@ i.angle-down:before{
 
 form#search-bar {
 	width: 100%;
-				position: absolute;
-				left: 0;
-				top: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
 }
 
 input.sidebar-top {
 	float: left;
 	border-radius: 0;
-	font-size: 12px;
-	height: 38px;
-	background-color: #333;
-	color: #fff;
+	font-size:1.4em;
+	height: 90px;
+	background-color: #fff;
+	color: #333;
 	display: block;
 	border: none;
 	outline: 0;
@@ -322,7 +352,7 @@ input.sidebar-top:focus {
 /* Sections  */
 section {
 	&.main {
-		padding-top:155px;
+		padding-top:135px;
 		.border {
 			margin-bottom:15px;
 			border-bottom:1px solid #eee;
@@ -345,6 +375,9 @@ section {
 				&:last-child {
 					padding-right:0
 				}
+				a.active {
+					color: #666
+				}
 			}
 		}
 		&:not(.full-width) {
@@ -359,7 +392,7 @@ section {
 	}
 }
 section#liste {
-				display: none;
+	display: none;
 }
 
 section#modules {
@@ -384,12 +417,20 @@ section#modules {
 		li {
 			list-style: none;
 			text-transform: uppercase;
-			line-height:2
+			line-height: 36px;
+			a {
+				display: block;
+
+			}
 		}
 	}
 }
 .artists-thumb {
 	@extend .col-sm-6;
+	img {
+		max-height: 675px;
+		float: right;
+	}
 }
 
 .thumbnails {
@@ -403,16 +444,20 @@ section#modules {
 	}
 	article {
 		padding: 30px 15px;
+		border: 1px solid #fff;
+		-webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
+		box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
 		figure {
 			cursor: pointer;
 			&.c4 {
 				height: 155px;
 			}
 			&.c3 {
-				height:280px;
+				height:240px;
 			}
 			img {
 				max-height:100%;
+				margin:0 auto;
 				&:hover {
 					opacity: 0.9
 				}
@@ -420,6 +465,7 @@ section#modules {
 		}
 		.meta {
 			padding-top:10px;
+			text-align: center;
 			p {
 				font-size:em(12);
 				strong {
@@ -563,9 +609,9 @@ footer {
 	.container {
 			border-top: 1px solid #EEE;
 			padding: 20px 15px 35px;
-			.col-md-6:nth-child(2)  {
-				h3 {
-					padding-top:15px
+			.col-md-4:nth-child(2)  {
+				p {
+					padding-top:33px
 				}
 			}
 		h3 {
@@ -585,6 +631,10 @@ footer {
 			&.hours {
 				color:black
 			}
+			&.small{
+				padding-top: 10px;
+				font-size: 85%
+			}
 		}
 		ul {
 			margin:0;
@@ -599,42 +649,4 @@ footer {
 		padding-top: 0.5em;
 		display: block;
 	}
-	.socials {
-		display: inline-block;
-		margin-top: 10px
-	}
-}
-
-/* buttons */
-footer ul.socials li {
-	display: inline-block;
-	padding:4px;
-}
-footer ul.socials i{
-		float: left;
-		display: block;
-		font: normal normal normal 14px/1 FontAwesome;
-		font-size: inherit;
-		text-rendering: auto;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		font-size: 1.8em
-}
-i.instagram:before {
-		content: "\f16d";
-}
-i.google:before {
-		content: "\f0d5";
-}
-i.facebook:before {
-		content: "\f09a";
-}
-i.twitter:before {
-		content: "\f099";
-}
-i.tumblr:before {
-		content: "\f173";
-}
-i.pinterest:before {
-		content: "\f0d2";
 }

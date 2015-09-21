@@ -1,5 +1,6 @@
 $max-width: em(1200) !global;
 $smallscreen: new-breakpoint(max-width 992px);
+$largescreen: new-breakpoint(min-width 1200px);
 $mobile: new-breakpoint(max-width 768px);
 
 body {
