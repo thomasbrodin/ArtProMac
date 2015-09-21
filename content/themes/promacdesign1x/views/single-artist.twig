@@ -58,28 +58,59 @@
 															<ul class="slides">
 																		{% for image in artworks %}
 																			<li>
-																				<a class="fancybox" data-fancybox-group="gallery" rel="gallery" href="{{TimberImage(image.id).get_src}}">
-																					<img src="{{TimberImage(image.id).get_src|resize(850)}}" />
-																				</a>
+																			<div class="row">
+																				<figure class="col-md-8">
+																					<a class="fancybox" data-fancybox-group="gallery" rel="gallery" href="{{TimberImage(image.id).get_src}}">
+																						<img src="{{TimberImage(image.id).get_src|resize(850)}}" />
+																					</a>
+																				</figure>
+																				<article class="col-md-4">
+																					<div class="slide-text">
+																						<div class="row-bottom">
+																							<h4>{{image.title}}</h4>
+																							<p>{{image.caption}}</p>
+																							<a href="mailto:{{ options.email }}">{{ function( 'pll_e','Contactez nous')}}</a>
+																							<a href="#related">{{ function( 'pll_e','Vous aimerez aussi')}}</a>
+																						</div>
+																					</div>
+																				</article>
+																			</div>
+																			<div class="row">
+																				<div class="description">
+																					<p>{{image.description}}</p>
+																				</div>
+																			</div>
 																			</li>
 																		{% endfor %}
 																	</ul>
+																{% if post.get_field('related_img') %}
+																	<div class="row">
+																		<div id="related" class="thumbnails">
+																			<h3>{{ function( 'pll_e','Vous aimerez aussi')}}</h3>
+																			{% for image in post.get_field('related_img') %}
+																				<article class="col-md-3 col-sm-6">
+																					<figure class="c4">
+																							<img src="{{TimberImage(image.id).get_src|resize(480)}}" />
+																					</figure>
+																							<div class="meta">
+																								<p><em><strong>{{image.title}}</strong></em></p>
+																							</div>
+																				</article>
+																			{% endfor %}
+																		</div>
+																	</div>
+																{% endif %}
 														</div><!-- slideshow -->
 
-														<div id="details" class="one-two-col">
+														<div id="list" class="one-two-col">
 																{% for image in artworks %}
 																	<div class="row">
-																		<figure class="col-md-4 col-sm-3">
+																		<figure class="col-md-6">
 																				<img src="{{TimberImage(image.id).get_src|resize(480)}}" />
 																		</figure>
-																		<article class="col-md-8 col-sm-9">
-																			<div class="col-md-6">
+																		<article class="col-md-6">
 																				<h4>{{image.title}}</h4>
 																				<p>{{image.caption}}</p>
-																			</div>
-																			<div class="col-md-6">
-																				<p>{{image.description}}</p>
-																			</div>
 																		</article>
 																	</div>
 																{% endfor %}

@@ -40,7 +40,7 @@ jQuery(document).ready(function($) {
 		var showclicked = $(this).attr("href");
 		if (showclicked.indexOf("artworks") != -1) {
 			$('#artwork-slider').hide();
-			$('#details').hide();
+			$('#list').hide();
 			$('#thumbs').fadeIn();
 		}
 		$(showclicked).fadeIn();
@@ -100,7 +100,7 @@ jQuery(document).ready(function($) {
 			$(this).addClass('active');
 			e.preventDefault();
 			$('#artwork-slider').hide();
-			$('#details').hide();
+			$('#list').hide();
 			$('#thumbs').fadeIn();
 			return false;
 		});
@@ -111,7 +111,7 @@ jQuery(document).ready(function($) {
 			$(this).addClass('active');
 			e.preventDefault();
 			$('#thumbs').hide();
-			$('#details').hide();
+			$('#list').hide();
 			$('#artwork-slider').fadeIn();
 			return false;
 		});
@@ -123,7 +123,7 @@ jQuery(document).ready(function($) {
 			e.preventDefault();
 			$('#thumbs').hide();
 			$('#artwork-slider').hide();
-			$('#details').fadeIn();
+			$('#list').fadeIn();
 			return false;
 		});
 	}

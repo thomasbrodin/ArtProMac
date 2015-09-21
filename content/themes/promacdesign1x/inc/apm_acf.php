@@ -125,8 +125,7 @@ acf_add_local_field_group(array (
 			'toolbar' => 'full',
 			'media_upload' => 1,
 		),
-	),
-	array (
+		array (
 			'key' => 'field_5600342866106',
 			'label' => 'Vous aimerez aussi',
 			'name' => 'related_img',
@@ -151,6 +150,7 @@ acf_add_local_field_group(array (
 			'max_size' => '',
 			'mime_types' => '',
 		),
+	),
 	'location' => array (
 		array (
 			array (

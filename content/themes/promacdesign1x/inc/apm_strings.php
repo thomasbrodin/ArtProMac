@@ -2,6 +2,8 @@
 pll_register_string('Artistes Bio', 'Biographie', 'Artistes');
 pll_register_string('Artistes Presse', 'Presse', 'Artistes');
 pll_register_string('Liste', 'Liste', 'Artistes & Expositions');
+pll_register_string('Artistes', 'Vous aimerez aussi', 'Artistes');
+pll_register_string('Artistes', 'Contactez nous','Artistes');
 pll_register_string('Artistes Title', 'Artistes', 'Artistes & Expositions');
 pll_register_string('Thumbnails', 'Vignettes', 'Artistes & Expositions');
 pll_register_string('Details', 'Details', 'Artistes & Expositions');
