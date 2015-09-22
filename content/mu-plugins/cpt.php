@@ -119,10 +119,45 @@ function apm_cpt() {
 
 	/** Publications post type */
 	$labels = array(
+		'name'                => 'Publications',
+		'singular_name'       => 'Publications',
+		'menu_name'           => 'Publications',
+		'all_items'           => 'Toutes les Publications',
+		'view_item'           => 'Voir la publication',
+		'add_new_item'        => 'Ajouter une publication',
+		'add_new'             => 'Ajouter',
+		'edit_item'           => 'Modifier la publication',
+		'update_item'         => 'Mettre a jour la publication',
+		'search_items'        => 'Rechercher une publication',
+		'not_found'           => 'Aucune publication trouvée',
+		'not_found_in_trash'  => 'Aucune publication dans la corbeille',
+	);
+	$args = array(
+		'label'               => 'Publications',
+		'description'         => 'Publications',
+		'labels'              => $labels,
+		'public' => true,
+		'publicly_queryable' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'show_in_admin_bar' => true,
+		'menu_position' => 0,
+		'can_export' => true,
+		'has_archive' => true,
+		'exclude_from_search' => false,
+		'menu_position'       =>  0,
+		'menu_icon'           => 'dashicons-media-text',
+		'supports'            => array( 'title', 'editor', 'thumbnail', 'revisions', ),
+		'rewrite' => array( 'slug' => 'publication'),
+	);
+	register_post_type( 'publication', $args );
+
+	/** Bibliographie post type */
+	$labels = array(
 		'name'                => 'Bibliographie',
 		'singular_name'       => 'Bibliographie',
 		'menu_name'           => 'Bibliographie',
-		'all_items'           => 'Toutes la Bibliographie',
+		'all_items'           => 'Toute la Bibliographie',
 		'view_item'           => 'Voir la bibliographie',
 		'add_new_item'        => 'Ajouter une bibliographie',
 		'add_new'             => 'Ajouter',
@@ -214,20 +249,20 @@ function apm_taxonomies() {
 
 	/** Artist post type NOT hierarchical TAX */
 	$labels = array(
-		'name'                       => 'Artiste Etiquettes',
-		'singular_name'              => 'Artiste Etiquette',
-		'search_items'               => 'Rechercher dans les Etiquettes',
-		'popular_items'              => 'Etiquettes souvent utilisées',
-		'all_items'                  => 'Toutes les etiquettes',
-		'edit_item'                  => 'Modifier l\'étiquettes',
-		'update_item'                => 'Mettre a jour l\'étiquettes',
-		'add_new_item'               => 'Ajouter une categorie',
-		'new_item_name'              => 'Nouvelle categorie',
-		'separate_items_with_commas' => 'Separer les étiquettes avec une virgule',
-		'add_or_remove_items'        => 'Ajouter ou retirer les étiquettes',
-		'choose_from_most_used'      => 'Choisir parmi les étiquettes les plus utilisées',
-		'not_found'                  => 'Aucune étiquettes trouvées',
-		'menu_name'                  => 'Artiste Etiquettes',
+		'name'                       => 'Artiste mots clés',
+		'singular_name'              => 'Artiste mot clé',
+		'search_items'               => 'Rechercher dans les mots clés',
+		'popular_items'              => 'Mots Clés souvent utilisées',
+		'all_items'                  => 'Tous les mots clés',
+		'edit_item'                  => 'Modifier le mot clé',
+		'update_item'                => 'Mettre a jour le mot clé',
+		'add_new_item'               => 'Ajouter un mot clé',
+		'new_item_name'              => 'Nouveau mot clé',
+		'separate_items_with_commas' => 'Separer les mots clés avec une virgule',
+		'add_or_remove_items'        => 'Ajouter ou retirer le mot clé',
+		'choose_from_most_used'      => 'Choisir parmi les mots clés les plus utilisés',
+		'not_found'                  => 'Aucun mot clé trouvé',
+		'menu_name'                  => 'Artiste mots clés',
 	);
 
 	$args = array(

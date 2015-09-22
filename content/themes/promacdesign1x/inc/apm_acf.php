@@ -6,7 +6,7 @@ acf_add_local_field_group(array (
 	'fields' => array (
 		array (
 			'key' => 'field_55f2e9fc39cc0',
-			'label' => 'Nom de famille',
+			'label' => 'Prenom',
 			'name' => 'artist_name',
 			'type' => 'text',
 			'instructions' => '',
@@ -1017,7 +1017,7 @@ acf_add_local_field_group(array (
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array (
-				'width' => '50',
+				'width' => 33,
 				'class' => '',
 				'id' => '',
 			),
@@ -1045,7 +1045,7 @@ acf_add_local_field_group(array (
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array (
-				'width' => '50',
+				'width' => 33,
 				'class' => '',
 				'id' => '',
 			),
@@ -1058,6 +1058,34 @@ acf_add_local_field_group(array (
 			),
 			'filters' => '',
 			'elements' => '',
+			'min' => '',
+			'max' => '',
+			'return_format' => 'object',
+		),
+		array (
+			'key' => 'field_5601a96a0e1d8',
+			'label' => 'Foires',
+			'name' => 'press_foires',
+			'type' => 'relationship',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => 33,
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array (
+				0 => 'artfair',
+			),
+			'taxonomy' => array (
+				0 => 'language:fr',
+				1 => 'language:en',
+			),
+			'filters' => '',
+			'elements' => array (
+				0 => 'featured_image',
+			),
 			'min' => '',
 			'max' => '',
 			'return_format' => 'object',
@@ -1095,13 +1123,91 @@ acf_add_local_field_group(array (
 ));
 
 acf_add_local_field_group(array (
-	'key' => 'group_55ba56804be52',
+	'key' => 'group_56019c2c51090',
 	'title' => 'Publications',
 	'fields' => array (
 		array (
-			'key' => 'field_55ba56b869e05',
-			'label' => 'Lien Brochure',
-			'name' => 'issu_link',
+			'key' => 'field_56019c2c5680d',
+			'label' => 'Artistes',
+			'name' => 'publi_artist',
+			'type' => 'relationship',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => 33,
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array (
+				0 => 'artist',
+			),
+			'taxonomy' => array (
+			),
+			'filters' => '',
+			'elements' => array (
+				0 => 'featured_image',
+			),
+			'min' => '',
+			'max' => '',
+			'return_format' => 'object',
+		),
+		array (
+			'key' => 'field_56019c3e29de3',
+			'label' => 'Foires',
+			'name' => 'pub_foires',
+			'type' => 'relationship',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => 33,
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array (
+				0 => 'artfair',
+			),
+			'taxonomy' => array (
+			),
+			'filters' => '',
+			'elements' => array (
+				0 => 'featured_image',
+			),
+			'min' => '',
+			'max' => '',
+			'return_format' => 'object',
+		),
+		array (
+			'key' => 'field_56019c4e5e2bc',
+			'label' => 'Expo',
+			'name' => 'pub_expo',
+			'type' => 'relationship',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => 33,
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array (
+				0 => 'exhibition',
+			),
+			'taxonomy' => array (
+			),
+			'filters' => '',
+			'elements' => array (
+				0 => 'featured_image',
+			),
+			'min' => '',
+			'max' => '',
+			'return_format' => 'object',
+		),
+		array (
+			'key' => 'field_56019c2c5682f',
+			'label' => 'View Brochure Link',
+			'name' => 'pub_link',
 			'type' => 'url',
 			'instructions' => '',
 			'required' => 0,
@@ -1115,9 +1221,9 @@ acf_add_local_field_group(array (
 			'placeholder' => '',
 		),
 		array (
-			'key' => 'field_55ba56d169e06',
+			'key' => 'field_56019c2c5684d',
 			'label' => 'PDF',
-			'name' => 'pub_pdf',
+			'name' => 'publi_pdf',
 			'type' => 'file',
 			'instructions' => '',
 			'required' => 0,
@@ -1133,6 +1239,40 @@ acf_add_local_field_group(array (
 			'max_size' => '',
 			'mime_types' => '',
 		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'publication',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => array (
+		0 => 'excerpt',
+		1 => 'custom_fields',
+		2 => 'discussion',
+		3 => 'comments',
+		4 => 'revisions',
+		5 => 'author',
+		6 => 'format',
+		7 => 'page_attributes',
+		8 => 'send-trackbacks',
+	),
+	'active' => 1,
+	'description' => '',
+));
+
+acf_add_local_field_group(array (
+	'key' => 'group_55ba56804be52',
+	'title' => 'Bibliographie',
+	'fields' => array (
 		array (
 			'key' => 'field_55ba59223ab55',
 			'label' => 'Artistes',
@@ -1142,7 +1282,7 @@ acf_add_local_field_group(array (
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array (
-				'width' => '50',
+				'width' => 33,
 				'class' => '',
 				'id' => '',
 			),
@@ -1162,32 +1302,39 @@ acf_add_local_field_group(array (
 			'return_format' => 'object',
 		),
 		array (
-			'key' => 'field_55c213c666df1',
-			'label' => 'Expositions',
-			'name' => 'pub_expo',
-			'type' => 'relationship',
+			'key' => 'field_55ba56b869e05',
+			'label' => 'Lien Brochure',
+			'name' => 'issu_link',
+			'type' => 'url',
 			'instructions' => '',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array (
-				'width' => '50',
+				'width' => 33,
 				'class' => '',
 				'id' => '',
 			),
-			'post_type' => array (
-				0 => 'exhibition',
+			'default_value' => '',
+			'placeholder' => '',
+		),
+		array (
+			'key' => 'field_55ba56d169e06',
+			'label' => 'PDF',
+			'name' => 'pub_pdf',
+			'type' => 'file',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => 33,
+				'class' => '',
+				'id' => '',
 			),
-			'taxonomy' => array (
-				0 => 'language:en',
-				1 => 'language:fr',
-			),
-			'filters' => '',
-			'elements' => array (
-				0 => 'featured_image',
-			),
-			'min' => '',
-			'max' => '',
-			'return_format' => 'object',
+			'return_format' => 'array',
+			'library' => 'all',
+			'min_size' => '',
+			'max_size' => '',
+			'mime_types' => '',
 		),
 	),
 	'location' => array (
