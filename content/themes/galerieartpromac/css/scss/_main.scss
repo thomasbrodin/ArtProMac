@@ -170,6 +170,9 @@ header.showmenu {
 	box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.3),0px 0px 0px 1px rgba(0,0,0,0.09);
 }
 
+.admin-bar header.showmenu {
+    margin-top: 32px;
+}
 header img.name {
 	max-width: 200px;
 }
