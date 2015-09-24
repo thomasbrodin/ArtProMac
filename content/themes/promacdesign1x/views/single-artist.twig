@@ -6,10 +6,10 @@
 					<div class="container">
 
 						<div class="row border">
-							<div class="col-md-5">
+							<div class="col-md-4">
 								<h2>{{post.get_field('artist_name')}} {{post.title}} {% if post.get_field('artist_date') %}{{post.get_field('artist_date')}}{% endif %}</h2>
 							</div>
-							<div class="col-md-7">
+							<div class="col-md-8">
 								<ul id="filter-section" class="filter">
 									<li><a href="#artist-artworks" class="active">{{ function( 'pll_e',"Selection d'oeuvres")}}</a></li>
 									<li><a href="#artist-bio">{{ function( 'pll_e','Biographie')}}</a></li>
@@ -149,7 +149,7 @@
 														<article class="col-md-3 col-sm-6">
 																	<figure class="c5">
 																		<a href="{{ rel.permalink }}">
-																				<img src="{{rel.get_thumbnail.get_src|resize(300, 200, 'center')}}" />
+																				<img src="{{rel.get_thumbnail.get_src|resize(480)}}" />
 																		</a>
 																		<div class="meta">
 																			<a href="{{ rel.permalink }}">
