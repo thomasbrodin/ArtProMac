@@ -46,7 +46,7 @@
 												{% set artworks = post.get_field('images_artist') %}
 													<div id="thumbs" class="thumbnails">
 														{% for image in artworks %}
-															<article class="col-sm-6 col-md-4">
+															<article class="col-sm-6 col-md-3">
 																<figure class="c3 boxed" data-slide="{{loop.index0}}">
 																	<div class="img-area">
 																		<img src="{{TimberImage(image.id).get_src|resize(480)}}" />
@@ -146,8 +146,8 @@
 					<section  class="thumbnails filtering" id="artist-expo">
 						<div class="row">
 									{% for rel in exhibitions %}
-														<article class="col-md-4 col-sm-6">
-																	<figure class="c3">
+														<article class="col-md-3 col-sm-6">
+																	<figure class="c5">
 																		<a href="{{ rel.permalink }}">
 																				<img src="{{rel.get_thumbnail.get_src|resize(300, 200, 'center')}}" />
 																		</a>

@@ -440,7 +440,9 @@ section#modules {
 
 	}
 	article {
-		margin-bottom:30px;
+		margin-bottom:20px;
+		padding-right: 10px;
+		padding-left: 10px;
 		figure {
 			cursor: pointer;
 			&.c5 {
@@ -458,8 +460,8 @@ section#modules {
 				}
 			}
 			&.c3 {
-				height:340px;
-				padding: 20px;
+				height:350px;
+				padding:10px 20px;
 				.img-area {
 					line-height:270px;
 					height:270px;
@@ -480,7 +482,7 @@ section#modules {
 			}
 		}
 		.meta {
-			padding-top:15px;
+			padding-top:25px;
 			text-align: center;
 			p {
 				font-size:em(12);
