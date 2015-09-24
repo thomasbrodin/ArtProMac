@@ -20,7 +20,10 @@
 										<li><a href="#artist-press">{{ function( 'pll_e','Presse')}}</a></li>
 									{% endif %}
 									{% if bibliographies %}
-										<li><a href="#artist-publications">{{ function( 'pll_e','Bibliographie')}}</a></li>
+										<li><a href="#artist-bibliography">{{ function( 'pll_e','Bibliographie')}}</a></li>
+									{% endif %}
+									{% if publications %}
+										<li><a href="#artist-publications">{{ function( 'pll_e','Publications')}}</a></li>
 									{% endif %}
 									{% if post.get_field('videos_rep') %}
 										<li><a href="#artist-videos">Videos</a></li>
@@ -188,7 +191,7 @@
 				{% endif %}
 
 				{% if bibliographies %}
-				<section class="filtering one-two-col" id="artist-publications">
+				<section class="filtering one-two-col" id="artist-bibliography">
 							{% for rel in bibliographies %}
 										<div class="row">
 													<figure class="col-md-4 col-sm-3">
@@ -209,6 +212,36 @@
 														{% if rel.pub_pdf %}
 															<p class="link">
 																<a href="{{rel.get_field('pub_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger PDF')}}</a>
+															</p>
+														{% endif %}
+													</article>
+										</div>
+								{% endfor %}
+					</section><!-- bibliography -->
+				{% endif %}
+
+				{% if publications %}
+				<section class="filtering one-two-col" id="artist-publications">
+							{% for rel in publications %}
+										<div class="row">
+													<figure class="col-md-4 col-sm-3">
+														{% if rel.thumbnail %}
+															<img src="{{rel.get_thumbnail.get_src|resize(480)}}" />
+															{% else %}
+																<img src="http://placehold.it/300&text=Image+Needed">
+															{% endif %}
+													</figure>
+													<article class="col-md-8 col-sm-9">
+														<h3>{{rel.title}}</h3>
+														<p>{{rel.content}}</p>
+														{% if rel.pub_link %}
+															<p class="link">
+																<a href="{{rel.get_field('pub_link')}}" target="_blank">{{ function( 'pll_e','Cliquer ici pour voir la brochure en ligne')}}</a>
+															</p>
+														{% endif %}
+														{% if rel.pub_pdf %}
+															<p class="link">
+																<a href="{{rel.get_field('publi_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger PDF')}}</a>
 															</p>
 														{% endif %}
 													</article>

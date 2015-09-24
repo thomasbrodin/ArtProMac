@@ -18,7 +18,7 @@
 														{% if artist %}
 																<li><a href="#exhibitions-artists">{{ function( 'pll_e','Artistes')}}</a></li>
 														{% endif %}
-														{% if bibliographies %}
+														{% if publications %}
 																<li><a href="#exhibitions-publications">{{ function( 'pll_e','Catalogue')}}</a></li>
 														{% endif %}
 												</ul>
@@ -157,9 +157,9 @@
 										</section><!-- Artists -->
 								{% endif %}
 
-								{% if bibliographies %}
+								{% if publications %}
 										<section class="filtering one-two-col" id="exhibitions-publications">
-													{% for rel in bibliographies %}
+													{% for rel in publications %}
 																	<div class="row">
 																				<figure class="col-md-4 col-sm-3">
 																					{% if rel.thumbnail %}
@@ -171,14 +171,14 @@
 																				<article class="col-md-8 col-sm-9">
 																					<h3>{{rel.title}}</h3>
 																					<p>{{rel.content}}</p>
-																					{% if rel.issu_link %}
+																					{% if rel.pub_link %}
 																						<p class="link">
-																							<a href="{{rel.get_field('issu_link')}}" target="_blank">{{ function( 'pll_e','Cliquer ici pour voir la brochure en ligne')}}</a>
+																							<a href="{{rel.get_field('pub_link')}}" target="_blank">{{ function( 'pll_e','Cliquer ici pour voir la brochure en ligne')}}</a>
 																						</p>
 																					{% endif %}
-																					{% if rel.pub_pdf %}
+																					{% if rel.publi_pdf %}
 																						<p class="link">
-																							<a href="{{rel.get_field('pub_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger PDF')}}</a>
+																							<a href="{{rel.get_field('publi_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger PDF')}}</a>
 																						</p>
 																					{% endif %}
 																				</article>

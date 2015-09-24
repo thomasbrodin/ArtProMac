@@ -16,12 +16,12 @@ $context['post'] = $post;
 if (post_password_required($post->ID)){
 	Timber::render('single-password.twig', $context);
 } else {
-		$context['wp_title'] .= ' - ' . $post->title();
+	$context['wp_title'] .= ' - ' . $post->title();
 	$context['press'] = Timber::get_posts(array(
 		'post_type' => 'press',
 		'meta_query' => array(
 			array(
-				'key' => 'press_expo', // name of custom field
+				'key' => 'press_foires', // name of custom field
 				'value' => '"' . get_the_ID() . '"', // matches exaclty "123", not just 123. This prevents a match for "1234"
 				'compare' => 'LIKE'
 			)
@@ -31,11 +31,11 @@ if (post_password_required($post->ID)){
 		'post_type' => 'publication',
 		'meta_query' => array(
 			array(
-				'key' => 'pub_expo', // name of custom field
+				'key' => 'pub_foires', // name of custom field
 				'value' => '"' . get_the_ID() . '"', // matches exaclty "123", not just 123. This prevents a match for "1234"
 				'compare' => 'LIKE'
 			)
 		)
 	));
-		Timber::render(array('single-exhibition.twig'), $context);
+		Timber::render(array('single-artfair.twig'), $context);
 }

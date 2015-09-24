@@ -47,5 +47,15 @@ if (post_password_required($post->ID)){
 			)
 		)
 	));
+	$context['publications'] = Timber::get_posts(array(
+		'post_type' => 'publication',
+		'meta_query' => array(
+			array(
+				'key' => 'publi_artist', // name of custom field
+				'value' => '"' . get_the_ID() . '"', // matches exaclty "123", not just 123. This prevents a match for "1234"
+				'compare' => 'LIKE'
+			)
+		)
+	));
 		Timber::render(array('single-artist.twig'), $context);
 }
