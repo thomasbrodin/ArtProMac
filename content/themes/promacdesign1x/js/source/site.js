@@ -201,4 +201,13 @@ jQuery(document).ready(function($) {
 		var windowWidth = $(window).width();
 		FullHeight.css ({ height:windowHeight});
 	}
+	if ( $("#slider").length > 0 ) {
+		$('#page-slider').flexslider({
+			controlNav : false,
+			directionNav : false,
+			slideshow : true,
+			animationSpeed: 500,
+			slideshowSpeed: 3000,
+		});
+	}
 });

@@ -410,6 +410,20 @@ section#modules {
 			width:100%
 		}
 	}
+	#page-slider{
+		height:550px;
+		.slides {
+			height: 100%;
+			li {
+				height:100%;
+				img {
+					width:auto;
+					height:100%;
+					margin: 0 auto;
+				}
+			}
+		}
+	}
 }
 .artists-list {
 	@extend .col-sm-6;

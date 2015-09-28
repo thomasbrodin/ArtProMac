@@ -4,29 +4,22 @@
 
 	<section id="modules" class="main">
 
-   		<div class="container">
-	   		<div class="row border">
-		        <div class="col-md-12">
-		          <h2>{{post.title}}</h2>
-		        </div>
-		    </div>
-		</div>
-
-   		{% if post.get_field('module') %}
+			 {% if post.get_field('module') %}
 			{% for module in post.get_field('module') %}
 
-				{% if module.acf_fc_layout == 'contact' %}
+				{% if module.acf_fc_layout == 'normal' %}
 					<section class="contact">
 						<div class="container">
-
+							 <div class="row border">
+									<div class="col-md-12">
+											<h2>{{module.h_section_n}}</h2>
+									</div>
+							</div>
 							<div class="row">
-								<div class="inner-form">
-									{% filter shortcodes %}
-										{{module.wpcf_shortcode}}
-									{% endfilter %}
+								<div class="col-md-12">
+										{{module.content_n}}
 								</div>
 							</div>
-
 						</div>
 					</section>
 				{% endif %}
@@ -34,12 +27,15 @@
 				{% if module.acf_fc_layout == '2_cols' %}
 					<section class="two-cols">
 						<div class="container">
-
+							<div class="row border">
+									<div class="col-md-12">
+										<h2>{{module.h_section_col}}</h2>
+									</div>
+							</div>
 							<div class="row">
 								<div class="col-md-6">{{module.col_left}}</div>
 								<div class="col-md-6">{{module.col_right}}</div>
 							</div>
-
 						</div>
 					</section>
 				{% endif %}
@@ -50,8 +46,24 @@
 					</section>
 				{% endif %}
 
+				{% if module.acf_fc_layout == 'page_slider' %}
+					<section id="slider">
+						<div class="container">
+								<div id="page-slider" class="flexslider">
+									<ul class="slides">
+										{% for image in module.slider_img %}
+											<li>
+												<img src="{{TimberImage(image.id).get_src|resize(850)}}" />
+											</li>
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+					</section>
+				{% endif %}
+
 			{% endfor %}
-   		{% endif %}
+		{% endif %}
 
 	</section><!-- /modules -->
 
