@@ -2,149 +2,149 @@
 
 {% block content %}
 
-		{% set artist = TimberPost(post.get_field('artistes_expo')) %}
-		<section class="main" id="single-exhibition">
+	{% set artist = TimberPost(post.get_field('artistes_expo')) %}
+	<section class="main" id="single-exhibition">
+		<div class="container">
 
-					<div class="container">
-						<div class="row">
-							<div class="col-md-4">
-								<h2 class="left-title">{{ function( 'pll_e', 'Exposition' )}}</h2>
-							</div>
-							<div class="col-md-8">
-								<h2 class="right-title">{{post.title}}</h2>
-							</div>
-						</div>
-						<div class="row border">
-							<div class="col-md-12">
-									<ul id="filter-section" class="filter">
-										{% if publications %}
-											<li><a href="#exhibitions-publications">{{ function( 'pll_e','Publications')}}</a></li>
-										{% endif %}
-										<li><a href="#exhibitions-artworks" class="active">{{ function( 'pll_e'," Oeuvres")}}</a></li>
-										<li><a href="#exhibitions-press">{{ function( 'pll_e','Dossier de presse')}}</a></li>
-									</ul>
-							</div>
-						</div>
+			<div class="row">
+				<div class="col-md-4">
+					<h2 class="left-title">{{ function( 'pll_e', 'Exposition' )}}</h2>
+				</div>
+				<div class="col-md-8">
+					<h2 class="right-title">{{post.title}}</h2>
+				</div>
+			</div>
+			<div class="row border">
+				<div class="col-md-12">
+						<ul id="filter-section" class="filter">
+							{% if publications %}
+								<li><a href="#exhibitions-publications">{{ function( 'pll_e','Publications')}}</a></li>
+							{% endif %}
+							<li><a href="#exhibitions-artworks" class="active">{{ function( 'pll_e'," Oeuvres")}}</a></li>
+							<li><a href="#exhibitions-press">{{ function( 'pll_e','Dossier de presse')}}</a></li>
+						</ul>
+				</div>
+			</div>
 
-						<section class="filtering" id="exhibitions-artworks">
-							<div class="row">
-								<div class="col-md-12">
-									<ul class="filter">
-											<li id="grid"><a class="active" href="#">{{ function( 'pll_e','Vignettes')}}</a></li>
-											<li id="two-col"><a href="#">{{ function( 'pll_e','Liste')}}</a></li>
-											<li id="slideshow"><a href="#">{{ function( 'pll_e','Details')}}</a></li>
-									</ul>
-								</div>
+			<section class="filtering" id="exhibitions-artworks">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="filter">
+								<li id="grid"><a class="active" href="#">{{ function( 'pll_e','Vignettes')}}</a></li>
+								<li id="two-col"><a href="#">{{ function( 'pll_e','Liste')}}</a></li>
+								<li id="slideshow"><a href="#">{{ function( 'pll_e','Details')}}</a></li>
+						</ul>
+					</div>
 
-								{% set artworks = post.get_field('images_show') %}
-								<div id="thumbs" class="thumbnails">
-									{% for image in artworks %}
-											<article class="col-sm-6 col-md-3">
-													<figure class="c3 boxed" data-slide="{{loop.index0}}">
-														<div class="img-area">
-															<img src="{{TimberImage(image.id).get_src|resize(480)}}" />
-														</div>
-													</figure>
-													<div class="meta">
-															<p><em><strong>{{image.title}}</strong></em><br>
-																	{% if artist|length == 1 %}
-																		{{artist[0].artist_name}}	{{artist[0].post_title}}<br>
-																	{% endif %}
-																			{{post.get_field('date_exhibition')}}</p>
-													</div>
-											</article>
-									{% endfor %}
-								</div><!-- Thumbnails -->
+					{% set artworks = post.get_field('images_show') %}
+					<div id="thumbs" class="thumbnails">
+						{% for image in artworks %}
+								<article class="col-sm-6 col-md-3">
+										<figure class="c3 boxed" data-slide="{{loop.index0}}">
+											<div class="img-area">
+												<img src="{{TimberImage(image.id).get_src|resize(480)}}" />
+											</div>
+										</figure>
+										<div class="meta">
+												<p><em><strong>{{image.title}}</strong></em><br>
+														{% if artist|length == 1 %}
+															{{artist[0].artist_name}}	{{artist[0].post_title}}<br>
+														{% endif %}
+																{{post.get_field('date_exhibition')}}</p>
+										</div>
+								</article>
+						{% endfor %}
+					</div><!-- Thumbnails -->
 
-								<div id="artwork-slider" class="flexslider">
-									<ul class="slides">
-										{% for image in artworks %}
-												<li>
-													<div class="row">
-														<figure class="col-md-8">
-															<a class="fancybox" data-fancybox-group="gallery" rel="gallery" href="{{TimberImage(image.id).get_src}}">
-																<img src="{{TimberImage(image.id).get_src|resize(850)}}" />
-															</a>
-														</figure>
-														<article class="col-md-4">
-															<div class="slide-text">
-																<div class="row-bottom">
-																	<h4>{{image.title}}</h4>
-																	<p>{{image.caption}}</p>
-																	<a href="mailto:{{ options.email }}?subject={{post.title}} - {{image.title}}">{{ function( 'pll_e','Contactez nous')}}</a>
-																	<a href="#related">{{ function( 'pll_e','Vous aimerez aussi')}}</a>
-																</div>
-															</div>
-														</article>
-													</div>
-													<div class="row">
-														<div class="description">
-															<p>{{image.description}}</p>
-														</div>
-													</div>
-												</li>
-										{% endfor %}
-									</ul>
-								</div><!-- slideshow -->
-
-								<div id="list" class="one-two-col">
-									{% for image in artworks %}
+					<div id="artwork-slider" class="flexslider">
+						<ul class="slides">
+							{% for image in artworks %}
+									<li>
 										<div class="row">
-											<figure class="col-md-6">
-													<img src="{{TimberImage(image.id).get_src|resize(480)}}" />
+											<figure class="col-md-8">
+												<a class="fancybox" data-fancybox-group="gallery" rel="gallery" href="{{TimberImage(image.id).get_src}}">
+													<img src="{{TimberImage(image.id).get_src|resize(850)}}" />
+												</a>
 											</figure>
-											<article class="col-md-6">
-													<h4>{{image.title}}</h4>
-													<p>{{image.caption}}</p>
+											<article class="col-md-4">
+												<div class="slide-text">
+													<div class="row-bottom">
+														<h4>{{image.title}}</h4>
+														<p>{{image.caption}}</p>
+														<a href="mailto:{{ options.email }}?subject={{post.title}} - {{image.title}}">{{ function( 'pll_e','Contactez nous')}}</a>
+														<a href="#related">{{ function( 'pll_e','Vous aimerez aussi')}}</a>
+													</div>
+												</div>
 											</article>
 										</div>
-									{% endfor %}
-								</div><!-- details -->
+										<div class="row">
+											<div class="description">
+												<p>{{image.description}}</p>
+											</div>
+										</div>
+									</li>
+							{% endfor %}
+						</ul>
+					</div><!-- slideshow -->
 
-							</div>
-						</section><!-- artwork-->
-
-						<section class="filtering" id="exhibitions-press">
+					<div id="list" class="one-two-col">
+						{% for image in artworks %}
 							<div class="row">
-								<div class="col-md-4">
-									<img src="{{post.thumbnail.src|resize(480)}}" />
-								</div>
-								<div class="col-md-8">
-									{{ post.content}}
-								</div>
+								<figure class="col-md-4">
+										<img src="{{TimberImage(image.id).get_src|resize(480)}}" />
+								</figure>
+								<article class="col-md-8">
+										<h4>{{image.title}}</h4>
+										<p>{{image.caption}}</p>
+								</article>
 							</div>
-						</section><!-- /bio -->
+						{% endfor %}
+					</div><!-- details -->
 
-						{% if publications %}
-							<section class="filtering one-two-col" id="exhibitions-publications">
-								{% for rel in publications %}
-												<div class="row">
-													<figure class="col-md-4 col-sm-3">
-														{% if rel.thumbnail %}
-															<img src="{{rel.get_thumbnail.get_src|resize(480)}}" />
-															{% else %}
-																<img src="http://placehold.it/300&text=Image+Needed">
-															{% endif %}
-													</figure>
-													<article class="col-md-8 col-sm-9">
-														<h3>{{rel.title}}</h3>
-														<p>{{rel.content}}</p>
-														{% if rel.pub_link %}
-															<p class="link">
-																<a href="{{rel.get_field('pub_link')}}" target="_blank">{{ function( 'pll_e','Cliquer ici pour voir la brochure en ligne')}}</a>
-															</p>
-														{% endif %}
-														{% if rel.publi_pdf %}
-															<p class="link">
-																<a href="{{rel.get_field('publi_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la publication')}}</a>
-															</p>
-														{% endif %}
-													</article>
-												</div>
-									{% endfor %}
-								</section><!-- publications -->
-							{% endif %}
-					</div><!-- container -->
-		</section><!-- exhibition-->
+				</div>
+			</section><!-- artwork-->
+
+			<section class="filtering" id="exhibitions-press">
+				<div class="row">
+					<div class="col-md-4">
+						<img src="{{post.thumbnail.src|resize(480)}}" />
+					</div>
+					<div class="col-md-8">
+						{{ post.content}}
+					</div>
+				</div>
+			</section><!-- /bio -->
+
+			{% if publications %}
+				<section class="filtering one-two-col" id="exhibitions-publications">
+					{% for rel in publications %}
+						<div class="row">
+							<figure class="col-md-4 col-sm-3">
+								{% if rel.thumbnail %}
+									<img src="{{rel.get_thumbnail.get_src|resize(480)}}" />
+									{% else %}
+										<img src="http://placehold.it/300&text=Image+Needed">
+									{% endif %}
+							</figure>
+							<article class="col-md-8 col-sm-9">
+								<h3>{{rel.title}}</h3>
+								<p>{{rel.content}}</p>
+								{% if rel.pub_link %}
+									<p class="link">
+										<a href="{{rel.get_field('pub_link')}}" target="_blank">{{ function( 'pll_e','Cliquer ici pour voir la brochure en ligne')}}</a>
+									</p>
+								{% endif %}
+								{% if rel.publi_pdf %}
+									<p class="link">
+										<a href="{{rel.get_field('publi_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la publication')}}</a>
+									</p>
+								{% endif %}
+							</article>
+						</div>
+					{% endfor %}
+				</section><!-- publications -->
+			{% endif %}
+		</div><!-- container -->
+	</section><!-- exhibition-->
 
 {% endblock %}
