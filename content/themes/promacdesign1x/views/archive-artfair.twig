@@ -44,9 +44,12 @@
 								<div class="col-md-6">
 									<ul class="filter">
 										<li><a href="#" data-year="all">{{ function( 'pll_e'," Toutes")}}</a></li>
-										{% for date in artfair_date %}
+											{% for date in artfair_date %}
+												{% if date.get_posts is not empty %}
 													<li><a href="#" data-year="{{date.name}}">{{date.name}}</a></li>
-										{% endfor %}
+												{% endif %}
+											{% endfor %}
+										{% endif %}
 									</ul>
 								</div>
 						</div>
