@@ -27,8 +27,8 @@
 														</a>
 											</figure>
 											<div class="meta">
-														<h4>{{post.title}}</h4>
-														<p>{{post.get_field('date_artfair')}}</p>
+												<h4>{{post.title}}</h4>
+												<p>{{post.get_field('date_artfair')}}</p>
 											</div>
 									</article>
 							{% endfor %}
@@ -44,12 +44,11 @@
 								<div class="col-md-6">
 									<ul class="filter">
 										<li><a href="#" data-year="all">{{ function( 'pll_e'," Toutes")}}</a></li>
-											{% for date in artfair_date %}
-												{% if date.get_posts is not empty %}
-													<li><a href="#" data-year="{{date.name}}">{{date.name}}</a></li>
-												{% endif %}
-											{% endfor %}
-										{% endif %}
+										{% for date in artfair_date %}
+											{% if date.get_posts is not empty %}
+												<li><a href="#" data-year="{{date.name}}">{{date.name}}</a></li>
+											{% endif %}
+										{% endfor %}
 									</ul>
 								</div>
 						</div>
@@ -58,11 +57,11 @@
 									<article class="col-md-3 col-sm-6" data-year="{{post.terms('artfair_date')|join(' ')}}">
 											<figure class="c5">
 													<a href="{{post.link}}">
-															{% if post.thumbnail %}
-																	<img src="{{post.get_thumbnail.get_src|resize(480)}}" />
-															{% else %}
-																	<img src="http://placehold.it/300&text=Image+Needed">
-															{% endif %}
+														{% if post.thumbnail %}
+																<img src="{{post.get_thumbnail.get_src|resize(480)}}" />
+														{% else %}
+																<img src="http://placehold.it/300&text=Image+Needed">
+														{% endif %}
 													</a>
 											</figure>
 											<div class="meta">
@@ -85,17 +84,18 @@
 							{% for post in term.get_posts %}
 									<article class="col-md-3 col-sm-6">
 											<figure class="c5">
-													<a href="{{post.link}}">
-															{% if post.thumbnail %}
-																	<img src="{{post.get_thumbnail.get_src|resize(480)}}" />
-															{% else %}
-																	<img src="http://placehold.it/300&text=Image+Needed">
-															{% endif %}
-													</a>
+												<a href="{{post.link}}">
+													{% if post.thumbnail %}
+															<img src="{{post.get_thumbnail.get_src|resize(480)}}" />
+													{% else %}
+															<img src="http://placehold.it/300&text=Image+Needed">
+													{% endif %}
+												</a>
 											</figure>
 											<div class="meta">
-														<p><em><strong>{{post.title}}</strong></em><br>
-														{{post.get_field('date_artfair')}}</p>
+												<p><em><strong>{{post.title}}</strong></em><br>
+												{{post.get_field('date_artfair')}}
+												</p>
 											</div>
 									</article>
 							{% endfor %}
