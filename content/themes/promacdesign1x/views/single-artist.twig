@@ -7,23 +7,23 @@
 
 						<div class="row border">
 							<div class="col-md-4">
-								<h2>{{post.get_field('artist_name')}} {{post.title}} {% if post.get_field('artist_date') %}{{post.get_field('artist_date')}}{% endif %}</h2>
+								<h2>{{post.get_field('artist_name')}} {{post.title}}{% if post.get_field('artist_date') %}<br><em>{{post.get_field('artist_date')}}</em>{% endif %}</h2>
 							</div>
 							<div class="col-md-8">
 								<ul id="filter-section" class="filter">
-									<li><a href="#artist-artworks" class="active">{{ function( 'pll_e',"Selection d'oeuvres")}}</a></li>
+									<li><a href="#artist-artworks" class="active">{{ function( 'pll_e'," Oeuvres")}}</a></li>
 									<li><a href="#artist-bio">{{ function( 'pll_e','Biographie')}}</a></li>
-									{% if exhibitions %}
-										<li><a href="#artist-expo">{{ function( 'pll_e','Expositions')}}</a></li>
-									{% endif %}
-									{% if press %}
-										<li><a href="#artist-press">{{ function( 'pll_e','Presse')}}</a></li>
-									{% endif %}
 									{% if bibliographies %}
 										<li><a href="#artist-bibliography">{{ function( 'pll_e','Bibliographie')}}</a></li>
 									{% endif %}
+									{% if exhibitions %}
+										<li><a href="#artist-expo">{{ function( 'pll_e','Expositions')}}</a></li>
+									{% endif %}
 									{% if publications %}
 										<li><a href="#artist-publications">{{ function( 'pll_e','Publications')}}</a></li>
+									{% endif %}
+									{% if press %}
+										<li><a href="#artist-press">{{ function( 'pll_e','Presse')}}</a></li>
 									{% endif %}
 									{% if post.get_field('videos_rep') %}
 										<li><a href="#artist-videos">Videos</a></li>
@@ -36,12 +36,12 @@
 										<div class="row">
 
 													<div class="col-md-12">
-															<ul class="filter">
-																<li id="grid"><a href="#" class="active">{{ function( 'pll_e','Vignettes')}}</a></li>
-																<li id="two-col"><a href="#">{{ function( 'pll_e','Liste')}}</a></li>
-																<li id="slideshow"><a href="#">{{ function( 'pll_e','Diaporama')}}</a></li>
-															</ul>
-														</div>
+														<ul class="filter">
+															<li id="grid"><a href="#" class="active">{{ function( 'pll_e','Vignettes')}}</a></li>
+															<li id="two-col"><a href="#">{{ function( 'pll_e','Liste')}}</a></li>
+															<li id="slideshow"><a href="#">{{ function( 'pll_e','Details')}}</a></li>
+														</ul>
+													</div>
 
 												{% set artworks = post.get_field('images_artist') %}
 													<div id="thumbs" class="thumbnails">
@@ -75,7 +75,7 @@
 																							<h4>{{image.title}}</h4>
 																							<p>{{image.caption}}</p>
 																							<a href="mailto:{{ options.email }}?subject={{post.title}} - {{image.title}}">{{ function( 'pll_e','Contactez nous')}}</a>
-																							<a href="#related">{{ function( 'pll_e','Vous aimerez aussi')}}</a>
+																							<a class="smoothy" href="#related">{{ function( 'pll_e','Vous aimerez aussi')}}</a>
 																						</div>
 																					</div>
 																				</article>
@@ -110,10 +110,10 @@
 														<div id="list" class="one-two-col">
 																{% for image in artworks %}
 																	<div class="row">
-																		<figure class="col-md-6">
+																		<figure class="col-md-4">
 																				<img src="{{TimberImage(image.id).get_src|resize(480)}}" />
 																		</figure>
-																		<article class="col-md-6">
+																		<article class="col-md-8">
 																				<h4>{{image.title}}</h4>
 																				<p>{{image.caption}}</p>
 																		</article>
@@ -182,7 +182,7 @@
 										<p class="date">{{rel.press_date}}</p>
 										<p>{{rel.content}}</p>
 										{% if rel.press_pdf %}
-											<p class="link"><a href="{{rel.get_field('press_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger PDF')}}</a></p>
+											<p class="link"><a href="{{rel.get_field('press_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la publication')}}</a></p>
 										{% endif %}
 									</article>
 									</div>
@@ -211,7 +211,7 @@
 														{% endif %}
 														{% if rel.pub_pdf %}
 															<p class="link">
-																<a href="{{rel.get_field('pub_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger PDF')}}</a>
+																<a href="{{rel.get_field('pub_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la publication')}}</a>
 															</p>
 														{% endif %}
 													</article>
@@ -241,7 +241,7 @@
 														{% endif %}
 														{% if rel.pub_pdf %}
 															<p class="link">
-																<a href="{{rel.get_field('publi_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger PDF')}}</a>
+																<a href="{{rel.get_field('publi_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la publication')}}</a>
 															</p>
 														{% endif %}
 													</article>

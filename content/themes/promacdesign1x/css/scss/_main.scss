@@ -90,6 +90,12 @@ header.navbar {
 				width:100%;
 				text-align: left;
 			}
+			&.active a{
+				color: #666;
+				&:hover, &:focus {
+					color:#000;
+				}
+			}
 			a {
 				font-family: 'gotham-light-webfont';
 				color:#000;
@@ -350,15 +356,29 @@ input.sidebar-top:focus {
 section {
 	&.main {
 		padding-top:135px;
+		h1 {
+			font-family: 'gotham-book-webfont';
+			font-size:em(26);
+			text-transform: uppercase;
+			margin-top:9px;
+		}
+		h2 {
+			font-family: 'gotham-book-webfont';
+			font-size:em(22);
+			text-transform: uppercase;
+			margin-top:9px;
+			line-height: 1.2;
+			&.right-title {
+				text-align: right;
+				margin:0
+			}
+			&.left-title {
+				margin:0
+			}
+		}
 		.border {
 			margin-bottom:15px;
 			border-bottom:1px solid #eee;
-			h2 {
-				font-family: 'gotham-book-webfont';
-				font-size:em(22);
-				text-transform: uppercase;
-				margin-top:9px
-			}
 		}
 		ul.filter {
 			padding:10px 0;
@@ -502,6 +522,9 @@ section#modules {
 		}
 	}
 }
+#artists .thumbnails .row{
+	border-bottom: 1px solid #ccc
+}
 
 .featured {
 	article {
@@ -579,6 +602,7 @@ section#modules {
 				}
 				.description {
 					@extend .col-md-12;
+					padding-top:20px;
 					p {
 						margin:1em 0;
 						text-align: justify;

@@ -12,10 +12,10 @@
 
 										<div class="col-md-8">
 												<ul id="filter-section" class="filter">
-														<li><a href="#artfairs-artworks" class="active">{{ function( 'pll_e',"Selection d'oeuvres")}}</a></li>
+														<li><a href="#artfairs-artworks" class="active">{{ function( 'pll_e'," Oeuvres")}}</a></li>
 														<li><a href="#artfairs-press">{{ function( 'pll_e','Dossier de Presse')}}</a></li>
 														{% if publications %}
-																<li><a href="#artfairs-publications">{{ function( 'pll_e','Catalogue')}}</a></li>
+																<li><a href="#artfairs-publications">{{ function( 'pll_e','Publications')}}</a></li>
 														{% endif %}
 												</ul>
 										</div>
@@ -27,15 +27,15 @@
 																<div class="col-md-12">
 																			<ul class="filter">
 																					<li id="grid"><a href="#">{{ function( 'pll_e','Vignettes')}}</a></li>
-																					<li id="slideshow"><a href="#">{{ function( 'pll_e','Diaporama')}}</a></li>
+																					<li id="slideshow"><a href="#">{{ function( 'pll_e','Details')}}</a></li>
 																			</ul>
 																	</div>
 
 																{% set artworks = post.get_field('fair_img') %}
 																		<div id="thumbs" class="thumbnails">
 																				{% for image in artworks %}
-																						<article class="col-sm-6 col-md-4">
-																								<figure class="c3" data-slide="{{loop.index0}}">
+																						<article class="col-sm-6 col-md-3">
+																								<figure class="c4" data-slide="{{loop.index0}}">
 																										<img src="{{TimberImage(image.id).get_src|resize(480)}}" />
 																								</figure>
 																								<div class="meta">
@@ -68,7 +68,7 @@
 														<p>{{post.content}}</p>
 														{% if post.get_field('Fair_press_release') %}
 															<p class="link"><a href="{{post.get_field('Fair_press_release').url}}" target="_blank">
-																{{ function( 'pll_e','Telecharger PDF')}}</a></p>
+																{{ function( 'pll_e','Telecharger la publication')}}</a></p>
 														{% endif %}
 													</article>
 												</div>
@@ -96,7 +96,7 @@
 																					{% endif %}
 																					{% if rel.publi_pdf %}
 																						<p class="link">
-																							<a href="{{rel.get_field('publi_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger PDF')}}</a>
+																							<a href="{{rel.get_field('publi_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la publication')}}</a>
 																						</p>
 																					{% endif %}
 																				</article>

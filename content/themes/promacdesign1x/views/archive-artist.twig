@@ -20,33 +20,31 @@
 			<section id="vignettes" class="filtering thumbnails">
 
 					{% for term in artist_category %}
-									<div class="row">
-
-										{% if term.get_posts is not empty %}
-											<h3>{{term.name}}</h3>
-											{% endif %}
-
-										{% for post in term.get_posts({'orderby' : 'title', 'order': 'ASC'}) %}
-											<article class="col-md-3 col-sm-6">
-												<figure class="c4">
-													<a href="{{post.link}}">
-														{% if post.thumbnail %}
-															<img src="{{post.get_thumbnail.get_src|resize(480,320, center)}}" />
-														{% else %}
-															<img src="http://placehold.it/300&text=Image+Needed">
-														{% endif %}
-													</a>
-												</figure>
-												<div class="meta">
-													<h4><a href="{{post.link}}">
-															 {{post.get_field('artist_name')}} {{post.title}}
-															</a>
-														</h4>
-													</div>
-												</article>
-											{% endfor %}
-
-						</div>
+						{% if term.get_posts is not empty %}
+							<div class="row">
+								<h3>{{term.name}}</h3>
+								{% for post in term.get_posts({'orderby' : 'title', 'order': 'ASC'}) %}
+									<article class="col-md-3 col-sm-6">
+										<figure class="c4">
+											<a href="{{post.link}}">
+												{% if post.thumbnail %}
+													<img src="{{post.get_thumbnail.get_src|resize(480,320, center)}}" />
+												{% else %}
+													<img src="http://placehold.it/300&text=Image+Needed">
+												{% endif %}
+											</a>
+										</figure>
+										<div class="meta">
+											<h4>
+												<a href="{{post.link}}">
+													{{post.get_field('artist_name')}} {{post.title}}
+												</a>
+											</h4>
+										</div>
+									</article>
+								{% endfor %}
+							</div>
+						{% endif %}
 					{% endfor %}
 
 			</section>
@@ -57,7 +55,7 @@
 						<ul>
 							{% for post in posts %}
 								<li>
-									<a data-thumb="{{post.get_thumbnail.get_src|resize(600)}}" href="{{post.link}}">{{post.title}} {{post.get_field('artist_name')}}</a>
+									<a data-thumb="{{post.get_thumbnail.get_src|resize(600)}}" href="{{post.link}}">{{post.get_field('artist_name')}} {{post.title}}</a>
 								</li>
 							{% endfor %}
 						</ul>

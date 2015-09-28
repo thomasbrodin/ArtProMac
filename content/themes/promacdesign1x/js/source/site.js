@@ -3,7 +3,17 @@ jQuery(document).ready(function($) {
 		$("#loader").fadeOut(150);
 	});
 	var root = $('html, body'),
-		FullHeight = $(".landing");
+			FullHeight = $(".landing");
+	//Smooth scroll
+	$('a.smoothy').click(function() {
+		 var href = $.attr(this, 'href');
+		 root.stop().animate({
+				 scrollTop: $(href).offset().top - 120
+		 }, 500, function () {
+				 window.location.hash = href;
+		 });
+		 return false;
+	});
 	$(window).on('resize',resize);
 	resize();
 	$(window).scroll(function() {
@@ -71,15 +81,20 @@ jQuery(document).ready(function($) {
 		$(".filter li a").click( function(e) {
 			e.preventDefault();
 			$year = $(this).data('year');
-			$(".result-filter article").each(function(){
-				$year2 = $(this).data('year');
-				if($year != $year2) {
-					$(this).hide();
-					console.log($year, $year2);
-				} else if ($year == $year2) {
+			if ($year == 'all') {
+				$(".result-filter article").each(function(){
 					$(this).fadeIn();
-				}
-			});
+				});
+			} else {
+				$(".result-filter article").each(function(){
+					$year2 = $(this).data('year');
+					if($year != $year2) {
+						$(this).hide();
+					} else if ($year == $year2) {
+						$(this).fadeIn();
+					}
+				});
+			}
 		});
 	}
 	// PRESENTATION FILTER
@@ -100,8 +115,10 @@ jQuery(document).ready(function($) {
 		});
 		// SLIDE / THUMBS / DETAILS FILTER
 		$('#grid a').click(function(e) {
-			$(".filter li a").each(function(){
-				$(this).removeClass('active');
+			$(".filter li a").each(function(i){
+				if (i > 0){
+					$(this).removeClass('active');
+				}
 			});
 			$(this).addClass('active');
 			e.preventDefault();
