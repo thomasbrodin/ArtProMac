@@ -95,7 +95,9 @@
 																			{% for image in post.get_field('related_img') %}
 																				<article class="col-md-3 col-sm-6">
 																					<figure class="c4">
+																						<a href="{{image.alt}}">
 																							<img src="{{TimberImage(image.id).get_src|resize(480)}}" />
+																						</a>
 																					</figure>
 																							<div class="meta">
 																								<p><em><strong>{{image.title}}</strong></em></p>
