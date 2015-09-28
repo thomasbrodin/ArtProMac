@@ -4,12 +4,16 @@
 
 	<section class="main" id="single-artfair">
 		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<h2 class="left-title">{{ function( 'pll_e', 'Foires et Salons' )}}</h2>
+				</div>
+				<div class="col-md-8">
+					<h2 class="right-title">{{post.title}}</h2>
+				</div>
+			</div>
 			<div class="row border">
-					<div class="col-md-4">
-							<h2>{{post.title}}</h2>
-					</div>
-
-					<div class="col-md-8">
+					<div class="col-md-12">
 							<ul id="filter-section" class="filter">
 									<li><a href="#artfairs-artworks" class="active">{{ function( 'pll_e'," Oeuvres")}}</a></li>
 									<li><a href="#artfairs-press">{{ function( 'pll_e','Dossier de Presse')}}</a></li>
