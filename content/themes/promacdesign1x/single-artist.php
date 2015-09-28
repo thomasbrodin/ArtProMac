@@ -16,7 +16,8 @@ $context['post'] = $post;
 if (post_password_required($post->ID)){
 	Timber::render('single-password.twig', $context);
 } else {
-		$context['wp_title'] .= ' - ' . $post->title();
+		$context['wp_title'] = $post->title();
+		$context['cpt_title'] = get_post_type();
 		$context['exhibitions'] = Timber::get_posts(array(
 		'post_type' => 'exhibition',
 		'meta_query' => array(

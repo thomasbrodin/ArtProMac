@@ -91,14 +91,12 @@ header.navbar {
 				text-align: left;
 			}
 			&.active a{
-				color: #666;
-				&:hover, &:focus {
-					color:#000;
-				}
+				font-family: 'gotham-book-webfont';
+				color:#000
 			}
 			a {
 				font-family: 'gotham-light-webfont';
-				color:#000;
+				color:#333;
 				font-size: 1em;
 				letter-spacing: 0.02em;
 				font-size:em(14);
@@ -163,7 +161,7 @@ header img.name {
 			display: inline-block;
 			a {
 				font-family: 'gotham-light-webfont';
-				color: #000;
+				color: #333;
 				font-size: 1em;
 				letter-spacing: 0.04em;
 				text-transform: uppercase;
@@ -356,23 +354,13 @@ input.sidebar-top:focus {
 section {
 	&.main {
 		padding-top:135px;
-		h1 {
+		h2 {
 			font-family: 'gotham-book-webfont';
 			font-size:em(26);
 			text-transform: uppercase;
 			margin-top:9px;
-		}
-		h2 {
-			font-family: 'gotham-book-webfont';
-			font-size:em(22);
-			text-transform: uppercase;
-			margin-top:9px;
 			line-height: 1.2;
-			&.right-title {
-				text-align: right;
-				margin:0
-			}
-			&.left-title {
+			&.title {
 				margin:0
 			}
 		}
@@ -381,7 +369,7 @@ section {
 			border-bottom:1px solid #eee;
 		}
 		ul.filter {
-			padding:10px 0;
+			padding:0 0 5px;
 			float:right;
 			li {
 				display: inline-block;
@@ -394,7 +382,8 @@ section {
 					padding-right:0
 				}
 				a.active {
-					color: #666
+					font-family: 'gotham-book-webfont';
+					color:#000
 				}
 			}
 		}

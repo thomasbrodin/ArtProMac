@@ -31,7 +31,7 @@
 			$data['title'] = single_cat_title('', false);
 			array_unshift($templates, 'archive-'.get_query_var('cat').'.twig');
 		} else if (is_post_type_archive()){
-			$data['title'] = post_type_archive_title('', false);
+			$data['wp_title'] = post_type_archive_title('', false);
 			$data['exhibition_date'] = Timber::get_terms('exhibition_date', array('orderby' => 'term_order', 'hide_empty' => false ));
 			$data['exhibition_category'] = Timber::get_terms('exhibition_category', array('orderby' => 'term_order', 'hide_empty' => false ));
 			$data['artfair_date'] = Timber::get_terms('artfair_date', array('orderby' => 'term_order', 'hide_empty' => false ));

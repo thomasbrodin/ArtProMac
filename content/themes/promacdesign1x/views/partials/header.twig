@@ -21,7 +21,7 @@
 					<ul class="nav navbar-nav">
 
 						{% for item in menu.get_items %}
-								<li class="nav-main-item{{item.current ? ' active'}}">
+								<li class="nav-main-item{% if item.current %} active{% elseif item.url|trim('/') == cpt_title %} active{% endif %}">
 										<a href="{{item.get_path}}">{{item.title}}</a>
 								</li>
 						 {% endfor %}

@@ -4,12 +4,13 @@
 
 				<section id="single-artist" class="main">
 					<div class="container">
-
-						<div class="row border">
-							<div class="col-md-4">
-								<h2>{{post.get_field('artist_name')}} {{post.title}}{% if post.get_field('artist_date') %}<br><em>{{post.get_field('artist_date')}}</em>{% endif %}</h2>
+						<div class="row">
+							<div class="col-md-12">
+									<h2 class="title">{{post.get_field('artist_name')}} {{post.title}}{% if post.get_field('artist_date') %} <em>{{post.get_field('artist_date')}}</em>{% endif %}</h2>
 							</div>
-							<div class="col-md-8">
+						</div>
+						<div class="row border">
+							<div class="col-md-12">
 								<ul id="filter-section" class="filter">
 									<li><a href="#artist-artworks" class="active">{{ function( 'pll_e'," Oeuvres")}}</a></li>
 									<li><a href="#artist-bio">{{ function( 'pll_e','Biographie')}}</a></li>
