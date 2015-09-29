@@ -16,6 +16,7 @@ pll_register_string('Exposition Current', 'Actuellement', 'Expositions');
 pll_register_string('Exposition Past', 'Passé', 'Expositions');
 pll_register_string('Exposition Upcoming', 'A venir', 'Expositions');
 pll_register_string('Foires Title', 'Foires et Salons', 'Foires');
+pll_register_string('Tour virtuel', 'Tour Virtuel', 'Foires');
 pll_register_string('Filtre title', 'Toutes', 'Global');
 pll_register_string('PDF', 'Telecharger la publication','Global');
 pll_register_string('Link', 'Cliquer ici pour voir la brochure en ligne','Global');

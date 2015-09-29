@@ -17,6 +17,9 @@
 									{% if publications %}
 											<li><a href="#artfairs-publications">{{ function( 'pll_e','Publications')}}</a></li>
 									{% endif %}
+									{% if post.get_field('tour_iframe') %}
+											<li><a class="link" href="{{ post.get_field('tour_iframe') }}" target="_blank">{{ function( 'pll_e','Tour Virtuel')}}</a></li>
+									{% endif %}
 							</ul>
 					</div>
 			</div>
@@ -63,15 +66,18 @@
 
 			<section class="filtering" id="artfairs-press">
 				<div class="row">
-						<div class="col-md-12 centered">
-							<article>
-								<p>{{post.content}}</p>
-								{% if post.get_field('Fair_press_release') %}
-									<p class="link"><a href="{{post.get_field('Fair_press_release').url}}" target="_blank">
-										{{ function( 'pll_e','Telecharger la publication')}}</a></p>
-								{% endif %}
-							</article>
-						</div>
+					<div class="col-md-4">
+						<img src="{{post.thumbnail.src|resize(480)}}" />
+					</div>
+					<div class="col-md-8">
+						<article>
+							<p>{{post.content}}</p>
+							{% if post.get_field('Fair_press_release') %}
+								<p class="link"><a href="{{post.get_field('Fair_press_release').url}}" target="_blank">
+									{{ function( 'pll_e','Telecharger la publication')}}</a></p>
+							{% endif %}
+						</article>
+					</div>
 				</div>
 			</section><!-- /press -->
 

@@ -46,21 +46,23 @@ jQuery(document).ready(function($) {
 
 	// SECTION FILTER
 	$('#filter-section li a').click(function(e){
-		e.preventDefault();
-		e.stopPropagation();
-		$(".filter li a").each(function(){
-			$(this).removeClass('active');
-		});
-		$(this).addClass('active');
-		$('section.filtering').hide();
-		var showclicked = $(this).attr("href");
-		if (showclicked.indexOf("artworks") != -1) {
-			$('#artwork-slider').hide();
-			$('#list').hide();
-			$('#thumbs').fadeIn();
+		if (!$(this).hasClass('link')) {
+			e.preventDefault();
+			e.stopPropagation();
+			$(".filter li a").each(function(){
+				$(this).removeClass('active');
+			});
+			$(this).addClass('active');
+			$('section.filtering').hide();
+			var showclicked = $(this).attr("href");
+			if (showclicked.indexOf("artworks") != -1) {
+				$('#artwork-slider').hide();
+				$('#list').hide();
+				$('#thumbs').fadeIn();
+			}
+			$(showclicked).fadeIn();
+			return false;
 		}
-		$(showclicked).fadeIn();
-		return false;
 	});
 				// ARTISTS LIST / THUMBS
 	if ( $(".artists-list").length > 0 ) {
@@ -151,51 +153,21 @@ jQuery(document).ready(function($) {
 		});
 	}
 	//FANCYBOX
-	$(".fancybox")
-			.attr('rel', 'gallery')
-			.fancybox({
-				padding : 0,
-				margin : [70, 60, 70, 60],
-				maxWidth: "100%",
-				maxHeight: "100%",
-				autoResize	: true,
-				fitToView	: false,
-				nextEffect : 'fade',
-				prevEffect : 'fade',
-				openEffect : 'elastic',
-				closeEffect : 'elastic',
-				tpl: {
-					closeBtn: '<a title="Close" class="fancybox-item fancybox-close" href="javascript:;">CLOSE</a>'
-				},
-				helpers : {
-					title : {
-						type : 'over'
-					}
-				},
-				afterShow : function() {
-					// stButtons.locateElements();
-					$(".fancybox-title").hide();
-					$(".fancybox-wrap").hover(function() {
-							$(".fancybox-title").stop(true,true).slideDown(200);
-						}, function() {
-							$(".fancybox-title").stop(true,true).slideUp(200);
-					});
-				},
-				afterLoad: function() {
-					this.title = this.title ? this.title + buildShareThis(this.href) : buildShareThis(this.href);
-				},
+	$(".fancybox").attr('rel', 'gallery').fancybox({
+		padding : 0,
+		margin : [70, 60, 70, 60],
+		maxWidth: "100%",
+		maxHeight: "100%",
+		autoResize	: true,
+		fitToView	: false,
+		nextEffect : 'fade',
+		prevEffect : 'fade',
+		openEffect : 'elastic',
+		closeEffect : 'elastic',
+		tpl: {
+			closeBtn: '<a title="Close" class="fancybox-item fancybox-close" href="javascript:;">CLOSE</a>'
+		},
 	});
-	function buildShareThis(url){
-		var customShareThis  = "<div class='socials'>";
-			customShareThis += "<span class='st_tumblr_large' displayText='Tumblr' st_url='"+url+"'></span>";
-			customShareThis += "<span class='st_pinterest_large' displayText='Pinterest' st_url='"+url+"' st_img='"+url+"'></span>";
-			customShareThis += "<span class='st_googleplus_large' displayText='Google +' st_url='"+url+"'></span>";
-			customShareThis += "<span class='st_instagram_large' displayText='instagram' st_url='"+url+"'></span>";
-			customShareThis += "<span class='st_twitter_large' displayText='Tweet' st_url='"+url+"'></span>";
-			customShareThis += "<span class='st_facebook_large' displayText='Facebook' st_url='"+url+"'></span>";
-			customShareThis += "</div>";
-			return customShareThis;
-	}
 	function resize(){
 		var windowHeight = $(window).height();
 		var windowWidth = $(window).width();
