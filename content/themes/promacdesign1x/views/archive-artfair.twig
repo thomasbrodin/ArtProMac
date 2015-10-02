@@ -53,7 +53,7 @@
 								</div>
 						</div>
 						<div class="row result-filter thumbnails">
-							{% for post in term.get_posts %}
+							{% for post in term.get_posts('numberposts=99') %}
 									<article class="col-md-3 col-sm-6" data-year="{{post.terms('artfair_date')|join(' ')}}">
 											<figure class="c5">
 													<a href="{{post.link}}">

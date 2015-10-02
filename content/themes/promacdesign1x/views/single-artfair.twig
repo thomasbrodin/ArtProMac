@@ -13,12 +13,16 @@
 					<div class="col-md-12">
 							<ul id="filter-section" class="filter">
 									<li><a href="#artfairs-artworks" class="active">{{ function( 'pll_e'," Oeuvres")}}</a></li>
-									<li><a href="#artfairs-press">{{ function( 'pll_e','Dossier de Presse')}}</a></li>
+									<li><a href="#artfairs-release">{{ function( 'pll_e','Dossier de Presse')}}</a></li>
 									{% if publications %}
 											<li><a href="#artfairs-publications">{{ function( 'pll_e','Publications')}}</a></li>
 									{% endif %}
+									{% if press %}
+											<li><a href="#artfairs-press">{{ function( 'pll_e','Presse')}}</a></li>
+									{% endif %}
 									{% if post.get_field('tour_iframe') %}
 											<li><a class="link" href="{{ post.get_field('tour_iframe') }}" target="_blank">{{ function( 'pll_e','Tour Virtuel')}}</a></li>
+											<!-- <li><a href="#artfairs-tour" target="_blank">{{ function( 'pll_e','Tour Virtuel')}}</a></li> -->
 									{% endif %}
 							</ul>
 					</div>
@@ -64,7 +68,7 @@
 				</div>
 			</section><!-- artworks-->
 
-			<section class="filtering" id="artfairs-press">
+			<section class="filtering" id="artfairs-release">
 				<div class="row">
 					<div class="col-md-4">
 						<img src="{{post.thumbnail.src|resize(480)}}" />
@@ -72,14 +76,14 @@
 					<div class="col-md-8">
 						<article>
 							<p>{{post.content}}</p>
-							{% if post.get_field('Fair_press_release') %}
-								<p class="link"><a href="{{post.get_field('Fair_press_release').url}}" target="_blank">
+							{% if post.get_field('fair_press') %}
+								<p class="link"><a href="{{post.get_field('fair_press').url}}" target="_blank">
 									{{ function( 'pll_e','Telecharger la publication')}}</a></p>
 							{% endif %}
 						</article>
 					</div>
 				</div>
-			</section><!-- /press -->
+			</section><!-- /Dossier press -->
 
 			{% if publications %}
 				<section class="filtering one-two-col" id="artfairs-publications">
@@ -109,6 +113,45 @@
 						</div>
 					{% endfor %}
 				</section><!-- publications -->
+			{% endif %}
+			{% if press %}
+					<section class="filtering one-two-col" id="artfairs-press">
+						{% for rel in press %}
+								<div class="row">
+									<figure class="col-md-4 col-sm-3">
+										{% if rel.thumbnail %}
+											<img src="{{rel.get_thumbnail.get_src|resize(480)}}" />
+											{% else %}
+												<img src="http://placehold.it/300&text=Image+Needed">
+											{% endif %}
+									</figure>
+									<article class="col-md-8 col-sm-9">
+										<h3>{{rel.title}}</h3>
+										<p class="date">{{rel.press_date}}</p>
+										<p class="editeur">{{rel.press_editeur}}</p>
+										<p>{{rel.content}}</p>
+										{% if rel.press_pdf %}
+											<p class="link"><a href="{{rel.get_field('press_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la publication')}}</a></p>
+										{% endif %}
+									</article>
+									</div>
+								{% endfor %}
+					</section><!-- press -->
+			{% endif %}
+			{% if post.get_field('tour_iframe') %}
+				<!-- <section class="filtering" id="#artfairs-tour">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="embed-container">
+									<object type="application/x-shockwave-flash" width="100" height="100">
+											<param name="movie" value="{{ post.get_field('tour_iframe') }}">
+											<embed src="{{ post.get_field('tour_iframe') }}" width="100" height="100">
+											</embed>
+									</object>
+								</div>
+							</div>
+						</div>
+				</section> tour -->
 			{% endif %}
 		</div>
 	</section><!-- exhibition-->
