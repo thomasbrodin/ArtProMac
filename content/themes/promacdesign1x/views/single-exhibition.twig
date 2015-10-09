@@ -14,11 +14,14 @@
 			<div class="row border">
 				<div class="col-md-12">
 						<ul id="filter-section" class="filter">
+							<li><a href="#exhibitions-artworks" class="active">{{ function( 'pll_e'," Oeuvres")}}</a></li>
+							<li><a href="#exhibitions-info">{{ function( 'pll_e','Informations')}}</a></li>
+							{% if press %}
+									<li><a href="#exhibitions-press">{{ function( 'pll_e','Presse')}}</a></li>
+							{% endif %}
 							{% if publications %}
 								<li><a href="#exhibitions-publications">{{ function( 'pll_e','Publications')}}</a></li>
 							{% endif %}
-							<li><a href="#exhibitions-artworks" class="active">{{ function( 'pll_e'," Oeuvres")}}</a></li>
-							<li><a href="#exhibitions-press">{{ function( 'pll_e','Dossier de presse')}}</a></li>
 						</ul>
 				</div>
 			</div>
@@ -101,7 +104,7 @@
 				</div>
 			</section><!-- artwork-->
 
-			<section class="filtering" id="exhibitions-press">
+			<section class="filtering" id="exhibitions-info">
 				<div class="row">
 					<div class="col-md-4">
 						<img src="{{post.thumbnail.src|resize(480)}}" />
@@ -111,7 +114,30 @@
 					</div>
 				</div>
 			</section><!-- /bio -->
-
+			{% if press %}
+				<section class="filtering one-two-col" id="exhibitions-press">
+					{% for rel in press %}
+							<div class="row">
+								<figure class="col-md-4 col-sm-3">
+									{% if rel.thumbnail %}
+										<img src="{{rel.get_thumbnail.get_src|resize(480)}}" />
+										{% else %}
+											<img src="http://placehold.it/300&text=Image+Needed">
+										{% endif %}
+								</figure>
+								<article class="col-md-8 col-sm-9">
+									<h3>{{rel.title}}</h3>
+									<p class="date">{{rel.press_date}}</p>
+									<p class="editeur">{{rel.press_editeur}}</p>
+									<p>{{rel.content}}</p>
+									{% if rel.press_pdf %}
+										<p class="link"><a href="{{rel.get_field('press_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la presse')}}</a></p>
+									{% endif %}
+								</article>
+								</div>
+							{% endfor %}
+				</section><!-- press -->
+			{% endif %}
 			{% if publications %}
 				<section class="filtering one-two-col" id="exhibitions-publications">
 					{% for rel in publications %}
@@ -128,12 +154,12 @@
 								<p>{{rel.content}}</p>
 								{% if rel.pub_link %}
 									<p class="link">
-										<a href="{{rel.get_field('pub_link')}}" target="_blank">{{ function( 'pll_e','Cliquer ici pour voir la brochure en ligne')}}</a>
+										<a href="{{rel.get_field('pub_link')}}" target="_blank">{{ function( 'pll_e','Lire la publication en ligne')}}</a>
 									</p>
 								{% endif %}
 								{% if rel.publi_pdf %}
 									<p class="link">
-										<a href="{{rel.get_field('publi_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la publication')}}</a>
+										<a href="{{rel.get_field('publi_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la publication en PDF')}}</a>
 									</p>
 								{% endif %}
 							</article>

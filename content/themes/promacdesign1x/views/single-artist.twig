@@ -6,7 +6,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12">
-									<h2 class="title">{{post.get_field('artist_name')}} {{post.title}}{% if post.get_field('artist_date') %} <em>{{post.get_field('artist_date')}}</em>{% endif %}</h2>
+									<h2 class="title">{{post.get_field('artist_name')}} {{post.title}}{% if post.get_field('artist_date') %} <span>{{post.get_field('artist_date')}}</span>{% endif %}</h2>
 							</div>
 						</div>
 						<div class="row border">
@@ -132,10 +132,10 @@
 										<div class="row">
 											{% set pic = post.get_field('artist_img') %}
 											{% if pic %}
-												<div class="col-md-4">
+												<div class="col-md-3">
 																<img src="{{TimberImage(pic.id).get_src|resize(480)}}" />
 															</div>
-															<div class="col-md-8">
+															<div class="col-md-9">
 																{{ post.get_field('statement')}}
 															</div>
 					{% else %}
@@ -186,7 +186,7 @@
 										<p class="date">{{rel.press_date}}</p>
 										<p>{{rel.content}}</p>
 										{% if rel.press_pdf %}
-											<p class="link"><a href="{{rel.get_field('press_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la publication')}}</a></p>
+											<p class="link"><a href="{{rel.get_field('press_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la presse')}}</a></p>
 										{% endif %}
 									</article>
 									</div>
@@ -198,24 +198,24 @@
 				<section class="filtering one-two-col" id="artist-bibliography">
 							{% for rel in bibliographies %}
 										<div class="row">
-													<figure class="col-md-4 col-sm-3">
+													<figure class="col-md-3 col-sm-3">
 														{% if rel.thumbnail %}
 															<img src="{{rel.get_thumbnail.get_src|resize(480)}}" />
 															{% else %}
 																<img src="http://placehold.it/300&text=Image+Needed">
 															{% endif %}
 													</figure>
-													<article class="col-md-8 col-sm-9">
+													<article class="col-md-9 col-sm-9">
 														<h3>{{rel.title}}</h3>
 														<p>{{rel.content}}</p>
 														{% if rel.issu_link %}
 															<p class="link">
-																<a href="{{rel.get_field('issu_link')}}" target="_blank">{{ function( 'pll_e','Cliquer ici pour voir la brochure en ligne')}}</a>
+																<a href="{{rel.get_field('issu_link')}}" target="_blank">{{ function( 'pll_e','Lire la publication en ligne')}}</a>
 															</p>
 														{% endif %}
 														{% if rel.pub_pdf %}
 															<p class="link">
-																<a href="{{rel.get_field('pub_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la publication')}}</a>
+																<a href="{{rel.get_field('pub_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la publication en PDF')}}</a>
 															</p>
 														{% endif %}
 													</article>
@@ -225,32 +225,32 @@
 				{% endif %}
 
 				{% if publications %}
-				<section class="filtering one-two-col" id="artist-publications">
-							{% for rel in publications %}
-										<div class="row">
-													<figure class="col-md-4 col-sm-3">
-														{% if rel.thumbnail %}
-															<img src="{{rel.get_thumbnail.get_src|resize(480)}}" />
-															{% else %}
-																<img src="http://placehold.it/300&text=Image+Needed">
-															{% endif %}
-													</figure>
-													<article class="col-md-8 col-sm-9">
-														<h3>{{rel.title}}</h3>
-														<p>{{rel.content}}</p>
-														{% if rel.pub_link %}
-															<p class="link">
-																<a href="{{rel.get_field('pub_link')}}" target="_blank">{{ function( 'pll_e','Cliquer ici pour voir la brochure en ligne')}}</a>
-															</p>
+					<section class="filtering one-two-col" id="artist-publications">
+						{% for rel in publications %}
+									<div class="row">
+												<figure class="col-md-4 col-sm-3">
+													{% if rel.thumbnail %}
+														<img src="{{rel.get_thumbnail.get_src|resize(480)}}" />
+														{% else %}
+															<img src="http://placehold.it/300&text=Image+Needed">
 														{% endif %}
-														{% if rel.pub_pdf %}
-															<p class="link">
-																<a href="{{rel.get_field('publi_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la publication')}}</a>
-															</p>
-														{% endif %}
-													</article>
-										</div>
-								{% endfor %}
+												</figure>
+												<article class="col-md-8 col-sm-9">
+													<h3>{{rel.title}}</h3>
+													<p>{{rel.content}}</p>
+													{% if rel.pub_link %}
+														<p class="link">
+															<a href="{{rel.get_field('pub_link')}}" target="_blank">{{ function( 'pll_e','Lire la publication en ligne')}}</a>
+														</p>
+													{% endif %}
+													{% if rel.pub_pdf %}
+														<p class="link">
+															<a href="{{rel.get_field('publi_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la publication en PDF')}}</a>
+														</p>
+													{% endif %}
+												</article>
+									</div>
+							{% endfor %}
 					</section><!-- publications -->
 				{% endif %}
 

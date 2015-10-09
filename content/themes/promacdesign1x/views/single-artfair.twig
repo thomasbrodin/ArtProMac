@@ -13,7 +13,7 @@
 					<div class="col-md-12">
 							<ul id="filter-section" class="filter">
 									<li><a href="#artfairs-artworks" class="active">{{ function( 'pll_e'," Oeuvres")}}</a></li>
-									<li><a href="#artfairs-release">{{ function( 'pll_e','Dossier de Presse')}}</a></li>
+									<li><a href="#artfairs-release">{{ function( 'pll_e','informations')}}</a></li>
 									{% if publications %}
 											<li><a href="#artfairs-publications">{{ function( 'pll_e','Publications')}}</a></li>
 									{% endif %}
@@ -54,7 +54,7 @@
 					</div><!-- Thumbnails -->
 
 					<div id="artwork-slider" class="flexslider">
-						<ul class="slides">
+						<ul class="slides img-centered">
 							{% for image in artworks %}
 								<li>
 										<a class="fancybox" data-fancybox-group="gallery" rel="gallery" href="{{TimberImage(image.id).get_src}}">
@@ -78,7 +78,7 @@
 							<p>{{post.content}}</p>
 							{% if post.get_field('fair_press') %}
 								<p class="link"><a href="{{post.get_field('fair_press').url}}" target="_blank">
-									{{ function( 'pll_e','Telecharger la publication')}}</a></p>
+									{{ function( 'pll_e','Telecharger le dossier de presse en PDF')}}</a></p>
 							{% endif %}
 						</article>
 					</div>
@@ -101,12 +101,12 @@
 								<p>{{rel.content}}</p>
 								{% if rel.pub_link %}
 									<p class="link">
-										<a href="{{rel.get_field('pub_link')}}" target="_blank">{{ function( 'pll_e','Cliquer ici pour voir la brochure en ligne')}}</a>
+										<a href="{{rel.get_field('pub_link')}}" target="_blank">{{ function( 'pll_e','Lire la publication en ligne')}}</a>
 									</p>
 								{% endif %}
 								{% if rel.publi_pdf %}
 									<p class="link">
-										<a href="{{rel.get_field('publi_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la publication')}}</a>
+										<a href="{{rel.get_field('publi_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la publication en PDF')}}</a>
 									</p>
 								{% endif %}
 							</article>
@@ -131,7 +131,7 @@
 										<p class="editeur">{{rel.press_editeur}}</p>
 										<p>{{rel.content}}</p>
 										{% if rel.press_pdf %}
-											<p class="link"><a href="{{rel.get_field('press_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la publication')}}</a></p>
+											<p class="link"><a href="{{rel.get_field('press_pdf').url}}" target="_blank">{{ function( 'pll_e','Telecharger la presse')}}</a></p>
 										{% endif %}
 									</article>
 									</div>
