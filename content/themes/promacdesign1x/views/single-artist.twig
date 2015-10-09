@@ -77,7 +77,9 @@
 																							<p>{{image.caption}}</p>
 																							<a class="smoothy" href="#details">{{ function( 'pll_e','Details')}}</a>
 																							<a href="mailto:{{ options.email }}?subject={{post.title}} - {{image.title}}">{{ function( 'pll_e','Contactez nous')}}</a>
-																							<a class="smoothy" href="#related">{{ function( 'pll_e','Vous aimerez aussi')}}</a>
+																							{% if post.get_field('related_img') %}
+																								<a class="smoothy" href="#related">{{ function( 'pll_e','Vous aimerez aussi')}}</a>
+																							{% endif %}
 																						</div>
 																					</div>
 																				</article>
