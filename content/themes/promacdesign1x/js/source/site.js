@@ -66,16 +66,19 @@ jQuery(document).ready(function($) {
 	});
 				// ARTISTS LIST / THUMBS
 	if ( $(".artists-list").length > 0 ) {
-		$('.artists-list li a').hover(function () {
+		$(".artists-list a").mouseenter(function() {
+			$(".artists-thumb").empty();
 			var thumb = $(this).data("thumb");
 			if ( thumb !== undefined ) {
 				if ( thumb.length > 0 ) {
 					var image = new Image();
 					$(image).load(function () {
-						$(".artists-thumb").html($(image));
+						$(image).hide().appendTo(".artists-thumb").fadeIn(500);
 					}).attr("src", thumb);
 				}
 			}
+		}).mouseleave(function() {
+			$(".artists-thumb").empty();
 		});
 	}
 	// DATE FILTER

@@ -459,10 +459,11 @@ section#modules {
 		li {
 			list-style: none;
 			text-transform: uppercase;
-			line-height: 36px;
+			display: block;
+			margin:10px 40px 10px 0;
 			a {
+				vertical-align:top;
 				display: block;
-
 			}
 		}
 	}
