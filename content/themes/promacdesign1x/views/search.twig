@@ -4,21 +4,29 @@
 
 	<section class="main">
 		<div class="container">
-			<h1>{{ function( 'pll_e','Resultats de recherche pour ','Global')}} {{search_title}}</h1>
+			<div class="row border">
+				<div class="col-md-12">
+					<h2>{{ function( 'pll_e','Resultats de recherche pour ','Global')}} {{search_title}}</h1>
+				</div>
+			</div>
 			{% if posts %}
 				{% for post in posts %}
 					<div class="row">
 						{% if post.get_thumbnail %}
 							<div class="col-md-4">
-								<img src="{{post.thumbnail.get_src|resize(500)}}" />
+								<a href="{{post.link}}">
+									<img src="{{post.thumbnail.get_src|resize(500)}}" />
+								</a>
 							</div>
 						{% endif %}
 						<div class="{% if post.get_thumbnail %}col-md-8{% else %}col-md-12{% endif %}">
-							<article>
-								<h2>{{post.title}}</a></h2>
-								<p>{{post.content}}</p>
-								<span class="hr"></span>
-							</article>
+							<a href="{{post.link}}">
+								<article>
+									<h2>{{post.title}}</a></h2>
+									<p>{{post.content}}</p>
+									<span class="hr"></span>
+								</article>
+							</a>
 						</div>
 					</div>
 				{% endfor %}
