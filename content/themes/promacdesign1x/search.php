@@ -13,7 +13,7 @@
 	$templates = array('search.twig', 'archive.twig', 'index.twig');
 	$context = Timber::get_context();
 	$args = array(
-			'post_type'=> array('post', 'page', 'artist', 'exhibition', 'artfair', 'publication', 'bibliography', 'press'),
+			'post_type'=> array('post', 'page', 'artist', 'exhibition', 'artfair'),
 			'numberposts' => -1,
 			's' => $s
 	);
