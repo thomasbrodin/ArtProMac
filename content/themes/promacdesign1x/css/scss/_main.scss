@@ -457,9 +457,11 @@ section#modules {
 		-moz-column-gap:0px;
 		column-count:2;
 		column-gap:0px;
+		width: 100%;
 		li {
 			list-style: none;
 			text-transform: uppercase;
+			display: inline-block;
 			a {
 				vertical-align:top;
 				display: block;
