@@ -22,6 +22,7 @@ pll_register_string('PDF', 'Telecharger la publication en PDF','Global');
 pll_register_string('PDF', 'Telecharger la presse','Global');
 pll_register_string('PDF', 'Telecharger le dossier de presse en PDF','Global');
 pll_register_string('Link', 'Lire la publication en ligne','Global');
+pll_register_string('Search', 'Rechercher','Global');
 pll_register_string('Search', 'Resultats de recherche pour ','Global');
 pll_register_string('Search', 'Désolé, nous n’avons rien trouvé','Global');
 pll_register_string('Footer', 'Mentions légales','Global');

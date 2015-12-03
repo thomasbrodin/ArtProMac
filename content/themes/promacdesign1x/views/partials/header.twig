@@ -47,7 +47,7 @@
 					</div><!--lang-search -->
 
 					<form id="search-bar" class="collapse" action="{{site.url}}" method="get" role="search">
-						<input type="text" class="form-control sidebar-top" value="Rechercher" name="s" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
+						<input type="text" class="form-control sidebar-top" value="{{ function( 'pll_e','Rechercher')}}" name="s" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
 					</form>
 
 				</nav><!--/.nav-collapse -->
