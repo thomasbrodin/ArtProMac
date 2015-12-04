@@ -22,7 +22,7 @@
 					{% for term in artist_category %}
 						{% if term.get_posts is not empty %}
 							<div class="row">
-								<h3>{{term.name}}</h3>
+								<h3 class"term">{{term.name}}</h3>
 								{% for post in term.get_posts({'orderby' : 'title', 'order': 'ASC'}) %}
 									<article class="col-md-3 col-sm-6">
 										<figure class="c4">
@@ -36,9 +36,15 @@
 										</figure>
 										<div class="meta">
 											<h4>
-												<a href="{{post.link}}">
-													{{post.get_field('artist_name')}} {{post.title}}
-												</a>
+												{% if post.get_field( 'artist_inactif') %}
+													<a class="grey" href="#">
+														{{post.get_field('artist_name')}} {{post.title}}
+													</a>
+												{% else %}
+													<a href="{{post.link}}">
+														{{post.get_field('artist_name')}} {{post.title}}
+													</a>
+												{% endif %}
 											</h4>
 										</div>
 									</article>
@@ -55,7 +61,11 @@
 						<ul>
 							{% for post in posts %}
 								<li>
-									<a data-thumb="{{post.get_thumbnail.get_src|resize(600)}}" href="{{post.link}}">{{post.get_field('artist_name')}} {{post.title}}</a>
+									{% if post.get_field( 'artist_inactif') %}
+										<a class="grey" data-thumb="{{post.get_thumbnail.get_src|resize(600)}}" href="#">{{post.get_field('artist_name')}} {{post.title}}</a>
+									{% else %}
+										<a data-thumb="{{post.get_thumbnail.get_src|resize(600)}}" href="{{post.link}}">{{post.get_field('artist_name')}} {{post.title}}</a>
+									{% endif %}
 								</li>
 							{% endfor %}
 						</ul>

@@ -75,7 +75,7 @@
 					</div>
 					<div class="col-md-8">
 						<article>
-							<p>{{post.content}}</p>
+							{{post.content}}
 							{% if post.get_field('fair_press') %}
 								<p class="link"><a href="{{post.get_field('fair_press').url}}" target="_blank">
 									{{ function( 'pll_e','Telecharger le dossier de presse en PDF')}}</a></p>

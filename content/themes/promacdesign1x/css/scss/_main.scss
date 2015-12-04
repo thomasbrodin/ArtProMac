@@ -397,6 +397,9 @@ section {
 	}
 	&.filtering {
 		padding-bottom:105px;
+		h3:not(.term) {
+			margin-top:0;
+		}
 		&:not(:first-of-type) {
 			display: none;
 		}
@@ -551,7 +554,10 @@ section#modules {
 	}
 }
 #artists .thumbnails .row{
-	border-bottom: 1px solid #ccc
+	border-bottom: 1px solid #ccc;
+	a.grey {
+		color:#999!important
+	}
 }
 
 .featured {
