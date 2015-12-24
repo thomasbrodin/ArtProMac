@@ -48,9 +48,9 @@
 
 		function add_to_context($context){
 			$context['options'] = get_fields('options');
-
+			
 			$context['langues'] = pll_the_languages(array('raw'=>1));
-			$context['current_lang'] =pll_current_language('slug');
+			$context['current_lang'] = pll_current_language('slug');
 
 			$context['footer_sidebar'] = Timber::get_widgets('footer_sidebar');
 

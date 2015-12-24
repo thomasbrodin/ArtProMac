@@ -39,6 +39,7 @@
 					{% set artworks = post.get_field('images_show') %}
 					<div id="thumbs" class="thumbnails">
 						{% for image in artworks %}
+							{% set attachment = TimberPost(image.id) %}
 								<article class="col-sm-6 col-md-3">
 										<figure class="c3 boxed" data-slide="{{loop.index0}}">
 											<div class="img-area">
@@ -46,7 +47,7 @@
 											</div>
 										</figure>
 										<div class="meta">
-												<p><em><strong>{{image.title}}</strong></em><br>
+												<p><em><strong>{% if current_lang == 'fr' %}{{image.title}}{% else %}{{ attachment.get_field('title_en') }}{% endif %}</strong></em><br>
 														{% if artist|length == 1 %}
 															{{artist[0].artist_name}}	{{artist[0].post_title}}<br>
 														{% endif %}
@@ -59,6 +60,7 @@
 					<div id="artwork-slider" class="flexslider">
 						<ul class="slides">
 							{% for image in artworks %}
+								{% set attachment = TimberPost(image.id) %}
 									<li>
 										<div class="row">
 											<figure class="col-md-8">
@@ -69,8 +71,13 @@
 											<article class="col-md-4">
 												<div class="slide-text">
 													<div class="row-bottom">
-														<h4>{{image.title}}</h4>
-														<p>{{image.caption}}</p>
+														{% if current_lang == 'fr' %}
+															<h4>{{image.title}}</h4>
+															<p>{{image.caption}}</p>
+														{% else %}
+															<h4>{{ attachment.get_field('title_en') }}</h4>
+															<p>{{ attachment.get_field('caption_en') }}</p>
+														{% endif %}
 														<a href="mailto:{{ options.email }}?subject={{post.title}} - {{image.title}}">{{ function( 'pll_e','Contactez nous')}}</a>
 													</div>
 												</div>
@@ -78,7 +85,12 @@
 										</div>
 										<div class="row">
 											<div class="description">
-												<p>{{image.description}}</p>
+												<p>{% if current_lang == 'fr' %}
+														{{image.description}}
+													{% else %}
+														{{ attachment.get_field('desc_en') }}</p>
+													{% endif %}
+												</p>
 											</div>
 										</div>
 									</li>
@@ -88,13 +100,19 @@
 
 					<div id="list" class="one-two-col">
 						{% for image in artworks %}
+						{% set attachment = TimberPost(image.id) %}
 							<div class="row">
 								<figure class="col-md-4">
 										<img src="{{TimberImage(image.id).get_src|resize(480)}}" />
 								</figure>
 								<article class="col-md-8">
+									{% if current_lang == 'fr' %}
 										<h4>{{image.title}}</h4>
 										<p>{{image.caption}}</p>
+									{% else %}
+										<h4>{{ attachment.get_field('title_en') }}</h4>
+										<p>{{ attachment.get_field('caption_en') }}</p>
+									{% endif %}
 								</article>
 							</div>
 						{% endfor %}

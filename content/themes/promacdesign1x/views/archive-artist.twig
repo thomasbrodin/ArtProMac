@@ -22,24 +22,32 @@
 					{% for term in artist_category %}
 						{% if term.get_posts is not empty %}
 							<div class="row">
-								<h3 class"term">{{term.name}}</h3>
+								<h3 class="term">{{term.name}}</h3>
 								{% for post in term.get_posts({'orderby' : 'title', 'order': 'ASC'}) %}
 									<article class="col-md-3 col-sm-6">
 										<figure class="c4">
-											<a href="{{post.link}}">
+											{% if post.get_field( 'artist_inactif') %}
 												{% if post.thumbnail %}
 													<img src="{{post.get_thumbnail.get_src|resize(480,320, center)}}" />
 												{% else %}
 													<img src="http://placehold.it/300&text=Image+Needed">
 												{% endif %}
-											</a>
+											{% else %}
+												<a href="{{post.link}}">
+													{% if post.thumbnail %}
+														<img src="{{post.get_thumbnail.get_src|resize(480,320, center)}}" />
+													{% else %}
+														<img src="http://placehold.it/300&text=Image+Needed">
+													{% endif %}
+												</a>
+											{% endif %}
 										</figure>
 										<div class="meta">
 											<h4>
 												{% if post.get_field( 'artist_inactif') %}
-													<a class="grey" href="#">
+													<span class="grey">
 														{{post.get_field('artist_name')}} {{post.title}}
-													</a>
+													</span>
 												{% else %}
 													<a href="{{post.link}}">
 														{{post.get_field('artist_name')}} {{post.title}}
@@ -62,7 +70,7 @@
 							{% for post in posts %}
 								<li>
 									{% if post.get_field( 'artist_inactif') %}
-										<a class="grey" data-thumb="{{post.get_thumbnail.get_src|resize(600)}}" href="#">{{post.get_field('artist_name')}} {{post.title}}</a>
+										<span class="grey" data-thumb="{{post.get_thumbnail.get_src|resize(600)}}" href="#">{{post.get_field('artist_name')}} {{post.title}}</span>
 									{% else %}
 										<a data-thumb="{{post.get_thumbnail.get_src|resize(600)}}" href="{{post.link}}">{{post.get_field('artist_name')}} {{post.title}}</a>
 									{% endif %}

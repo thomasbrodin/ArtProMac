@@ -470,6 +470,12 @@ section#modules {
 				display: block;
 				margin:0 40px 20px 0;
 			}
+			span.grey {
+				vertical-align:top;
+				display: block;
+				margin:0 40px 20px 0;
+				color:#ccc!important
+			}
 		}
 	}
 }
@@ -555,9 +561,6 @@ section#modules {
 }
 #artists .thumbnails .row{
 	border-bottom: 1px solid #ccc;
-	a.grey {
-		color:#999!important
-	}
 }
 
 .featured {

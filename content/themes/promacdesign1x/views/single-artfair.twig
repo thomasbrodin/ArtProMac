@@ -41,13 +41,14 @@
 					{% set artworks = post.get_field('fair_img') %}
 					<div id="thumbs" class="thumbnails">
 						{% for image in artworks %}
+						{% set attachment = TimberPost(image.id) %}
 							<article class="col-sm-6 col-md-3">
 									<figure class="c4" data-slide="{{loop.index0}}">
 											<img src="{{TimberImage(image.id).get_src|resize(480)}}" />
 									</figure>
 									<div class="meta">
-											<p><em><strong>{{image.title}}</strong></em><br>
-												{{post.get_field('date_artfair')}}</p>
+											<p><em><strong>{% if current_lang == 'fr' %}{{image.title}}{% else %}{{ attachment.get_field('title_en') }}{% endif %}</strong></em><br>
+													{{post.get_field('date_artfair')}}</p>
 									</div>
 							</article>
 						{% endfor %}
