@@ -4,11 +4,13 @@
 
 				<section id="single-artist" class="main">
 					<div class="container">
+
 						<div class="row">
 							<div class="col-md-12">
 									<h2 class="title">{{post.get_field('artist_name')}} {{post.title}}{% if post.get_field('artist_date') %} <span>{{post.get_field('artist_date')}}</span>{% endif %}</h2>
 							</div>
 						</div>
+
 						<div class="row border">
 							<div class="col-md-12">
 								<ul id="filter-section" class="filter">
@@ -43,6 +45,7 @@
 															<li id="two-col"><a href="#">{{ function( 'pll_e','Liste')}}</a></li>
 														</ul>
 													</div>
+
 												{% set artworks = post.get_field('images_artist') %}
 													<div id="thumbs" class="thumbnails">
 														{% for image in artworks %}
@@ -65,41 +68,41 @@
 																	{% for image in artworks %}
 																		{% set attachment = TimberPost(image.id) %}
 																			<li>
-																			<div class="row">
-																				<figure class="col-md-8">
-																					<a class="fancybox" data-fancybox-group="gallery" rel="gallery" href="{{TimberImage(image.id).get_src}}">
-																						<img src="{{TimberImage(image.id).get_src|resize(850)}}" />
-																					</a>
-																				</figure>
-																				<article class="col-md-4">
-																					<div class="slide-text">
-																						<div class="row-bottom">
-																							{% if current_lang == 'fr' %}
-																								<h4>{{image.title}}</h4>
-																								<p>{{image.caption}}</p>
-																							{% else %}
-																								<h4>{{ attachment.get_field('title_en') }}</h4>
-																								<p>{{ attachment.get_field('caption_en') }}</p>
-																							{% endif %}
-																							<a class="smoothy" href="#details">{{ function( 'pll_e','Details')}}</a>
-																							<a href="mailto:{{ options.email }}?subject={{post.title}} - {{image.title}}">{{ function( 'pll_e','Contactez nous')}}</a>
-																							{% if post.get_field('related_img') %}
-																								<a class="smoothy" href="#related">{{ function( 'pll_e','Vous aimerez aussi')}}</a>
-																							{% endif %}
+																				<div class="row">
+																					<figure class="col-md-8">
+																						<a class="fancybox" data-fancybox-group="gallery" rel="gallery" href="{{TimberImage(image.id).get_src}}">
+																							<img src="{{TimberImage(image.id).get_src|resize(850)}}" />
+																						</a>
+																					</figure>
+																					<article class="col-md-4">
+																						<div class="slide-text">
+																							<div class="row-bottom">
+																								{% if current_lang == 'fr' %}
+																									<h4>{{image.title}}</h4>
+																									<p>{{image.caption}}</p>
+																								{% else %}
+																									<h4>{{ attachment.get_field('title_en') }}</h4>
+																									<p>{{ attachment.get_field('caption_en') }}</p>
+																								{% endif %}
+																								<a class="smoothy" href="#details">{{ function( 'pll_e','Details')}}</a>
+																								<a href="mailto:{{ options.email }}?subject={{post.title}} - {{image.title}}">{{ function( 'pll_e','Contactez nous')}}</a>
+																								{% if post.get_field('related_img') %}
+																									<a class="smoothy" href="#related">{{ function( 'pll_e','Vous aimerez aussi')}}</a>
+																								{% endif %}
+																							</div>
 																						</div>
-																					</div>
-																				</article>
-																			</div>
-																			<div class="row">
-																				<div id="details" class="description">
-																					<p>{% if current_lang == 'fr' %}
-																							{{image.description}}
-																						{% else %}
-																							{{ attachment.get_field('desc_en') }}</p>
-																						{% endif %}
-																					</p>
+																					</article>
 																				</div>
-																			</div>
+																				<div class="row">
+																					<div id="details" class="description">
+																						<p>{% if current_lang == 'fr' %}
+																								{{image.description}}
+																							{% else %}
+																								{{ attachment.get_field('desc_en') }}</p>
+																							{% endif %}
+																						</p>
+																					</div>
+																				</div>
 																			</li>
 																		{% endfor %}
 																	</ul>
