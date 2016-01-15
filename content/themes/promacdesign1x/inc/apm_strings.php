@@ -26,3 +26,4 @@ pll_register_string('Search', 'Rechercher','Global');
 pll_register_string('Search', 'Resultats de recherche pour ','Global');
 pll_register_string('Search', 'Désolé, nous n’avons rien trouvé','Global');
 pll_register_string('Footer', 'Mentions légales','Global');
+pll_register_string('Footer', 'S\'inscrire','Global');

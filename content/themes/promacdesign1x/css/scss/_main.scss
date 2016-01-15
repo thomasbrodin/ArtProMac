@@ -787,6 +787,21 @@ footer {
 			padding:0;
 			list-style: none;
 		}
+		form {
+			margin-top: 15px
+		}
+		input {
+			padding:4px 6px;
+			-webkit-appearance: none;
+    	cursor: pointer;
+			border: 1px solid #232323;
+    	background: rgba(0, 0, 0, 0);
+			&[type="email"] {
+				border:none;
+				border-bottom:1px solid #232323;
+				width: 75%;
+			}
+		}
 	}
 	.mapit {
 		font-size: 0.8em;
