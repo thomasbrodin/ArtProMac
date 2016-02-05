@@ -126,7 +126,10 @@ header.navbar {
 	}
 	.navbar-toggle {
 		padding:4px;
-		margin: 19px 15px 15px
+		margin: 19px 15px 15px;
+		@include media($mobile) {
+		  margin: 10px 15px 10px;
+		}
 	}
 	.navbar-toggle .icon-bar {
 		background: #000;
@@ -437,6 +440,9 @@ section#modules {
 	}
 	#page-slider{
 		height:550px;
+		@include media($mobile) {
+			height: auto;
+		}
 		.slides {
 			height: 100%;
 			li {
@@ -445,6 +451,9 @@ section#modules {
 					width:auto;
 					height:100%;
 					margin: 0 auto;
+					@include media($mobile) {
+						height: auto;
+					}
 				}
 			}
 		}

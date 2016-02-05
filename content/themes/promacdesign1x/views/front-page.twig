@@ -42,7 +42,13 @@
 				<section class="artists-wrapper container">
 					{% for artist in artists %}
 						<div class="homepage-artist">
-							<a href="{{artist.link}}">{{artist.artist_name}} {{artist.name}}</a>
+							{% if artist.artist_inactif %}
+								<span class="grey">
+									{{artist.artist_name}} {{artist.name}}
+								</span>
+							{% else %}
+								<a href="{{artist.link}}">{{artist.artist_name}} {{artist.name}}</a>
+							{% endif %}
 						</div>
 					{% endfor %}
 				</section>

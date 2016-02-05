@@ -26,9 +26,9 @@
 										<form action="//galerie-fleury.us7.list-manage.com/subscribe/post?u=d339b76fcee489d746a005f44&amp;id=bfd54c9793" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 										  <div id="mc_embed_signup_scroll">
 												<div class="mc-field-group">
-													<input type="text" placeholder="NAME" value="" name="FNAME" class="" id="mce-FNAME">
-													<input type="text" placeholder="COUNTRY" value="" name="MMERGE2" class="" id="mce-MMERGE2">
-													<input type="email" placeholder="EMAIL ADDRESS" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+													<input type="text" placeholder="{{ function( 'pll_e','NOM')}}" value="" name="FNAME" class="" id="mce-FNAME">
+													<input type="text" placeholder="{{ function( 'pll_e','PAYS')}}" value="" name="MMERGE2" class="" id="mce-MMERGE2">
+													<input type="email" placeholder="{{ function( 'pll_e','ADRESSE EMAIL')}}" value="" name="EMAIL" class="required email" id="mce-EMAIL">
 
 													<input type="submit" value="{{ function( 'pll_e','S\'inscrire')}}" name="subscribe" id="mc-embedded-subscribe" class="button">
 												</div>
